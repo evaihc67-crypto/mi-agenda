@@ -256,6 +256,36 @@ html,body{overflow-x:hidden}.view{min-width:0}
 .rep-tw.small .rep-t{font-size:12.5px;max-width:560px}
 .rep-t tr.rep-warn td{background:var(--warn-soft)}
 .kpi .k b{font-size:24px}
+
+/* Mi ministerio */
+.chart{width:100%;height:auto;display:block}
+.chart .ch-grid{stroke:var(--line);stroke-width:1}
+.chart .ch-ax{fill:var(--ink3);font-size:12px}
+.chart .ch-val{fill:var(--ink2);font-size:11.5px;font-weight:650}
+.chart .ch-goal{stroke:var(--warn);stroke-width:1.6;stroke-dasharray:5 4}
+.chart .ch-goalt{fill:var(--warn);font-size:12px;font-weight:650}
+.ch-leg{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--ink2);margin-top:4px}
+.ch-leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.ch-leg i.dash{height:0;border-top:2px dashed var(--warn);border-radius:0;width:14px;vertical-align:3px}
+.rings{display:flex;flex-wrap:wrap;gap:16px}
+.ring{display:flex;align-items:center;gap:10px;min-width:180px}
+.ring svg{width:76px;height:76px;flex:none}
+.ring-bg{fill:none;stroke:var(--line);stroke-width:8}
+.ring-fg{fill:none;stroke:var(--accent);stroke-width:8;stroke-linecap:round}
+.ring-t{fill:var(--ink);font-size:15px;font-weight:700}
+.metas{display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.metas{grid-template-columns:repeat(3,minmax(0,1fr))}.metas .card+.card{margin-top:0}}
+.meta-card{border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:9px;padding:10px;margin-bottom:8px;cursor:pointer;background:var(--surface)}
+.meta-card:hover{background:var(--surface2)}
+.meta-card .t{font-weight:620}
+.bar{height:6px;background:var(--line);border-radius:4px;margin-top:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--accent)}
+.inf-row{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;padding:10px 4px;border-bottom:1px solid var(--line)}
+.inf-row.irr{background:linear-gradient(90deg,var(--warn-soft),transparent 70%)}
+.inf-name{flex:1 1 200px;min-width:0}
+.inf-ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.inf-ctl .seg button{padding:6px 10px}
+.inf-num{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--ink2)}
+.inf-num input{width:66px;padding:5px 6px}
 </style>
 </head>
 <body>
@@ -86433,7 +86463,7 @@ const DB = {
   }
 };
 
-const COLLECTIONS = ['events', 'contacts', 'msgTemplates', 'clips', 'docs', 'letters', 'congs'];
+const COLLECTIONS = ['events', 'contacts', 'msgTemplates', 'clips', 'docs', 'letters', 'congs', 'minLog', 'minCursos', 'metas'];
 const DEFAULT_AREAS = [
   { id: 'cong', name: 'Congregación', parent: null },
   { id: 'cong-ancianos', name: 'Cuerpo de ancianos', parent: 'cong' },
@@ -86445,6 +86475,7 @@ const DEFAULT_AREAS = [
   { id: 'cong-misdiscursos', name: 'Mis discursos', parent: 'cong' },
   { id: 'cong-grupo', name: 'Mi grupo', parent: 'cong' },
   { id: 'cong-grupo-pastoreo', name: 'Visitas de pastoreo', parent: 'cong-grupo' },
+  { id: 'cong-ministerio', name: 'Mi ministerio', parent: 'cong' },
   { id: 'circ', name: 'Circuito', parent: null },
   { id: 'circ-dept', name: 'Departamentos', parent: 'circ' },
   { id: 'sup', name: 'Superintendente de circuito', parent: null },
@@ -86456,7 +86487,7 @@ function defaultState() {
   return {
     v: 1,
     areas: JSON.parse(JSON.stringify(DEFAULT_AREAS)),
-    events: [], contacts: [], clips: [], docs: [], letters: [], congs: [],
+    events: [], contacts: [], clips: [], docs: [], letters: [], congs: [], minLog: [], minCursos: [], metas: [],
     msgTemplates: [{ id: uid(), name: 'Saludo general', text: 'Hola {nombre_pila}, ¿qué tal? Te escribo para recordarte que…', updatedAt: Date.now() }],
     deleted: {},
     settings: { prefix: '34', waMode: 'wa', defRemind: 1440, theme: 'auto' },
@@ -87354,7 +87385,7 @@ async function exportParagraphs(fmt, title, paras, base) {
 
 /* ================= Navegación ================= */
 const NAV = [
-  ['home', 'Inicio', 'home'], ['cal', 'Calendario', 'cal'], ['dir', 'Directorio', 'users'], ['grupo', 'Mi grupo', 'heart'], ['visitas', 'Visitas', 'star'], ['msg', 'WhatsApp', 'msg'],
+  ['home', 'Inicio', 'home'], ['cal', 'Calendario', 'cal'], ['dir', 'Directorio', 'users'], ['ministerio', 'Mi ministerio', 'send'], ['grupo', 'Mi grupo', 'heart'], ['visitas', 'Visitas', 'star'], ['msg', 'WhatsApp', 'msg'],
   ['docs', 'Documentos', 'file'], ['letters', 'Cartas', 'mail'], ['clips', 'Recortes', 'cut'], ['set', 'Copias y ajustes', 'db']
 ];
 const MOBILE_NAV = ['home', 'cal', 'dir', 'msg'];
@@ -87391,7 +87422,7 @@ ACT.moreNav = () => {
 };
 ACT.goClose = el => { closeModal(); go(el.dataset.v); };
 CH.areaFilter = el => { UI.area = el.value; render(); };
-const TITLES = { home: 'Inicio', cal: 'Calendario', dir: 'Directorio', msg: 'Mensajes de WhatsApp', docs: 'Documentos', letters: 'Cartas', clips: 'Recortes', grupo: 'Mi grupo', visitas: 'Visitas a congregaciones', set: 'Copias de seguridad y ajustes' };
+const TITLES = { home: 'Inicio', cal: 'Calendario', dir: 'Directorio', msg: 'Mensajes de WhatsApp', docs: 'Documentos', letters: 'Cartas', clips: 'Recortes', grupo: 'Mi grupo', visitas: 'Visitas a congregaciones', ministerio: 'Mi ministerio', set: 'Copias de seguridad y ajustes' };
 function render() {
   renderNav();
   $('#title').textContent = TITLES[UI.view] || '';
@@ -87839,7 +87870,7 @@ function haceTexto(iso) {
   return m < 12 ? `hace ${m} mes${m === 1 ? '' : 'es'}` : `hace más de un año`;
 }
 
-VIEWS.grupo = () => {
+const grupoPersonas = () => {
   const ms = grupoMembers();
   const info = new Map(ms.map(c => [c.id, visitInfo(c)]));
   const list = [...ms];
@@ -87971,6 +88002,74 @@ ACT.grupoExport = () => exportDialog('Exportar mi grupo', '<p class="small muted
   if (vrows.length) body += pXml('Visitas de pastoreo', { style: 'Heading2' }) + tableXml(['Fecha', 'Persona', 'Estado', 'Notas'], vrows);
   return { blob: await buildDocx(body), name: name + '.docx' };
 });
+
+/* ---------- Informes mensuales del grupo ---------- */
+UI.grupoTab = 'per'; UI.grupoMonth = null;
+VIEWS.grupo = () => {
+  const tabs = [['per', 'Personas y visitas'], ['inf', 'Informes del mes']];
+  return `<div class="seg mb" style="display:flex">${tabs.map(([k, l]) => `<button class="${UI.grupoTab === k ? 'on' : ''}" data-act="grupoTab" data-t="${k}" style="flex:1">${l}</button>`).join('')}</div>` + (UI.grupoTab === 'inf' ? grupoInformes() : grupoPersonas());
+};
+ACT.grupoTab = el => { UI.grupoTab = el.dataset.t; render(); };
+const TIPOS = [['pub', 'Publicador'], ['aux', 'Prec. auxiliar'], ['reg', 'Prec. regular']];
+function infOf(c, ym) {
+  const r = (c.inf || {})[ym];
+  return r ? { ...r } : { st: '', tipo: c.pr ? 'reg' : 'pub', h: null, c: 0 };
+}
+function grupoResumen(ym) {
+  const ms = grupoMembers(), rows = ms.map(c => ({ c, r: infOf(c, ym) }));
+  const si = rows.filter(x => x.r.st === 'si'), no = rows.filter(x => x.r.st !== 'si');
+  return { rows, si, no, aux: si.filter(x => x.r.tipo === 'aux'), reg: si.filter(x => x.r.tipo === 'reg'), cursos: si.reduce((s, x) => s + (+x.r.c || 0), 0), horas: si.filter(x => x.r.tipo !== 'pub').reduce((s, x) => s + (+x.r.h || 0), 0) };
+}
+function grupoInformes() {
+  if (!UI.grupoMonth) UI.grupoMonth = ymAdd(todayISO().slice(0, 7), -1);
+  const ym = UI.grupoMonth, R = grupoResumen(ym);
+  if (!R.rows.length) return `<div class="card"><div class="empty">Primero añade las personas de tu grupo en la pestaña «Personas y visitas».</div></div>`;
+  const kpi = (t, v, s) => `<div class="k"><span class="small muted">${t}</span><b>${v}</b><span class="tiny">${s}</span></div>`;
+  const row = ({ c, r }) => {
+    const irr = r.st !== 'si';
+    return `<div class="inf-row${irr ? ' irr' : ''}" data-id="${c.id}">
+      <div class="inf-name"><b>${esc(c.name)}</b>${r.st === 'no' ? ' <span class="pill warn">Irregular · no predicó</span>' : !r.st ? ' <span class="pill warn">Irregular · sin informe</span>' : ''}</div>
+      <div class="inf-ctl">
+        <div class="seg"><button class="${r.st === 'si' ? 'on' : ''}" data-act="infSet" data-k="st" data-v="si">Predicó</button><button class="${r.st === 'no' ? 'on' : ''}" data-act="infSet" data-k="st" data-v="no">No</button></div>
+        <select data-ch="infSel" data-k="tipo"${r.st !== 'si' ? ' disabled' : ''} style="width:auto;padding:6px 8px">${TIPOS.map(([k, l]) => `<option value="${k}"${r.tipo === k ? ' selected' : ''}>${l}</option>`).join('')}</select>
+        <label class="inf-num${r.st === 'si' && r.tipo !== 'pub' ? '' : ' hide'}">Horas <input type="number" min="0" step="0.5" value="${r.h ?? ''}" data-ch="infSel" data-k="h"></label>
+        <label class="inf-num${r.st === 'si' ? '' : ' hide'}">Cursos <input type="number" min="0" value="${r.c || ''}" data-ch="infSel" data-k="c"></label>
+      </div></div>`;
+  };
+  return `<div class="cal-head"><button class="btn icon" data-act="gmNav" data-n="-1">${ic('left')}</button><h2 style="text-transform:capitalize">${ymLong(ym)}</h2><button class="btn icon" data-act="gmNav" data-n="1">${ic('right')}</button></div>
+  <div class="kpi mb">
+    ${kpi('Predicaron', `${R.si.length}/${R.rows.length}`, `${R.no.length} irregular${R.no.length === 1 ? '' : 'es'}`)}
+    ${kpi('Prec. auxiliares', R.aux.length, R.aux.length ? fmtH(R.aux.reduce((s, x) => s + (+x.r.h || 0), 0)) : '—')}
+    ${kpi('Prec. regulares', R.reg.length, R.reg.length ? fmtH(R.reg.reduce((s, x) => s + (+x.r.h || 0), 0)) : '—')}
+    ${kpi('Cursos bíblicos', R.cursos, 'informados')}
+  </div>
+  <div class="card"><div class="row mb"><span class="small muted" style="flex:1">Marca a cada persona según su informe. Quien no tenga informe o no haya predicado queda como <b>irregular</b>.</span>
+    <button class="btn sm" data-act="infAllSi">Marcar todos «Predicó»</button></div>
+    ${R.rows.map(row).join('')}
+    <div class="row mt"><span class="sp"></span><button class="btn" data-act="infCopy">${ic('copy', 's')}Copiar</button><button class="btn wa" data-act="infWA">${ic('msg', 's')}Enviar por WhatsApp</button></div></div>`;
+}
+ACT.gmNav = el => { UI.grupoMonth = ymAdd(UI.grupoMonth, +el.dataset.n); render(); };
+function infSave(c, ym, patch) {
+  c.inf = c.inf || {}; const r = { ...infOf(c, ym), ...patch };
+  if (r.tipo === 'reg') c.pr = true; else if (patch.tipo && patch.tipo !== 'reg') c.pr = false;
+  c.inf[ym] = r; upsert('contacts', c);
+  const y = window.scrollY; render(); window.scrollTo(0, y);
+}
+ACT.infSet = el => { const c = byId('contacts', el.closest('[data-id]').dataset.id); infSave(c, UI.grupoMonth, { [el.dataset.k]: el.dataset.v }); };
+CH.infSel = el => { const c = byId('contacts', el.closest('[data-id]').dataset.id); const k = el.dataset.k; infSave(c, UI.grupoMonth, { [k]: k === 'tipo' ? el.value : (el.value === '' ? null : +el.value) }); };
+ACT.infAllSi = () => { grupoMembers().forEach(c => { if (!infOf(c, UI.grupoMonth).st) { c.inf = c.inf || {}; c.inf[UI.grupoMonth] = { ...infOf(c, UI.grupoMonth), st: 'si' }; upsert('contacts', c); } }); render(); };
+function grupoTexto(ym) {
+  const R = grupoResumen(ym), n = v => (Math.round((+v || 0) * 100) / 100).toLocaleString('es-ES');
+  const L = [`*Informe del grupo · ${ymLong(ym)}*`, `Predicaron: ${R.si.length} de ${R.rows.length}`, `Cursos bíblicos: ${R.cursos}`];
+  if (R.reg.length) L.push('', `*Precursores regulares (${R.reg.length}):*`, ...R.reg.map(x => `• ${x.c.name}: ${n(x.r.h)} h${+x.r.c ? `, ${x.r.c} curso${+x.r.c === 1 ? '' : 's'}` : ''}`));
+  if (R.aux.length) L.push('', `*Precursores auxiliares (${R.aux.length}):*`, ...R.aux.map(x => `• ${x.c.name}: ${n(x.r.h)} h${+x.r.c ? `, ${x.r.c} curso${+x.r.c === 1 ? '' : 's'}` : ''}`));
+  const pubs = R.si.filter(x => x.r.tipo === 'pub');
+  if (pubs.length) L.push('', `*Publicadores (${pubs.length}):*`, ...pubs.map(x => `• ${x.c.name}${+x.r.c ? `: ${x.r.c} curso${+x.r.c === 1 ? '' : 's'}` : ''}`));
+  if (R.no.length) L.push('', `*Irregulares (${R.no.length}):*`, ...R.no.map(x => `• ${x.c.name}${x.r.st === 'no' ? ' (no predicó)' : ' (sin informe)'}`));
+  return L.join('\n');
+}
+ACT.infCopy = () => copyText(grupoTexto(UI.grupoMonth));
+ACT.infWA = () => pickContactAndSend(grupoTexto(UI.grupoMonth));
 
 /* =====================================================================
    VISITAS A CONGREGACIONES (Superintendente de circuito)
@@ -88630,6 +88729,206 @@ function congDocs(cg) {
   <div class="row mt"><span class="sp"></span><button class="btn danger sm" data-act="congClear">${ic('trash', 's')}Borrar todos los datos importados</button></div></div>`;
 }
 ACT.congClear = async () => { const cg = byId('congs', UI.congId); if (await confirmDlg('¿Borrar asistencia, publicadores y territorios importados? La congregación se conserva.', 'Borrar', true)) { cg.att = { mid: {}, wk: {} }; cg.pubs = {}; cg.terr = {}; cg.files = []; upsert('congs', cg); render(); } };
+
+/* ================= MI MINISTERIO ================= */
+const MIN_AREA = 'cong-ministerio';
+UI.minTab = 'res'; UI.minMonth = todayISO().slice(0, 7);
+const minSettings = () => ({ goalH: 0, ...(S.settings.min || {}) });
+const fmtH = h => { h = Math.round((h || 0) * 100) / 100; const hh = Math.floor(h), mm = Math.round((h - hh) * 60); return mm ? `${hh} h ${mm} min` : `${hh} h`; };
+const minLogOf = ym => S.minLog.filter(e => e.date.slice(0, 7) === ym).sort((a, b) => b.date.localeCompare(a.date));
+function cursosActivos(ym) {
+  const ini = ym + '-01', fin = ym + '-31';
+  return S.minCursos.filter(c => (c.start || '0000') <= fin && (!c.end || c.end >= ini));
+}
+function minMonthStats(ym) {
+  const L = minLogOf(ym);
+  return { ym, horas: L.reduce((s, e) => s + (+e.h || 0), 0), rev: L.reduce((s, e) => s + (+e.rv || 0), 0), dias: new Set(L.filter(e => (+e.h || 0) > 0).map(e => e.date)).size, cursos: ym > todayISO().slice(0, 7) ? 0 : cursosActivos(ym).length, n: L.length };
+}
+const syMonthsOf = ym => { const s = syOfYm(ym); return Array.from({ length: 12 }, (_, i) => ymOfSy(s, i)); };
+
+/* ---------- Gráficas SVG ---------- */
+function barChart({ labels, series, goal = 0, height = 200, unit = '' }) {
+  const W = 520, H = height, L = 30, R = 6, T = 16, B = 24;
+  const max = Math.max(goal, ...series.flatMap(s => s.values), 1);
+  const nice = (() => { const p = Math.pow(10, Math.floor(Math.log10(max))); const n = [1, 2, 2.5, 5, 10].find(k => k * p >= max / 4) * p; return n; })();
+  const top = Math.ceil(max / nice) * nice;
+  const y = v => T + (H - T - B) * (1 - v / top);
+  const gw = (W - L - R) / labels.length, bw = Math.min(26, (gw - 6) / series.length);
+  let g = '';
+  for (let v = 0; v <= top + 1e-9; v += nice) g += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" class="ch-grid"/><text x="${L - 5}" y="${y(v) + 3.5}" class="ch-ax" text-anchor="end">${Math.round(v * 10) / 10}</text>`;
+  labels.forEach((lab, i) => {
+    const x0 = L + gw * i + (gw - bw * series.length) / 2;
+    series.forEach((s, k) => {
+      const v = s.values[i] || 0, x = x0 + k * bw;
+      if (v > 0) g += `<rect x="${x + 1}" y="${y(v)}" width="${bw - 2}" height="${y(0) - y(v)}" rx="3" fill="${s.color}" opacity="${s.dim && s.dim[i] ? 0.35 : 1}"><title>${esc(lab)}: ${Math.round(v * 100) / 100}${unit} ${esc(s.name)}</title></rect>`;
+      if (s.labels && v > 0) g += `<text x="${x + bw / 2}" y="${y(v) - 4}" class="ch-val" text-anchor="middle">${Math.round(v * 10) / 10}</text>`;
+    });
+    g += `<text x="${L + gw * i + gw / 2}" y="${H - 8}" class="ch-ax" text-anchor="middle">${esc(lab)}</text>`;
+  });
+  if (goal) g += `<line x1="${L}" x2="${W - R}" y1="${y(goal)}" y2="${y(goal)}" class="ch-goal"/><text x="${W - R}" y="${y(goal) - 4}" class="ch-goalt" text-anchor="end">Meta ${goal}${unit}</text>`;
+  const legend = series.length > 1 || goal ? `<div class="ch-leg">${series.map(s => `<span><i style="background:${s.color}"></i>${esc(s.name)}</span>`).join('')}${goal ? '<span><i class="dash"></i>Meta</span>' : ''}</div>` : '';
+  return `<svg viewBox="0 0 ${W} ${H}" class="chart" role="img">${g}</svg>${legend}`;
+}
+function ring(pctv, label, sub) {
+  const r = 34, c = 2 * Math.PI * r, p = Math.max(0, Math.min(1, pctv));
+  return `<div class="ring"><svg viewBox="0 0 84 84"><circle cx="42" cy="42" r="${r}" class="ring-bg"/><circle cx="42" cy="42" r="${r}" class="ring-fg" stroke-dasharray="${c * p} ${c}" transform="rotate(-90 42 42)"/><text x="42" y="47" text-anchor="middle" class="ring-t">${Math.round(p * 100)}%</text></svg><div><b>${esc(label)}</b><div class="tiny">${esc(sub)}</div></div></div>`;
+}
+
+/* ---------- Vista ---------- */
+VIEWS.ministerio = () => {
+  const tabs = [['res', 'Resumen'], ['act', 'Actividad'], ['cur', 'Mis cursos'], ['met', 'Metas']];
+  const body = { res: minResumen, act: minActividad, cur: minCursosView, met: minMetas }[UI.minTab]();
+  return `<div class="toolbar"><div class="seg" style="display:flex;flex:1 1 340px;overflow-x:auto">${tabs.map(([k, l]) => `<button class="${UI.minTab === k ? 'on' : ''}" data-act="minTab" data-t="${k}" style="flex:1;white-space:nowrap">${l}</button>`).join('')}</div>
+    <button class="btn pri" data-act="minAdd">${ic('plus', 's')}Añadir actividad</button></div>${body}`;
+};
+ACT.minTab = el => { UI.minTab = el.dataset.t; render(); };
+const monthNav = () => `<div class="cal-head"><button class="btn icon" data-act="minMonthNav" data-n="-1">${ic('left')}</button><h2 style="text-transform:capitalize">${ymLong(UI.minMonth)}</h2><button class="btn sm" data-act="minMonthNav" data-n="0">Este mes</button><button class="btn icon" data-act="minMonthNav" data-n="1">${ic('right')}</button></div>`;
+ACT.minMonthNav = el => { const n = +el.dataset.n; UI.minMonth = n ? ymAdd(UI.minMonth, n) : todayISO().slice(0, 7); render(); };
+
+function minResumen() {
+  const st = minMonthStats(UI.minMonth), cfg = minSettings();
+  const sy = syMonthsOf(UI.minMonth), syStats = sy.map(minMonthStats);
+  const hoyYm = todayISO().slice(0, 7);
+  const past = syStats.filter(s => s.ym <= hoyYm);
+  const syH = past.reduce((s, x) => s + x.horas, 0), syRev = past.reduce((s, x) => s + x.rev, 0);
+  const goalSy = cfg.goalH ? cfg.goalH * past.length : 0;
+  const metas = S.metas;
+  const nDone = metas.filter(m => m.estado === 'hecha').length, nProc = metas.filter(m => m.estado === 'proceso').length, nFut = metas.filter(m => m.estado === 'futura').length;
+  const lbl = sy.map(m => MES_CORTO[+m.slice(5) - 1]);
+  const kpi = (t, v, s) => `<div class="k"><span class="small muted">${t}</span><b>${v}</b><span class="tiny">${s}</span></div>`;
+  return `${monthNav()}
+  <div class="kpi mb">
+    ${kpi('Horas', fmtH(st.horas), cfg.goalH ? `meta ${cfg.goalH} h · ${st.dias} días` : `${st.dias} días predicando`)}
+    ${kpi('Revisitas', st.rev, `${st.n} registros este mes`)}
+    ${kpi('Cursos bíblicos', st.cursos, 'activos este mes')}
+    ${kpi('Metas', `${nDone}/${metas.length}`, `${nProc} en proceso · ${nFut} futuras`)}
+  </div>
+  <div class="grid2">
+    <div class="card"><div class="row" style="margin-bottom:4px"><h2 style="margin:0;flex:1">Horas · año de servicio ${syLabel(syOfYm(UI.minMonth))}</h2>
+      <label class="small muted row nw" style="gap:6px">Meta mensual <input type="number" min="0" step="1" value="${cfg.goalH || ''}" placeholder="—" data-ch="minGoal" style="width:70px;padding:4px 6px"> h</label></div>
+      ${barChart({ labels: lbl, series: [{ name: 'Horas', color: 'var(--accent)', values: syStats.map(s => s.horas), labels: true, dim: syStats.map(s => s.ym > hoyYm) }], goal: cfg.goalH, unit: ' h' })}
+      <p class="small" style="margin:8px 0 0">En el año: <b>${fmtH(syH)}</b>${goalSy ? ` de ${goalSy} h (${syH >= goalSy ? 'vas al día' : `te faltan ${fmtH(goalSy - syH)}`})` : ''} · ${syRev} revisitas · media ${fmtH(past.length ? syH / past.length : 0)} al mes.</p></div>
+    <div class="card"><h2>Revisitas y cursos por mes</h2>
+      ${barChart({ labels: lbl, series: [{ name: 'Revisitas', color: 'var(--circ)', values: syStats.map(s => s.rev) }, { name: 'Cursos', color: 'var(--sup)', values: syStats.map(s => s.cursos) }] })}</div>
+    <div class="card"><h2>Progreso</h2><div class="rings">
+      ${cfg.goalH ? ring(st.horas / cfg.goalH, 'Horas del mes', `${fmtH(st.horas)} de ${cfg.goalH} h`) : ''}
+      ${goalSy ? ring(syH / goalSy, 'Horas del año', `${fmtH(syH)} de ${goalSy} h`) : ''}
+      ${metas.length ? ring(nDone / metas.length, 'Metas cumplidas', `${nDone} de ${metas.length}`) : ''}
+      ${!cfg.goalH && !metas.length ? '<p class="small muted">Pon una meta mensual de horas o añade metas para ver aquí tu progreso.</p>' : ''}</div></div>
+    <div class="card"><div class="row" style="margin-bottom:6px"><h2 style="margin:0;flex:1">Informe de ${ymLong(UI.minMonth)}</h2></div>
+      <div class="clip-text card" style="background:var(--surface2);box-shadow:none">${esc(minInforme(UI.minMonth))}</div>
+      <div class="row mt"><button class="btn sm" data-act="minInfCopy">${ic('copy', 's')}Copiar</button><button class="btn sm wa" data-act="minInfWA">${ic('msg', 's')}Enviar por WhatsApp</button><button class="btn sm" data-act="minExport">${ic('down', 's')}Exportar año</button></div></div>
+  </div>`;
+}
+const minInforme = ym => { const s = minMonthStats(ym); return `Informe de ${ymLong(ym)}\nParticipé en el ministerio: ${s.horas || s.rev || s.cursos ? 'Sí' : 'No'}\nHoras: ${(Math.round(s.horas * 100) / 100).toLocaleString('es-ES')}\nCursos bíblicos: ${s.cursos}`; };
+CH.minGoal = el => { S.settings.min = { ...minSettings(), goalH: Math.max(0, +el.value || 0) }; save(); render(); };
+ACT.minInfCopy = () => copyText(minInforme(UI.minMonth));
+ACT.minInfWA = () => pickContactAndSend(minInforme(UI.minMonth));
+
+function minActividad() {
+  const L = minLogOf(UI.minMonth), st = minMonthStats(UI.minMonth);
+  return `${monthNav()}<div class="card"><p class="small muted" style="margin-top:0">Total: <b>${fmtH(st.horas)}</b> · ${st.rev} revisitas · ${st.dias} días</p><div class="list">
+    ${L.length ? L.map(e => `<div class="item" data-act="minEdit" data-id="${e.id}">${dateBox(e.date)}<div class="body"><div class="t">${fmtH(+e.h || 0)}${+e.rv ? ` · ${e.rv} revisita${+e.rv === 1 ? '' : 's'}` : ''}</div><div class="s">${esc(DIAS[parseISO(e.date).getDay()])}${e.n ? ' · ' + esc(e.n) : ''}</div></div>${ic('edit', 's')}</div>`).join('') : '<div class="empty">Sin actividad este mes. Pulsa «Añadir actividad».</div>'}</div></div>`;
+}
+ACT.minAdd = () => minEdit(null);
+ACT.minEdit = el => minEdit(el.dataset.id);
+function minEdit(id) {
+  const e = id ? { ...byId('minLog', id) } : { id: uid(), date: UI.minMonth === todayISO().slice(0, 7) ? todayISO() : UI.minMonth + '-01', h: '', rv: '', n: '' };
+  const hh = Math.floor(+e.h || 0), mm = Math.round(((+e.h || 0) - hh) * 60);
+  const el = openModal(id ? 'Editar actividad' : 'Añadir actividad', `
+    <label class="f"><span>Fecha</span><input type="date" id="mD" value="${e.date}"></label>
+    <div class="row nw"><label class="f" style="flex:1"><span>Horas</span><input type="number" min="0" id="mH" value="${id ? hh : ''}" placeholder="0"></label><label class="f" style="flex:1"><span>Minutos</span><select id="mM">${[0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55].map(v => `<option${v === mm ? ' selected' : ''}>${v}</option>`).join('')}</select></label></div>
+    <label class="f"><span>Revisitas</span><input type="number" min="0" id="mR" value="${e.rv || ''}" placeholder="0"></label>
+    <label class="f"><span>Notas (opcional)</span><input type="text" id="mN" value="${esc(e.n || '')}" placeholder="Ej.: predicación en el puerto"></label>`,
+    `${id ? `<button class="btn danger" data-x="del">${ic('trash', 's')}Eliminar</button>` : ''}<span class="sp"></span><button class="btn pri" data-x="ok">Guardar</button>`);
+  $('[data-x=ok]', el).onclick = () => {
+    const n = { ...e, date: $('#mD', el).value || todayISO(), h: (+$('#mH', el).value || 0) + (+$('#mM', el).value || 0) / 60, rv: +$('#mR', el).value || 0, n: $('#mN', el).value.trim() };
+    if (!n.h && !n.rv && !n.n) { toast('Escribe horas, revisitas o una nota'); return; }
+    upsert('minLog', n); UI.minMonth = n.date.slice(0, 7); closeModal(); render(); toast('Actividad guardada');
+  };
+  if (id) $('[data-x=del]', el).onclick = async () => { if (await confirmDlg('¿Eliminar esta actividad?', 'Eliminar', true)) { removeItem('minLog', id); closeModal(); render(); } };
+  setTimeout(() => $('#mH', el).focus(), 50);
+}
+
+function minCursosView() {
+  const act = S.minCursos.filter(c => !c.end).sort((a, b) => a.name.localeCompare(b.name, 'es'));
+  const fin = S.minCursos.filter(c => c.end).sort((a, b) => b.end.localeCompare(a.end));
+  const row = c => `<div class="item" data-act="curEdit" data-id="${c.id}"><div class="avatar sup">${esc(initials(c.name))}</div><div class="body"><div class="t">${esc(c.name)}</div><div class="s">${esc([c.pub, c.dia, c.start ? 'desde ' + fmtShort(c.start) : '', c.end ? 'hasta ' + fmtShort(c.end) : ''].filter(Boolean).join(' · '))}</div></div>${ic('edit', 's')}</div>`;
+  return `<div class="card"><div class="row" style="margin-bottom:4px"><h2 style="margin:0;flex:1">Cursos activos · ${act.length}</h2><button class="btn sm" data-act="curEdit">${ic('plus', 's')}Nuevo curso</button></div>
+    <div class="list">${act.length ? act.map(row).join('') : '<div class="empty">No tienes cursos activos.</div>'}</div>
+    ${fin.length ? `<div class="group-h">Terminados · ${fin.length}</div><div class="list">${fin.map(row).join('')}</div>` : ''}
+    <p class="tiny mt">Cada mes cuentan como cursos los que estaban activos en algún momento de ese mes.</p></div>`;
+}
+ACT.curEdit = el => {
+  const id = el && el.dataset.id;
+  const c = id ? { ...byId('minCursos', id) } : { id: uid(), name: '', pub: '', dia: '', start: todayISO(), end: '', n: '' };
+  const m = openModal(id ? 'Curso bíblico' : 'Nuevo curso bíblico', `
+    <label class="f"><span>Nombre del estudiante</span><input type="text" id="cuN" value="${esc(c.name)}"></label>
+    <div class="row nw"><label class="f" style="flex:1"><span>Publicación / lección</span><input type="text" id="cuP" value="${esc(c.pub || '')}" placeholder="Ej.: Disfrute de la vida, lección 12"></label><label class="f" style="flex:1"><span>Día y hora</span><input type="text" id="cuD" value="${esc(c.dia || '')}" placeholder="Ej.: martes 18:00"></label></div>
+    <div class="row nw"><label class="f" style="flex:1"><span>Empezó</span><input type="date" id="cuS" value="${c.start || ''}"></label><label class="f" style="flex:1"><span>Terminó (vacío si sigue)</span><input type="date" id="cuE" value="${c.end || ''}"></label></div>
+    <label class="f"><span>Notas</span><textarea id="cuNo" rows="3">${esc(c.n || '')}</textarea></label>`,
+    `${id ? `<button class="btn danger" data-x="del">${ic('trash', 's')}Eliminar</button>` : ''}<span class="sp"></span><button class="btn pri" data-x="ok">Guardar</button>`);
+  $('[data-x=ok]', m).onclick = () => { const n = { ...c, name: $('#cuN', m).value.trim(), pub: $('#cuP', m).value.trim(), dia: $('#cuD', m).value.trim(), start: $('#cuS', m).value, end: $('#cuE', m).value, n: $('#cuNo', m).value }; if (!n.name) { toast('Escribe el nombre'); return; } upsert('minCursos', n); closeModal(); render(); };
+  if (id) $('[data-x=del]', m).onclick = async () => { if (await confirmDlg('¿Eliminar este curso?', 'Eliminar', true)) { removeItem('minCursos', id); closeModal(); render(); } };
+  setTimeout(() => $('#cuN', m).focus(), 50);
+};
+
+const METAS = [['proceso', 'En proceso', 'var(--accent)'], ['futura', 'Metas futuras', 'var(--sup)'], ['hecha', 'Cumplidas', 'var(--circ)']];
+function minMetas() {
+  const col = ([k, t, color]) => {
+    const l = S.metas.filter(m => m.estado === k).sort((a, b) => k === 'hecha' ? (b.done || '').localeCompare(a.done || '') : (a.fecha || '9').localeCompare(b.fecha || '9'));
+    return `<div class="card metas-col"><div class="row" style="margin-bottom:6px"><h2 style="margin:0;flex:1;color:${color}">${t} · ${l.length}</h2><button class="btn sm icon" data-act="metaEdit" data-e="${k}" title="Añadir">${ic('plus', 's')}</button></div>
+      ${l.length ? l.map(m => `<div class="meta-card" style="border-left-color:${color}" data-act="metaEdit" data-id="${m.id}"><div class="t">${esc(m.t)}</div>${m.n ? `<div class="small muted">${esc(m.n)}</div>` : ''}
+        <div class="tiny mt">${k === 'hecha' ? (m.done ? 'Cumplida el ' + fmtShort(m.done) : 'Cumplida') : (m.fecha ? 'Para el ' + fmtShort(m.fecha) : 'Sin fecha')}${k === 'proceso' && m.prog ? ` · ${m.prog}%` : ''}</div>
+        ${k === 'proceso' && m.prog ? `<div class="bar"><i style="width:${m.prog}%"></i></div>` : ''}
+        <div class="row mt" style="gap:4px">${k !== 'hecha' ? `<button class="btn sm" data-act="metaMove" data-id="${m.id}" data-e="hecha">${ic('check', 's')}Cumplida</button>` : `<button class="btn sm ghost" data-act="metaMove" data-id="${m.id}" data-e="proceso">Reabrir</button>`}${k === 'futura' ? `<button class="btn sm ghost" data-act="metaMove" data-id="${m.id}" data-e="proceso">Empezar</button>` : ''}</div></div>`).join('') : '<div class="empty small">Ninguna.</div>'}</div>`;
+  };
+  return `<div class="metas">${METAS.map(col).join('')}</div>`;
+}
+ACT.metaMove = (el, ev) => { ev.stopPropagation(); const m = byId('metas', el.dataset.id); m.estado = el.dataset.e; if (m.estado === 'hecha') { m.done = todayISO(); m.prog = 100; } else m.done = ''; upsert('metas', m); render(); if (m.estado === 'hecha') toast('¡Meta cumplida! 🎉'); };
+ACT.metaEdit = el => {
+  const id = el.dataset.id;
+  const m = id ? { ...byId('metas', id) } : { id: uid(), t: '', n: '', estado: el.dataset.e || 'proceso', fecha: '', prog: 0, done: '' };
+  const d = openModal(id ? 'Meta' : 'Nueva meta', `
+    <label class="f"><span>Meta</span><input type="text" id="meT" value="${esc(m.t)}" placeholder="Ej.: Ser precursor auxiliar en marzo"></label>
+    <label class="f"><span>Detalles (opcional)</span><textarea id="meN" rows="3">${esc(m.n || '')}</textarea></label>
+    <div class="row nw"><label class="f" style="flex:1"><span>Estado</span><select id="meE">${METAS.map(([k, t]) => `<option value="${k}"${m.estado === k ? ' selected' : ''}>${t}</option>`).join('')}</select></label>
+    <label class="f" style="flex:1"><span>Fecha objetivo</span><input type="date" id="meF" value="${m.fecha || ''}"></label></div>
+    <label class="f"><span>Avance: <b id="mePv">${m.prog || 0}%</b></span><input type="range" min="0" max="100" step="5" id="meP" value="${m.prog || 0}" style="width:100%"></label>`,
+    `${id ? `<button class="btn danger" data-x="del">${ic('trash', 's')}Eliminar</button>` : ''}<span class="sp"></span><button class="btn pri" data-x="ok">Guardar</button>`);
+  $('#meP', d).oninput = e => { $('#mePv', d).textContent = e.target.value + '%'; };
+  $('[data-x=ok]', d).onclick = () => {
+    const n = { ...m, t: $('#meT', d).value.trim(), n: $('#meN', d).value.trim(), estado: $('#meE', d).value, fecha: $('#meF', d).value, prog: +$('#meP', d).value };
+    if (!n.t) { toast('Escribe la meta'); return; }
+    if (n.estado === 'hecha' && !n.done) { n.done = todayISO(); n.prog = 100; } if (n.estado !== 'hecha') n.done = '';
+    upsert('metas', n); closeModal(); render();
+  };
+  if (id) $('[data-x=del]', d).onclick = async () => { if (await confirmDlg('¿Eliminar esta meta?', 'Eliminar', true)) { removeItem('metas', id); closeModal(); render(); } };
+  setTimeout(() => $('#meT', d).focus(), 50);
+};
+
+ACT.minExport = () => exportDialog('Exportar mi ministerio', `<p class="small muted">Año de servicio ${syLabel(syOfYm(UI.minMonth))}: horas, revisitas y cursos de cada mes, y tus metas.</p>`, ['xlsx', 'pdf', 'docx'], async fmt => {
+  const rows = syMonthsOf(UI.minMonth).map(minMonthStats).map(s => [ymLong(s.ym), String(Math.round(s.horas * 100) / 100), String(s.rev), String(s.cursos), String(s.dias)]);
+  const head = ['Mes', 'Horas', 'Revisitas', 'Cursos', 'Días'];
+  const mrows = S.metas.map(m => [m.t, METAS.find(x => x[0] === m.estado)[1], m.estado === 'hecha' ? (m.done ? fmtShort(m.done) : '') : (m.fecha ? fmtShort(m.fecha) : ''), m.n || '']);
+  const title = `Mi ministerio ${syLabel(syOfYm(UI.minMonth))}`, name = safeName(title) + '_' + todayISO();
+  if (fmt === 'xlsx') {
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([head, ...rows]), 'Actividad');
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([['Meta', 'Estado', 'Fecha', 'Detalles'], ...mrows]), 'Metas');
+    return { blob: new Blob([XLSX.write(wb, { bookType: 'xlsx', type: 'array' })], { type: MIME.xlsx }), name: name + '.xlsx' };
+  }
+  if (fmt === 'pdf') {
+    const doc = newPdf(false); doc.setFont('helvetica', 'bold'); doc.setFontSize(15); doc.text(pdfSafe(title), 40, 48);
+    const st = { styles: { fontSize: 9.5, cellPadding: 4 }, headStyles: { fillColor: [40, 83, 122], textColor: 255 }, margin: { left: 40, right: 40 } };
+    doc.autoTable({ ...st, head: [head], body: rows.map(r => r.map(pdfSafe)), startY: 64 });
+    if (mrows.length) doc.autoTable({ ...st, head: [['Meta', 'Estado', 'Fecha', 'Detalles']], body: mrows.map(r => r.map(pdfSafe)), startY: doc.lastAutoTable.finalY + 20 });
+    pdfFooter(doc); return { blob: doc.output('blob'), name: name + '.pdf' };
+  }
+  let body = pXml(title, { style: 'Heading1' }) + tableXml(head, rows);
+  if (mrows.length) body += pXml('Metas', { style: 'Heading2' }) + tableXml(['Meta', 'Estado', 'Fecha', 'Detalles'], mrows);
+  return { blob: await buildDocx(body), name: name + '.docx' };
+});
 
 /* ================= DOCUMENTOS ================= */
 const DOC_ACCEPT = '.pdf,.docx,.docm,.xlsx,.xls,.xlsm,.ods,.csv,.txt,.gdoc,.gsheet,.doc,.odt';
