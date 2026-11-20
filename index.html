@@ -17,7 +17,7 @@
   --bg:#f4f2ee; --surface:#ffffff; --surface2:#f9f8f5; --line:#e4e0d8; --line2:#d3cec3;
   --ink:#1d2329; --ink2:#55606b; --ink3:#8a939c;
   --accent:#28537a; --accent-ink:#ffffff; --accent-soft:#e3ecf5;
-  --cong:#2f62a8; --cong-soft:#e4edf8; --circ:#1e7f5c; --circ-soft:#e1f2ea; --gen:#7b7f86; --gen-soft:#eceef0; --sup:#8a4fa8; --sup-soft:#f1e7f6;
+  --cong:#2f62a8; --cong-soft:#e4edf8; --circ:#1e7f5c; --circ-soft:#e1f2ea; --gen:#7b7f86; --gen-soft:#eceef0; --sup:#8a4fa8; --sup-soft:#f1e7f6; --asi:#b8601a; --asi-soft:#fbeadb;
   --wa:#1f9d55; --danger:#b3372f; --danger-soft:#f8e5e3; --warn:#9a6a00; --warn-soft:#fbf1d6;
   --radius:12px; --shadow:0 1px 2px rgba(20,25,30,.06),0 4px 14px rgba(20,25,30,.05);
   --nav-h:62px;
@@ -27,7 +27,7 @@
   --bg:#15181b; --surface:#1e2226; --surface2:#24292e; --line:#30363c; --line2:#3d444b;
   --ink:#e8eaec; --ink2:#a9b1b9; --ink3:#78818a;
   --accent:#7fb0e0; --accent-ink:#0f1a24; --accent-soft:#22313f;
-  --cong:#7aa7e6; --cong-soft:#1f2d40; --circ:#5cc49b; --circ-soft:#1a3329; --gen:#a0a6ad; --gen-soft:#2a2f34; --sup:#c49be0; --sup-soft:#33263d;
+  --cong:#7aa7e6; --cong-soft:#1f2d40; --circ:#5cc49b; --circ-soft:#1a3329; --gen:#a0a6ad; --gen-soft:#2a2f34; --sup:#c49be0; --sup-soft:#33263d; --asi:#e9a066; --asi-soft:#3d2a1a;
   --wa:#3ec27a; --danger:#ef7d73; --danger-soft:#3a2321; --warn:#e2b54a; --warn-soft:#352c16;
   --shadow:0 1px 2px rgba(0,0,0,.3);
   color-scheme:dark;
@@ -37,7 +37,7 @@
     --bg:#15181b; --surface:#1e2226; --surface2:#24292e; --line:#30363c; --line2:#3d444b;
     --ink:#e8eaec; --ink2:#a9b1b9; --ink3:#78818a;
     --accent:#7fb0e0; --accent-ink:#0f1a24; --accent-soft:#22313f;
-    --cong:#7aa7e6; --cong-soft:#1f2d40; --circ:#5cc49b; --circ-soft:#1a3329; --gen:#a0a6ad; --gen-soft:#2a2f34; --sup:#c49be0; --sup-soft:#33263d;
+    --cong:#7aa7e6; --cong-soft:#1f2d40; --circ:#5cc49b; --circ-soft:#1a3329; --gen:#a0a6ad; --gen-soft:#2a2f34; --sup:#c49be0; --sup-soft:#33263d; --asi:#e9a066; --asi-soft:#3d2a1a;
     --wa:#3ec27a; --danger:#ef7d73; --danger-soft:#3a2321; --warn:#e2b54a; --warn-soft:#352c16;
     --shadow:0 1px 2px rgba(0,0,0,.3);
     color-scheme:dark;
@@ -308,6 +308,54 @@ html,body{overflow-x:hidden}.view{min-width:0}
 .orig-page{display:block;margin:0 auto 12px;background:#fff;box-shadow:0 1px 8px rgba(0,0,0,.15);border-radius:2px}
 .orig-sheet table{border-collapse:collapse;font-size:13px;background:var(--surface)}
 .orig-sheet td{border:1px solid var(--line);padding:4px 7px}
+
+.pill.asi{background:var(--asi-soft);color:var(--asi)} .dot.asi{background:var(--asi)} .avatar.asi{background:var(--asi-soft);color:var(--asi)}
+.cal .chip.asi{background:var(--asi-soft);color:var(--asi)} .kpi .k.asi{border-left:4px solid var(--asi)}
+.kpi .k.sel{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.asi-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 6px 10px 12px;border-bottom:1px solid var(--line);border-left:4px solid var(--warn)}
+.asi-row.st-env{border-left-color:var(--cong)} .asi-row.st-conf{border-left-color:var(--circ)}
+.asi-main{flex:1;min-width:200px;cursor:pointer} .asi-main .t{margin-bottom:2px}
+.asi-ctl{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.asi-ctl .seg button{padding:6px 9px;font-size:12.5px}
+.asi-st button.on.ok{background:var(--circ-soft);color:var(--circ)}
+.asi-sex.unsure{border-color:var(--warn);box-shadow:0 0 0 2px color-mix(in srgb,var(--warn) 30%,transparent)}
+@media (max-width:600px){.asi-ctl{width:100%}.asi-ctl .asi-st{flex:1 1 100%;display:flex}.asi-ctl .asi-st button{flex:1;padding:7px 4px}}
+.asi-intro{flex:1 1 260px}
+.asi-tabs button{display:inline-flex;gap:6px;align-items:center;padding:8px 14px}
+.cr-cfg .row{align-items:flex-end}.cr-cfg .f{margin:0;min-width:120px;flex:0 1 auto}.cr-cfg input[type=number]{width:90px}
+.cr-list{padding:4px 0}
+.cr-row,.cr-add{display:flex;gap:10px;align-items:center;padding:9px 12px;border-bottom:1px solid var(--line);border-left:4px solid var(--warn)}
+.cr-row.st-env{border-left-color:var(--cong)}.cr-row.st-conf{border-left-color:var(--circ)}
+.cr-pause{background:var(--surface2);border-left-color:var(--line2)}
+.cr-h{width:66px;flex:none;font-weight:700;font-variant-numeric:tabular-nums}.cr-h span{display:block;font-size:11.5px;font-weight:500;color:var(--ink3,#8a8f96)}
+.cr-n{flex:1;min-width:0;cursor:pointer}.cr-c{margin-left:6px;color:var(--ink2)}
+.cr-ctl{display:flex;gap:4px;align-items:center;flex:none}
+.cr-ctl .btn.icon{min-width:30px;font-size:11px}
+.pill.st-p{border:0;cursor:pointer;font:inherit;font-size:12px;font-weight:600}
+.pill.st-p.st-pend{background:var(--surface2);color:var(--ink2)}.pill.st-p.st-env{background:var(--cong-soft);color:var(--cong)}.pill.st-p.st-conf{background:var(--circ-soft);color:var(--circ)}
+.cr-add{border-left-color:var(--accent);border-bottom:0;flex-wrap:wrap}.cr-add input{flex:1;min-width:140px;padding:8px 10px}
+@media (max-width:600px){.cr-row{flex-wrap:wrap}.cr-n{flex:1 1 calc(100% - 80px)}.cr-ctl{width:100%;justify-content:flex-end}.cr-add .cr-h{display:none}.cr-add input,.cr-add .btn{flex:1 1 100%}}
+/* Buscador general */
+#gsBtn{margin-left:auto;margin-right:6px}
+.gs-g{margin-bottom:12px}.gs-h{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--ink2);padding:4px 2px}
+.gs-i{width:32px;height:32px;border-radius:9px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none}
+.gs-i.warn{background:var(--warn-soft);color:var(--warn)}
+.pend-card h2{margin-top:0}
+.disc-n{min-width:42px;height:36px;padding:0 6px;border-radius:9px;background:var(--sup-soft);color:var(--sup);display:grid;place-items:center;font-weight:700;flex:none}
+/* Bloqueo */
+body.locked .app,body.locked .bnav,body.locked .ov{visibility:hidden}
+#lock{position:fixed;inset:0;z-index:9999;background:var(--bg);display:grid;place-items:center;padding:16px}
+.lk-box{text-align:center;max-width:300px;width:100%}.lk-box h2{margin:8px 0 2px}
+.lk-logo{width:56px;height:56px;border-radius:16px;background:var(--accent);color:#fff;display:grid;place-items:center;margin:0 auto}
+.lk-logo svg{width:28px;height:28px}
+.lk-dots{display:flex;gap:12px;justify-content:center;margin:16px 0 20px}.lk-dots span{width:14px;height:14px;border-radius:50%;border:2px solid var(--ink2)}.lk-dots span.on{background:var(--ink)}
+.lk-pad{display:grid;grid-template-columns:repeat(3,72px);gap:14px;justify-content:center;margin-bottom:14px}
+.lk-pad button{width:72px;height:72px;border-radius:50%;border:1px solid var(--line2);background:var(--surface);font-size:26px;color:var(--ink);cursor:pointer}
+.lk-pad button:active{background:var(--accent-soft)}
+.shake{animation:shake .35s}@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.cr-pt{display:inline-flex;gap:6px;align-items:center}
+.cr-hb{cursor:pointer;border-radius:8px;padding:2px 4px;margin:-2px -4px}.cr-hb:hover{background:var(--accent-soft)}
+.cr-hb.fija{color:var(--accent)}.cr-hb.solapa{color:var(--danger,#c0392b)}
 </style>
 </head>
 <body>
@@ -86397,7 +86445,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
  *
  */
 !function(t,e){if("object"==typeof exports&&"object"==typeof module)module.exports=e(function(){try{return require("jspdf")}catch(t){}}());else if("function"==typeof define&&define.amd)define(["jspdf"],e);else{var n="object"==typeof exports?e(function(){try{return require("jspdf")}catch(t){}}()):e(t.jspdf);for(var o in n)("object"==typeof exports?exports:t)[o]=n[o]}}("undefined"!=typeof globalThis?globalThis:void 0!==this?this:"undefined"!=typeof window?window:"undefined"!=typeof self?self:global,(function(t){return function(){"use strict";var e={172:function(t,e){var n,o=this&&this.__extends||(n=function(t,e){return n=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n])},n(t,e)},function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Class extends value "+String(e)+" is not a constructor or null");function o(){this.constructor=t}n(t,e),t.prototype=null===e?Object.create(e):(o.prototype=e.prototype,new o)});Object.defineProperty(e,"__esModule",{value:!0}),e.CellHookData=e.HookData=void 0;var r=function(t,e,n){this.table=e,this.pageNumber=e.pageNumber,this.pageCount=this.pageNumber,this.settings=e.settings,this.cursor=n,this.doc=t.getDocument()};e.HookData=r;var i=function(t){function e(e,n,o,r,i,l){var a=t.call(this,e,n,l)||this;return a.cell=o,a.row=r,a.column=i,a.section=r.section,a}return o(e,t),e}(r);e.CellHookData=i},340:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0});var o=n(4),r=n(136),i=n(744),l=n(776),a=n(664),s=n(972);e.default=function(t){t.API.autoTable=function(){for(var t,e=[],n=0;n<arguments.length;n++)e[n]=arguments[n];1===e.length?t=e[0]:(console.error("Use of deprecated autoTable initiation"),(t=e[2]||{}).columns=e[0],t.body=e[1]);var o=(0,l.parseInput)(this,t),r=(0,s.createTable)(this,o);return(0,a.drawTable)(this,r),this},t.API.lastAutoTable=!1,t.API.previousAutoTable=!1,t.API.autoTable.previous=!1,t.API.autoTableText=function(t,e,n,o){(0,r.default)(t,e,n,o,this)},t.API.autoTableSetDefaults=function(t){return i.DocHandler.setDefaults(t,this),this},t.autoTableSetDefaults=function(t,e){i.DocHandler.setDefaults(t,e)},t.API.autoTableHtmlToJson=function(t,e){var n;if(void 0===e&&(e=!1),"undefined"==typeof window)return console.error("Cannot run autoTableHtmlToJson in non browser environment"),null;var r=new i.DocHandler(this),l=(0,o.parseHtml)(r,t,window,e,!1),a=l.head,s=l.body;return{columns:(null===(n=a[0])||void 0===n?void 0:n.map((function(t){return t.content})))||[],rows:s,data:s}},t.API.autoTableEndPosY=function(){console.error("Use of deprecated function: autoTableEndPosY. Use doc.lastAutoTable.finalY instead.");var t=this.lastAutoTable;return t&&t.finalY?t.finalY:0},t.API.autoTableAddPageContent=function(e){return console.error("Use of deprecated function: autoTableAddPageContent. Use jsPDF.autoTableSetDefaults({didDrawPage: () => {}}) instead."),t.API.autoTable.globalDefaults||(t.API.autoTable.globalDefaults={}),t.API.autoTable.globalDefaults.addPageContent=e,this},t.API.autoTableAddPage=function(){return console.error("Use of deprecated function: autoTableAddPage. Use doc.addPage()"),this.addPage(),this}}},136:function(t,e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(t,e,n,o,r){o=o||{};var i=r.internal.scaleFactor,l=r.internal.getFontSize()/i,a=l*(r.getLineHeightFactor?r.getLineHeightFactor():1.15),s="",u=1;if("middle"!==o.valign&&"bottom"!==o.valign&&"center"!==o.halign&&"right"!==o.halign||(u=(s="string"==typeof t?t.split(/\r\n|\r|\n/g):t).length||1),n+=l*(2-1.15),"middle"===o.valign?n-=u/2*a:"bottom"===o.valign&&(n-=u*a),"center"===o.halign||"right"===o.halign){var d=l;if("center"===o.halign&&(d*=.5),s&&u>=1){for(var h=0;h<s.length;h++)r.text(s[h],e-r.getStringUnitWidth(s[h])*d,n),n+=a;return r}e-=r.getStringUnitWidth(t)*d}return"justify"===o.halign?r.text(t,e,n,{maxWidth:o.maxWidth||100,align:"justify"}):r.text(t,e,n),r}},420:function(t,e){function n(t,e){var n=t>0,o=e||0===e;return n&&o?"DF":n?"S":o?"F":null}function o(t,e){var n,o,r,i;if(t=t||e,Array.isArray(t)){if(t.length>=4)return{top:t[0],right:t[1],bottom:t[2],left:t[3]};if(3===t.length)return{top:t[0],right:t[1],bottom:t[2],left:t[1]};if(2===t.length)return{top:t[0],right:t[1],bottom:t[0],left:t[1]};t=1===t.length?t[0]:e}return"object"==typeof t?("number"==typeof t.vertical&&(t.top=t.vertical,t.bottom=t.vertical),"number"==typeof t.horizontal&&(t.right=t.horizontal,t.left=t.horizontal),{left:null!==(n=t.left)&&void 0!==n?n:e,top:null!==(o=t.top)&&void 0!==o?o:e,right:null!==(r=t.right)&&void 0!==r?r:e,bottom:null!==(i=t.bottom)&&void 0!==i?i:e}):("number"!=typeof t&&(t=e),{top:t,right:t,bottom:t,left:t})}Object.defineProperty(e,"__esModule",{value:!0}),e.getPageAvailableWidth=e.parseSpacing=e.getFillStyle=e.addTableBorder=e.getStringWidth=void 0,e.getStringWidth=function(t,e,n){return n.applyStyles(e,!0),(Array.isArray(t)?t:[t]).map((function(t){return n.getTextWidth(t)})).reduce((function(t,e){return Math.max(t,e)}),0)},e.addTableBorder=function(t,e,o,r){var i=e.settings.tableLineWidth,l=e.settings.tableLineColor;t.applyStyles({lineWidth:i,lineColor:l});var a=n(i,!1);a&&t.rect(o.x,o.y,e.getWidth(t.pageSize().width),r.y-o.y,a)},e.getFillStyle=n,e.parseSpacing=o,e.getPageAvailableWidth=function(t,e){var n=o(e.settings.margin,0);return t.pageSize().width-(n.left+n.right)}},796:function(t,e){var n,o=this&&this.__extends||(n=function(t,e){return n=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n])},n(t,e)},function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Class extends value "+String(e)+" is not a constructor or null");function o(){this.constructor=t}n(t,e),t.prototype=null===e?Object.create(e):(o.prototype=e.prototype,new o)});Object.defineProperty(e,"__esModule",{value:!0}),e.getTheme=e.defaultStyles=e.HtmlRowInput=void 0;var r=function(t){function e(e){var n=t.call(this)||this;return n._element=e,n}return o(e,t),e}(Array);e.HtmlRowInput=r,e.defaultStyles=function(t){return{font:"helvetica",fontStyle:"normal",overflow:"linebreak",fillColor:!1,textColor:20,halign:"left",valign:"top",fontSize:10,cellPadding:5/t,lineColor:200,lineWidth:0,cellWidth:"auto",minCellHeight:0,minCellWidth:0}},e.getTheme=function(t){return{striped:{table:{fillColor:255,textColor:80,fontStyle:"normal"},head:{textColor:255,fillColor:[41,128,185],fontStyle:"bold"},body:{},foot:{textColor:255,fillColor:[41,128,185],fontStyle:"bold"},alternateRow:{fillColor:245}},grid:{table:{fillColor:255,textColor:80,fontStyle:"normal",lineWidth:.1},head:{textColor:255,fillColor:[26,188,156],fontStyle:"bold",lineWidth:0},body:{},foot:{textColor:255,fillColor:[26,188,156],fontStyle:"bold",lineWidth:0},alternateRow:{}},plain:{head:{fontStyle:"bold"},foot:{fontStyle:"bold"}}}[t]}},903:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0}),e.parseCss=void 0;var o=n(420);function r(t,e){var n=i(t,e);if(!n)return null;var o=n.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d*\.?\d*))?\)$/);if(!o||!Array.isArray(o))return null;var r=[parseInt(o[1]),parseInt(o[2]),parseInt(o[3])];return 0===parseInt(o[4])||isNaN(r[0])||isNaN(r[1])||isNaN(r[2])?null:r}function i(t,e){var n=e(t);return"rgba(0, 0, 0, 0)"===n||"transparent"===n||"initial"===n||"inherit"===n?null==t.parentElement?null:i(t.parentElement,e):n}e.parseCss=function(t,e,n,i,l){var a={},s=96/72,u=r(e,(function(t){return l.getComputedStyle(t).backgroundColor}));null!=u&&(a.fillColor=u);var d=r(e,(function(t){return l.getComputedStyle(t).color}));null!=d&&(a.textColor=d);var h=function(t,e){var n=[t.paddingTop,t.paddingRight,t.paddingBottom,t.paddingLeft],r=96/(72/e),i=(parseInt(t.lineHeight)-parseInt(t.fontSize))/e/2,l=n.map((function(t){return parseInt(t||"0")/r})),a=(0,o.parseSpacing)(l,0);i>a.top&&(a.top=i);i>a.bottom&&(a.bottom=i);return a}(i,n);h&&(a.cellPadding=h);var c="borderTopColor",f=s*n,g=i.borderTopWidth;if(i.borderBottomWidth===g&&i.borderRightWidth===g&&i.borderLeftWidth===g){var p=(parseFloat(g)||0)/f;p&&(a.lineWidth=p)}else a.lineWidth={top:(parseFloat(i.borderTopWidth)||0)/f,right:(parseFloat(i.borderRightWidth)||0)/f,bottom:(parseFloat(i.borderBottomWidth)||0)/f,left:(parseFloat(i.borderLeftWidth)||0)/f},a.lineWidth.top||(a.lineWidth.right?c="borderRightColor":a.lineWidth.bottom?c="borderBottomColor":a.lineWidth.left&&(c="borderLeftColor"));console.log(a.lineWidth);var y=r(e,(function(t){return l.getComputedStyle(t)[c]}));null!=y&&(a.lineColor=y);var v=["left","right","center","justify"];-1!==v.indexOf(i.textAlign)&&(a.halign=i.textAlign),-1!==(v=["middle","bottom","top"]).indexOf(i.verticalAlign)&&(a.valign=i.verticalAlign);var m=parseInt(i.fontSize||"");isNaN(m)||(a.fontSize=m/s);var b=function(t){var e="";("bold"===t.fontWeight||"bolder"===t.fontWeight||parseInt(t.fontWeight)>=700)&&(e="bold");"italic"!==t.fontStyle&&"oblique"!==t.fontStyle||(e+="italic");return e}(i);b&&(a.fontStyle=b);var w=(i.fontFamily||"").toLowerCase();return-1!==t.indexOf(w)&&(a.font=w),a}},744:function(t,e){Object.defineProperty(e,"__esModule",{value:!0}),e.DocHandler=void 0;var n={},o=function(){function t(t){this.jsPDFDocument=t,this.userStyles={textColor:t.getTextColor?this.jsPDFDocument.getTextColor():0,fontSize:t.internal.getFontSize(),fontStyle:t.internal.getFont().fontStyle,font:t.internal.getFont().fontName,lineWidth:t.getLineWidth?this.jsPDFDocument.getLineWidth():0,lineColor:t.getDrawColor?this.jsPDFDocument.getDrawColor():0}}return t.setDefaults=function(t,e){void 0===e&&(e=null),e?e.__autoTableDocumentDefaults=t:n=t},t.unifyColor=function(t){return Array.isArray(t)?t:"number"==typeof t?[t,t,t]:"string"==typeof t?[t]:null},t.prototype.applyStyles=function(e,n){var o,r,i;void 0===n&&(n=!1),e.fontStyle&&this.jsPDFDocument.setFontStyle&&this.jsPDFDocument.setFontStyle(e.fontStyle);var l=this.jsPDFDocument.internal.getFont(),a=l.fontStyle,s=l.fontName;if(e.font&&(s=e.font),e.fontStyle){a=e.fontStyle;var u=this.getFontList()[s];u&&-1===u.indexOf(a)&&(this.jsPDFDocument.setFontStyle&&this.jsPDFDocument.setFontStyle(u[0]),a=u[0])}if(this.jsPDFDocument.setFont(s,a),e.fontSize&&this.jsPDFDocument.setFontSize(e.fontSize),!n){var d=t.unifyColor(e.fillColor);d&&(o=this.jsPDFDocument).setFillColor.apply(o,d),(d=t.unifyColor(e.textColor))&&(r=this.jsPDFDocument).setTextColor.apply(r,d),(d=t.unifyColor(e.lineColor))&&(i=this.jsPDFDocument).setDrawColor.apply(i,d),"number"==typeof e.lineWidth&&this.jsPDFDocument.setLineWidth(e.lineWidth)}},t.prototype.splitTextToSize=function(t,e,n){return this.jsPDFDocument.splitTextToSize(t,e,n)},t.prototype.rect=function(t,e,n,o,r){return this.jsPDFDocument.rect(t,e,n,o,r)},t.prototype.getLastAutoTable=function(){return this.jsPDFDocument.lastAutoTable||null},t.prototype.getTextWidth=function(t){return this.jsPDFDocument.getTextWidth(t)},t.prototype.getDocument=function(){return this.jsPDFDocument},t.prototype.setPage=function(t){this.jsPDFDocument.setPage(t)},t.prototype.addPage=function(){return this.jsPDFDocument.addPage()},t.prototype.getFontList=function(){return this.jsPDFDocument.getFontList()},t.prototype.getGlobalOptions=function(){return n||{}},t.prototype.getDocumentOptions=function(){return this.jsPDFDocument.__autoTableDocumentDefaults||{}},t.prototype.pageSize=function(){var t=this.jsPDFDocument.internal.pageSize;return null==t.width&&(t={width:t.getWidth(),height:t.getHeight()}),t},t.prototype.scaleFactor=function(){return this.jsPDFDocument.internal.scaleFactor},t.prototype.getLineHeightFactor=function(){var t=this.jsPDFDocument;return t.getLineHeightFactor?t.getLineHeightFactor():1.15},t.prototype.getLineHeight=function(t){return t/this.scaleFactor()*this.getLineHeightFactor()},t.prototype.pageNumber=function(){var t=this.jsPDFDocument.internal.getCurrentPageInfo();return t?t.pageNumber:this.jsPDFDocument.internal.getNumberOfPages()},t}();e.DocHandler=o},4:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0}),e.parseHtml=void 0;var o=n(903),r=n(796);function i(t,e,n,i,a,s){for(var u=new r.HtmlRowInput(i),d=0;d<i.cells.length;d++){var h=i.cells[d],c=n.getComputedStyle(h);if(a||"none"!==c.display){var f=void 0;s&&(f=(0,o.parseCss)(t,h,e,c,n)),u.push({rowSpan:h.rowSpan,colSpan:h.colSpan,styles:f,_element:h,content:l(h)})}}var g=n.getComputedStyle(i);if(u.length>0&&(a||"none"!==g.display))return u}function l(t){var e=t.cloneNode(!0);return e.innerHTML=e.innerHTML.replace(/\n/g,"").replace(/ +/g," "),e.innerHTML=e.innerHTML.split(/<br.*?>/).map((function(t){return t.trim()})).join("\n"),e.innerText||e.textContent||""}e.parseHtml=function(t,e,n,o,r){var l,a,s;void 0===o&&(o=!1),void 0===r&&(r=!1),s="string"==typeof e?n.document.querySelector(e):e;var u=Object.keys(t.getFontList()),d=t.scaleFactor(),h=[],c=[],f=[];if(!s)return console.error("Html table could not be found with input: ",e),{head:h,body:c,foot:f};for(var g=0;g<s.rows.length;g++){var p=s.rows[g],y=null===(a=null===(l=null==p?void 0:p.parentElement)||void 0===l?void 0:l.tagName)||void 0===a?void 0:a.toLowerCase(),v=i(u,d,n,p,o,r);v&&("thead"===y?h.push(v):"tfoot"===y?f.push(v):c.push(v))}return{head:h,body:c,foot:f}}},776:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0}),e.parseInput=void 0;var o=n(4),r=n(356),i=n(420),l=n(744),a=n(792);e.parseInput=function(t,e){var n=new l.DocHandler(t),s=n.getDocumentOptions(),u=n.getGlobalOptions();(0,a.default)(n,u,s,e);var d,h=(0,r.assign)({},u,s,e);"undefined"!=typeof window&&(d=window);var c=function(t,e,n){for(var o={styles:{},headStyles:{},bodyStyles:{},footStyles:{},alternateRowStyles:{},columnStyles:{}},i=function(i){if("columnStyles"===i){var l=t[i],a=e[i],s=n[i];o.columnStyles=(0,r.assign)({},l,a,s)}else{var u=[t,e,n].map((function(t){return t[i]||{}}));o[i]=(0,r.assign)({},u[0],u[1],u[2])}},l=0,a=Object.keys(o);l<a.length;l++){i(a[l])}return o}(u,s,e),f=function(t,e,n){for(var o={didParseCell:[],willDrawCell:[],didDrawCell:[],willDrawPage:[],didDrawPage:[]},r=0,i=[t,e,n];r<i.length;r++){var l=i[r];l.didParseCell&&o.didParseCell.push(l.didParseCell),l.willDrawCell&&o.willDrawCell.push(l.willDrawCell),l.didDrawCell&&o.didDrawCell.push(l.didDrawCell),l.willDrawPage&&o.willDrawPage.push(l.willDrawPage),l.didDrawPage&&o.didDrawPage.push(l.didDrawPage)}return o}(u,s,e),g=function(t,e){var n,o,r,l,a,s,u,d,h,c,f,g,p,y,v=(0,i.parseSpacing)(e.margin,40/t.scaleFactor()),m=null!==(n=function(t,e){var n=t.getLastAutoTable(),o=t.scaleFactor(),r=t.pageNumber(),i=!1;if(n&&n.startPageNumber){i=n.startPageNumber+n.pageNumber-1===r}if("number"==typeof e)return e;if((null==e||!1===e)&&i&&null!=(null==n?void 0:n.finalY))return n.finalY+20/o;return null}(t,e.startY))&&void 0!==n?n:v.top;p=!0===e.showFoot?"everyPage":!1===e.showFoot?"never":null!==(o=e.showFoot)&&void 0!==o?o:"everyPage";y=!0===e.showHead?"everyPage":!1===e.showHead?"never":null!==(r=e.showHead)&&void 0!==r?r:"everyPage";var b=null!==(l=e.useCss)&&void 0!==l&&l,w=e.theme||(b?"plain":"striped"),P=!!e.horizontalPageBreak,S=null!==(a=e.horizontalPageBreakRepeat)&&void 0!==a?a:null;return{includeHiddenHtml:null!==(s=e.includeHiddenHtml)&&void 0!==s&&s,useCss:b,theme:w,startY:m,margin:v,pageBreak:null!==(u=e.pageBreak)&&void 0!==u?u:"auto",rowPageBreak:null!==(d=e.rowPageBreak)&&void 0!==d?d:"auto",tableWidth:null!==(h=e.tableWidth)&&void 0!==h?h:"auto",showHead:y,showFoot:p,tableLineWidth:null!==(c=e.tableLineWidth)&&void 0!==c?c:0,tableLineColor:null!==(f=e.tableLineColor)&&void 0!==f?f:200,horizontalPageBreak:P,horizontalPageBreakRepeat:S,horizontalPageBreakBehaviour:null!==(g=e.horizontalPageBreakBehaviour)&&void 0!==g?g:"afterAllRows"}}(n,h),p=function(t,e,n){var r=e.head||[],i=e.body||[],l=e.foot||[];if(e.html){var a=e.includeHiddenHtml;if(n){var s=(0,o.parseHtml)(t,e.html,n,a,e.useCss)||{};r=s.head||r,i=s.body||r,l=s.foot||r}else console.error("Cannot parse html in non browser environment")}var u=e.columns||function(t,e,n){var o=t[0]||e[0]||n[0]||[],r=[];return Object.keys(o).filter((function(t){return"_element"!==t})).forEach((function(t){var e,n=1;"object"!=typeof(e=Array.isArray(o)?o[parseInt(t)]:o[t])||Array.isArray(e)||(n=(null==e?void 0:e.colSpan)||1);for(var i=0;i<n;i++){var l={dataKey:Array.isArray(o)?r.length:t+(i>0?"_".concat(i):"")};r.push(l)}})),r}(r,i,l);return{columns:u,head:r,body:i,foot:l}}(n,h,d);return{id:e.tableId,content:p,hooks:f,styles:c,settings:g}}},792:function(t,e){function n(t){t.rowHeight?(console.error("Use of deprecated style rowHeight. It is renamed to minCellHeight."),t.minCellHeight||(t.minCellHeight=t.rowHeight)):t.columnWidth&&(console.error("Use of deprecated style columnWidth. It is renamed to cellWidth."),t.cellWidth||(t.cellWidth=t.columnWidth))}Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(t,e,o,r){for(var i=function(e){e&&"object"!=typeof e&&console.error("The options parameter should be of type object, is: "+typeof e),void 0!==e.extendWidth&&(e.tableWidth=e.extendWidth?"auto":"wrap",console.error("Use of deprecated option: extendWidth, use tableWidth instead.")),void 0!==e.margins&&(void 0===e.margin&&(e.margin=e.margins),console.error("Use of deprecated option: margins, use margin instead.")),e.startY&&"number"!=typeof e.startY&&(console.error("Invalid value for startY option",e.startY),delete e.startY),!e.didDrawPage&&(e.afterPageContent||e.beforePageContent||e.afterPageAdd)&&(console.error("The afterPageContent, beforePageContent and afterPageAdd hooks are deprecated. Use didDrawPage instead"),e.didDrawPage=function(n){t.applyStyles(t.userStyles),e.beforePageContent&&e.beforePageContent(n),t.applyStyles(t.userStyles),e.afterPageContent&&e.afterPageContent(n),t.applyStyles(t.userStyles),e.afterPageAdd&&n.pageNumber>1&&n.afterPageAdd(n),t.applyStyles(t.userStyles)}),["createdHeaderCell","drawHeaderRow","drawRow","drawHeaderCell"].forEach((function(t){e[t]&&console.error('The "'.concat(t,'" hook has changed in version 3.0, check the changelog for how to migrate.'))})),[["showFoot","showFooter"],["showHead","showHeader"],["didDrawPage","addPageContent"],["didParseCell","createdCell"],["headStyles","headerStyles"]].forEach((function(t){var n=t[0],o=t[1];e[o]&&(console.error("Use of deprecated option ".concat(o,". Use ").concat(n," instead")),e[n]=e[o])})),[["padding","cellPadding"],["lineHeight","rowHeight"],"fontSize","overflow"].forEach((function(t){var n="string"==typeof t?t:t[0],o="string"==typeof t?t:t[1];void 0!==e[n]&&(void 0===e.styles[o]&&(e.styles[o]=e[n]),console.error("Use of deprecated option: "+n+", use the style "+o+" instead."))}));for(var o=0,r=["styles","bodyStyles","headStyles","footStyles"];o<r.length;o++){n(e[r[o]]||{})}for(var i=e.columnStyles||{},l=0,a=Object.keys(i);l<a.length;l++){n(i[a[l]]||{})}},l=0,a=[e,o,r];l<a.length;l++){i(a[l])}}},260:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0}),e.Column=e.Cell=e.Row=e.Table=void 0;var o=n(796),r=n(172),i=n(420),l=function(){function t(t,e){this.pageNumber=1,this.pageCount=1,this.id=t.id,this.settings=t.settings,this.styles=t.styles,this.hooks=t.hooks,this.columns=e.columns,this.head=e.head,this.body=e.body,this.foot=e.foot}return t.prototype.getHeadHeight=function(t){return this.head.reduce((function(e,n){return e+n.getMaxCellHeight(t)}),0)},t.prototype.getFootHeight=function(t){return this.foot.reduce((function(e,n){return e+n.getMaxCellHeight(t)}),0)},t.prototype.allRows=function(){return this.head.concat(this.body).concat(this.foot)},t.prototype.callCellHooks=function(t,e,n,o,i,l){for(var a=0,s=e;a<s.length;a++){var u=!1===(0,s[a])(new r.CellHookData(t,this,n,o,i,l));if(n.text=Array.isArray(n.text)?n.text:[n.text],u)return!1}return!0},t.prototype.callEndPageHooks=function(t,e){t.applyStyles(t.userStyles);for(var n=0,o=this.hooks.didDrawPage;n<o.length;n++){(0,o[n])(new r.HookData(t,this,e))}},t.prototype.callWillDrawPageHooks=function(t,e){for(var n=0,o=this.hooks.willDrawPage;n<o.length;n++){(0,o[n])(new r.HookData(t,this,e))}},t.prototype.getWidth=function(t){if("number"==typeof this.settings.tableWidth)return this.settings.tableWidth;if("wrap"===this.settings.tableWidth)return this.columns.reduce((function(t,e){return t+e.wrappedWidth}),0);var e=this.settings.margin;return t-e.left-e.right},t}();e.Table=l;var a=function(){function t(t,e,n,r,i){void 0===i&&(i=!1),this.height=0,this.raw=t,t instanceof o.HtmlRowInput&&(this.raw=t._element,this.element=t._element),this.index=e,this.section=n,this.cells=r,this.spansMultiplePages=i}return t.prototype.getMaxCellHeight=function(t){var e=this;return t.reduce((function(t,n){var o;return Math.max(t,(null===(o=e.cells[n.index])||void 0===o?void 0:o.height)||0)}),0)},t.prototype.hasRowSpan=function(t){var e=this;return t.filter((function(t){var n=e.cells[t.index];return!!n&&n.rowSpan>1})).length>0},t.prototype.canEntireRowFit=function(t,e){return this.getMaxCellHeight(e)<=t},t.prototype.getMinimumRowHeight=function(t,e){var n=this;return t.reduce((function(t,o){var r=n.cells[o.index];if(!r)return 0;var i=e.getLineHeight(r.styles.fontSize),l=r.padding("vertical")+i;return l>t?l:t}),0)},t}();e.Row=a;var s=function(){function t(t,e,n){var o,r;this.contentHeight=0,this.contentWidth=0,this.wrappedWidth=0,this.minReadableWidth=0,this.minWidth=0,this.width=0,this.height=0,this.x=0,this.y=0,this.styles=e,this.section=n,this.raw=t;var i=t;null==t||"object"!=typeof t||Array.isArray(t)?(this.rowSpan=1,this.colSpan=1):(this.rowSpan=t.rowSpan||1,this.colSpan=t.colSpan||1,i=null!==(r=null!==(o=t.content)&&void 0!==o?o:t.title)&&void 0!==r?r:t,t._element&&(this.raw=t._element));var l=null!=i?""+i:"";this.text=l.split(/\r\n|\r|\n/g)}return t.prototype.getTextPos=function(){var t,e;if("top"===this.styles.valign)t=this.y+this.padding("top");else if("bottom"===this.styles.valign)t=this.y+this.height-this.padding("bottom");else{var n=this.height-this.padding("vertical");t=this.y+n/2+this.padding("top")}if("right"===this.styles.halign)e=this.x+this.width-this.padding("right");else if("center"===this.styles.halign){var o=this.width-this.padding("horizontal");e=this.x+o/2+this.padding("left")}else e=this.x+this.padding("left");return{x:e,y:t}},t.prototype.getContentHeight=function(t,e){void 0===e&&(e=1.15);var n=(Array.isArray(this.text)?this.text.length:1)*(this.styles.fontSize/t*e)+this.padding("vertical");return Math.max(n,this.styles.minCellHeight)},t.prototype.padding=function(t){var e=(0,i.parseSpacing)(this.styles.cellPadding,0);return"vertical"===t?e.top+e.bottom:"horizontal"===t?e.left+e.right:e[t]},t}();e.Cell=s;var u=function(){function t(t,e,n){this.wrappedWidth=0,this.minReadableWidth=0,this.minWidth=0,this.width=0,this.dataKey=t,this.raw=e,this.index=n}return t.prototype.getMaxCustomCellWidth=function(t){for(var e=0,n=0,o=t.allRows();n<o.length;n++){var r=o[n].cells[this.index];r&&"number"==typeof r.styles.cellWidth&&(e=Math.max(e,r.styles.cellWidth))}return e},t}();e.Column=u},356:function(t,e){Object.defineProperty(e,"__esModule",{value:!0}),e.assign=void 0,e.assign=function(t,e,n,o,r){if(null==t)throw new TypeError("Cannot convert undefined or null to object");for(var i=Object(t),l=1;l<arguments.length;l++){var a=arguments[l];if(null!=a)for(var s in a)Object.prototype.hasOwnProperty.call(a,s)&&(i[s]=a[s])}return i}},972:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0}),e.createTable=void 0;var o=n(744),r=n(260),i=n(324),l=n(796),a=n(356);function s(t,e,n,o,i,l){var a={};return e.map((function(e,s){for(var u=0,h={},c=0,f=0,g=0,p=n;g<p.length;g++){var y=p[g];if(null==a[y.index]||0===a[y.index].left)if(0===f){var v=void 0,m={};"object"!=typeof(v=Array.isArray(e)?e[y.index-c-u]:e[y.dataKey])||Array.isArray(v)||(m=(null==v?void 0:v.styles)||{});var b=d(t,y,s,i,o,l,m),w=new r.Cell(v,b,t);h[y.dataKey]=w,h[y.index]=w,f=w.colSpan-1,a[y.index]={left:w.rowSpan-1,times:f}}else f--,c++;else a[y.index].left--,f=a[y.index].times,u++}return new r.Row(e,s,t,h)}))}function u(t,e){var n={};return t.forEach((function(t){if(null!=t.raw){var o=function(t,e){if("head"===t){if("object"==typeof e)return e.header||e.title||null;if("string"==typeof e||"number"==typeof e)return e}else if("foot"===t&&"object"==typeof e)return e.footer;return null}(e,t.raw);null!=o&&(n[t.dataKey]=o)}})),Object.keys(n).length>0?n:null}function d(t,e,n,o,r,i,s){var u,d=(0,l.getTheme)(o);"head"===t?u=r.headStyles:"body"===t?u=r.bodyStyles:"foot"===t&&(u=r.footStyles);var h=(0,a.assign)({},d.table,d[t],r.styles,u),c=r.columnStyles[e.dataKey]||r.columnStyles[e.index]||{},f="body"===t?c:{},g="body"===t&&n%2==0?(0,a.assign)({},d.alternateRow,r.alternateRowStyles):{},p=(0,l.defaultStyles)(i),y=(0,a.assign)({},p,h,g,f);return(0,a.assign)(y,s)}e.createTable=function(t,e){var n=new o.DocHandler(t),l=function(t,e){var n=t.content,o=function(t){return t.map((function(t,e){var n,o,i;return i="object"==typeof t&&null!==(o=null!==(n=t.dataKey)&&void 0!==n?n:t.key)&&void 0!==o?o:e,new r.Column(i,t,e)}))}(n.columns);if(0===n.head.length){(i=u(o,"head"))&&n.head.push(i)}if(0===n.foot.length){var i;(i=u(o,"foot"))&&n.foot.push(i)}var l=t.settings.theme,a=t.styles;return{columns:o,head:s("head",n.head,o,a,l,e),body:s("body",n.body,o,a,l,e),foot:s("foot",n.foot,o,a,l,e)}}(e,n.scaleFactor()),a=new r.Table(e,l);return(0,i.calculateWidths)(n,a),n.applyStyles(n.userStyles),a}},664:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0}),e.addPage=e.drawTable=void 0;var o=n(420),r=n(260),i=n(744),l=n(356),a=n(136),s=n(224);function u(t,e,n,o){var r=e.settings;t.applyStyles(t.userStyles),"firstPage"!==r.showHead&&"everyPage"!==r.showHead||e.head.forEach((function(r){return g(t,e,r,n,o)}))}function d(t,e,n,o,r,i){t.applyStyles(t.userStyles),i=null!=i?i:e.body.length;var l=Math.min(n+i,e.body.length),a=-1;return e.body.slice(n,l).forEach((function(i,l){var s=n+l===e.body.length-1,u=y(t,e,s,o);i.canEntireRowFit(u,r)&&(g(t,e,i,o,r),a=n+l)})),a}function h(t,e,n,o){var r=e.settings;t.applyStyles(t.userStyles),"lastPage"!==r.showFoot&&"everyPage"!==r.showFoot||e.foot.forEach((function(r){return g(t,e,r,n,o)}))}function c(t,e,n){var o=n.getLineHeight(t.styles.fontSize),r=t.padding("vertical"),i=Math.floor((e-r)/o);return Math.max(0,i)}function f(t,e,n,o,i,a,s){var u=y(t,e,o,a);if(n.canEntireRowFit(u,s))g(t,e,n,a,s);else if(function(t,e,n,o){var r=t.pageSize().height,i=o.settings.margin,l=r-(i.top+i.bottom);"body"===e.section&&(l-=o.getHeadHeight(o.columns)+o.getFootHeight(o.columns));var a=e.getMinimumRowHeight(o.columns,t),s=a<n;if(a>l)return console.error("Will not be able to print row ".concat(e.index," correctly since it's minimum height is larger than page height")),!0;if(!s)return!1;var u=e.hasRowSpan(o.columns);return e.getMaxCellHeight(o.columns)>l?(u&&console.error("The content of row ".concat(e.index," will not be drawn correctly since drawing rows with a height larger than the page height and has cells with rowspans is not supported.")),!0):!u&&"avoid"!==o.settings.rowPageBreak}(t,n,u,e)){var d=function(t,e,n,o){var i={};t.spansMultiplePages=!0,t.height=0;for(var a=0,s=0,u=n.columns;s<u.length;s++){var d=u[s];if(b=t.cells[d.index]){Array.isArray(b.text)||(b.text=[b.text]);var h=new r.Cell(b.raw,b.styles,b.section);(h=(0,l.assign)(h,b)).text=[];var f=c(b,e,o);b.text.length>f&&(h.text=b.text.splice(f,b.text.length));var g=o.scaleFactor(),p=o.getLineHeightFactor();b.contentHeight=b.getContentHeight(g,p),b.contentHeight>=e&&(b.contentHeight=e,h.styles.minCellHeight-=e),b.contentHeight>t.height&&(t.height=b.contentHeight),h.contentHeight=h.getContentHeight(g,p),h.contentHeight>a&&(a=h.contentHeight),i[d.index]=h}}var y=new r.Row(t.raw,-1,t.section,i,!0);y.height=a;for(var v=0,m=n.columns;v<m.length;v++){var b;d=m[v],(h=y.cells[d.index])&&(h.height=y.height),(b=t.cells[d.index])&&(b.height=t.height)}return y}(n,u,e,t);g(t,e,n,a,s),v(t,e,i,a,s),f(t,e,d,o,i,a,s)}else v(t,e,i,a,s),f(t,e,n,o,i,a,s)}function g(t,e,n,o,r){o.x=e.settings.margin.left;for(var i=0,l=r;i<l.length;i++){var s=l[i],u=n.cells[s.index];if(u)if(t.applyStyles(u.styles),u.x=o.x,u.y=o.y,!1!==e.callCellHooks(t,e.hooks.willDrawCell,u,n,s,o)){p(t,u,o);var d=u.getTextPos();(0,a.default)(u.text,d.x,d.y,{halign:u.styles.halign,valign:u.styles.valign,maxWidth:Math.ceil(u.width-u.padding("left")-u.padding("right"))},t.getDocument()),e.callCellHooks(t,e.hooks.didDrawCell,u,n,s,o),o.x+=s.width}else o.x+=s.width;else o.x+=s.width}o.y+=n.height}function p(t,e,n){var r=e.styles;if(t.getDocument().setFillColor(t.getDocument().getFillColor()),"number"==typeof r.lineWidth){var i=(0,o.getFillStyle)(r.lineWidth,r.fillColor);i&&t.rect(e.x,n.y,e.width,e.height,i)}else"object"==typeof r.lineWidth&&(r.fillColor&&t.rect(e.x,n.y,e.width,e.height,"F"),function(t,e,n,o){var r,i,l,a;o.top&&(r=n.x,i=n.y,l=n.x+e.width,a=n.y,o.right&&(l+=.5*o.right),o.left&&(r-=.5*o.left),s(o.top,r,i,l,a));o.bottom&&(r=n.x,i=n.y+e.height,l=n.x+e.width,a=n.y+e.height,o.right&&(l+=.5*o.right),o.left&&(r-=.5*o.left),s(o.bottom,r,i,l,a));o.left&&(r=n.x,i=n.y,l=n.x,a=n.y+e.height,o.top&&(i-=.5*o.top),o.bottom&&(a+=.5*o.bottom),s(o.left,r,i,l,a));o.right&&(r=n.x+e.width,i=n.y,l=n.x+e.width,a=n.y+e.height,o.top&&(i-=.5*o.top),o.bottom&&(a+=.5*o.bottom),s(o.right,r,i,l,a));function s(e,n,o,r,i){t.getDocument().setLineWidth(e),t.getDocument().line(n,o,r,i,"S")}}(t,e,n,r.lineWidth))}function y(t,e,n,o){var r=e.settings.margin.bottom,i=e.settings.showFoot;return("everyPage"===i||"lastPage"===i&&n)&&(r+=e.getFootHeight(e.columns)),t.pageSize().height-o.y-r}function v(t,e,n,r,i,l){void 0===i&&(i=[]),void 0===l&&(l=!1),t.applyStyles(t.userStyles),"everyPage"!==e.settings.showFoot||l||e.foot.forEach((function(n){return g(t,e,n,r,i)})),e.callEndPageHooks(t,r);var a=e.settings.margin;(0,o.addTableBorder)(t,e,n,r),m(t),e.pageNumber++,e.pageCount++,r.x=a.left,r.y=a.top,n.y=a.top,e.callWillDrawPageHooks(t,r),"everyPage"===e.settings.showHead&&(e.head.forEach((function(n){return g(t,e,n,r,i)})),t.applyStyles(t.userStyles))}function m(t){var e=t.pageNumber();return t.setPage(e+1),t.pageNumber()===e&&(t.addPage(),!0)}e.drawTable=function(t,e){var n=e.settings,r=n.startY,a=n.margin,c={x:a.left,y:r},p=e.getHeadHeight(e.columns)+e.getFootHeight(e.columns),y=r+a.bottom+p;"avoid"===n.pageBreak&&(y+=e.body.reduce((function(t,e){return t+e.height}),0));var b=new i.DocHandler(t);("always"===n.pageBreak||null!=n.startY&&y>b.pageSize().height)&&(m(b),c.y=a.top),e.callWillDrawPageHooks(b,c);var w=(0,l.assign)({},c);e.startPageNumber=b.pageNumber(),n.horizontalPageBreak?function(t,e,n,o){var r=(0,s.calculateAllColumnsCanFitInPage)(t,e),i=e.settings;if("afterAllRows"===i.horizontalPageBreakBehaviour)r.forEach((function(r,i){t.applyStyles(t.userStyles),i>0?v(t,e,n,o,r.columns,!0):u(t,e,o,r.columns),function(t,e,n,o,r){t.applyStyles(t.userStyles),e.body.forEach((function(i,l){var a=l===e.body.length-1;f(t,e,i,a,n,o,r)}))}(t,e,n,o,r.columns),h(t,e,o,r.columns)}));else for(var l=-1,a=r[0],c=function(){var i=l;if(a){t.applyStyles(t.userStyles);var s=a.columns;l>=0?v(t,e,n,o,s,!0):u(t,e,o,s),i=d(t,e,l+1,o,s),h(t,e,o,s)}var c=i-l;r.slice(1).forEach((function(r){t.applyStyles(t.userStyles),v(t,e,n,o,r.columns,!0),d(t,e,l+1,o,r.columns,c),h(t,e,o,r.columns)})),l=i};l<e.body.length-1;)c()}(b,e,w,c):(b.applyStyles(b.userStyles),"firstPage"!==n.showHead&&"everyPage"!==n.showHead||e.head.forEach((function(t){return g(b,e,t,c,e.columns)})),b.applyStyles(b.userStyles),e.body.forEach((function(t,n){var o=n===e.body.length-1;f(b,e,t,o,w,c,e.columns)})),b.applyStyles(b.userStyles),"lastPage"!==n.showFoot&&"everyPage"!==n.showFoot||e.foot.forEach((function(t){return g(b,e,t,c,e.columns)}))),(0,o.addTableBorder)(b,e,w,c),e.callEndPageHooks(b,c),e.finalY=c.y,t.lastAutoTable=e,t.previousAutoTable=e,t.autoTable&&(t.autoTable.previous=e),b.applyStyles(b.userStyles)},e.addPage=v},224:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0}),e.calculateAllColumnsCanFitInPage=void 0;var o=n(420);function r(t,e,n){var r;void 0===n&&(n={});var i=(0,o.getPageAvailableWidth)(t,e),l=new Map,a=[],s=[],u=[];e.settings.horizontalPageBreakRepeat,Array.isArray(e.settings.horizontalPageBreakRepeat)?u=e.settings.horizontalPageBreakRepeat:"string"!=typeof e.settings.horizontalPageBreakRepeat&&"number"!=typeof e.settings.horizontalPageBreakRepeat||(u=[e.settings.horizontalPageBreakRepeat]),u.forEach((function(t){var n=e.columns.find((function(e){return e.dataKey===t||e.index===t}));n&&!l.has(n.index)&&(l.set(n.index,!0),a.push(n.index),s.push(e.columns[n.index]),i-=n.wrappedWidth)}));for(var d=!0,h=null!==(r=null==n?void 0:n.start)&&void 0!==r?r:0;h<e.columns.length;)if(l.has(h))h++;else{var c=e.columns[h].wrappedWidth;if(!(d||i>=c))break;d=!1,a.push(h),s.push(e.columns[h]),i-=c,h++}return{colIndexes:a,columns:s,lastIndex:h-1}}e.calculateAllColumnsCanFitInPage=function(t,e){for(var n=[],o=0;o<e.columns.length;o++){var i=r(t,e,{start:o});i.columns.length&&(n.push(i),o=i.lastIndex)}return n}},324:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0}),e.ellipsize=e.resizeColumns=e.calculateWidths=void 0;var o=n(420);function r(t,e,n){for(var o=e,i=t.reduce((function(t,e){return t+e.wrappedWidth}),0),l=0;l<t.length;l++){var a=t[l],s=o*(a.wrappedWidth/i),u=a.width+s,d=n(a),h=u<d?d:u;e-=h-a.width,a.width=h}if(e=Math.round(1e10*e)/1e10){var c=t.filter((function(t){return!(e<0)||t.width>n(t)}));c.length&&(e=r(c,e,n))}return e}function i(t,e,n,r,i){return t.map((function(t){return function(t,e,n,r,i){var l=1e4*r.scaleFactor();if(e=Math.ceil(e*l)/l,e>=(0,o.getStringWidth)(t,n,r))return t;for(;e<(0,o.getStringWidth)(t+i,n,r)&&!(t.length<=1);)t=t.substring(0,t.length-1);return t.trim()+i}(t,e,n,r,i)}))}e.calculateWidths=function(t,e){!function(t,e){var n=t.scaleFactor(),r=e.settings.horizontalPageBreak,i=(0,o.getPageAvailableWidth)(t,e);e.allRows().forEach((function(l){for(var a=0,s=e.columns;a<s.length;a++){var u=s[a],d=l.cells[u.index];if(d){var h=e.hooks.didParseCell;e.callCellHooks(t,h,d,l,u,null);var c=d.padding("horizontal");d.contentWidth=(0,o.getStringWidth)(d.text,d.styles,t)+c;var f=(0,o.getStringWidth)(d.text.join(" ").split(/\s+/),d.styles,t);if(d.minReadableWidth=f+d.padding("horizontal"),"number"==typeof d.styles.cellWidth)d.minWidth=d.styles.cellWidth,d.wrappedWidth=d.styles.cellWidth;else if("wrap"===d.styles.cellWidth||!0===r)d.contentWidth>i?(d.minWidth=i,d.wrappedWidth=i):(d.minWidth=d.contentWidth,d.wrappedWidth=d.contentWidth);else{var g=10/n;d.minWidth=d.styles.minCellWidth||g,d.wrappedWidth=d.contentWidth,d.minWidth>d.wrappedWidth&&(d.wrappedWidth=d.minWidth)}}}})),e.allRows().forEach((function(t){for(var n=0,o=e.columns;n<o.length;n++){var r=o[n],i=t.cells[r.index];if(i&&1===i.colSpan)r.wrappedWidth=Math.max(r.wrappedWidth,i.wrappedWidth),r.minWidth=Math.max(r.minWidth,i.minWidth),r.minReadableWidth=Math.max(r.minReadableWidth,i.minReadableWidth);else{var l=e.styles.columnStyles[r.dataKey]||e.styles.columnStyles[r.index]||{},a=l.cellWidth||l.minCellWidth;a&&"number"==typeof a&&(r.minWidth=a,r.wrappedWidth=a)}i&&(i.colSpan>1&&!r.minWidth&&(r.minWidth=i.minWidth),i.colSpan>1&&!r.wrappedWidth&&(r.wrappedWidth=i.minWidth))}}))}(t,e);var n=[],l=0;e.columns.forEach((function(t){var o=t.getMaxCustomCellWidth(e);o?t.width=o:(t.width=t.wrappedWidth,n.push(t)),l+=t.width}));var a=e.getWidth(t.pageSize().width)-l;a&&(a=r(n,a,(function(t){return Math.max(t.minReadableWidth,t.minWidth)}))),a&&(a=r(n,a,(function(t){return t.minWidth}))),a=Math.abs(a),!e.settings.horizontalPageBreak&&a>.1/t.scaleFactor()&&(a=a<1?a:Math.round(a),console.warn("Of the table content, ".concat(a," units width could not fit page"))),function(t){for(var e=t.allRows(),n=0;n<e.length;n++)for(var o=e[n],r=null,i=0,l=0,a=0;a<t.columns.length;a++){var s=t.columns[a];if((l-=1)>1&&t.columns[a+1])i+=s.width,delete o.cells[s.index];else if(r){var u=r;delete o.cells[s.index],r=null,u.width=s.width+i}else{if(!(u=o.cells[s.index]))continue;if(l=u.colSpan,i=0,u.colSpan>1){r=u,i+=s.width;continue}u.width=s.width+i}}}(e),function(t,e){for(var n={count:0,height:0},o=0,r=t.allRows();o<r.length;o++){for(var l=r[o],a=0,s=t.columns;a<s.length;a++){var u=s[a],d=l.cells[u.index];if(d){e.applyStyles(d.styles,!0);var h=d.width-d.padding("horizontal");if("linebreak"===d.styles.overflow)d.text=e.splitTextToSize(d.text,h+1/e.scaleFactor(),{fontSize:d.styles.fontSize});else if("ellipsize"===d.styles.overflow)d.text=i(d.text,h,d.styles,e,"...");else if("hidden"===d.styles.overflow)d.text=i(d.text,h,d.styles,e,"");else if("function"==typeof d.styles.overflow){var c=d.styles.overflow(d.text,h);d.text="string"==typeof c?[c]:c}d.contentHeight=d.getContentHeight(e.scaleFactor(),e.getLineHeightFactor());var f=d.contentHeight/d.rowSpan;d.rowSpan>1&&n.count*n.height<f*d.rowSpan?n={height:f,count:d.rowSpan}:n&&n.count>0&&n.height>f&&(f=n.height),f>l.height&&(l.height=f)}}n.count--}}(e,t),function(t){for(var e={},n=1,o=t.allRows(),r=0;r<o.length;r++)for(var i=o[r],l=0,a=t.columns;l<a.length;l++){var s=a[l],u=e[s.index];if(n>1)n--,delete i.cells[s.index];else if(u)u.cell.height+=i.height,n=u.cell.colSpan,delete i.cells[s.index],u.left--,u.left<=1&&delete e[s.index];else{var d=i.cells[s.index];if(!d)continue;if(d.height=i.height,d.rowSpan>1){var h=o.length-r,c=d.rowSpan>h?h:d.rowSpan;e[s.index]={cell:d,left:c,row:i}}}}}(e)},e.resizeColumns=r,e.ellipsize=i},964:function(e){if(void 0===t){var n=new Error("Cannot find module 'undefined'");throw n.code="MODULE_NOT_FOUND",n}e.exports=t}},n={};function o(t){var r=n[t];if(void 0!==r)return r.exports;var i=n[t]={exports:{}};return e[t].call(i.exports,i,i.exports,o),i.exports}var r={};return function(){var t=r;Object.defineProperty(t,"__esModule",{value:!0}),t.Cell=t.Column=t.Row=t.Table=t.CellHookData=t.__drawTable=t.__createTable=t.applyPlugin=void 0;var e=o(340),n=o(776),i=o(664),l=o(972),a=o(260);Object.defineProperty(t,"Table",{enumerable:!0,get:function(){return a.Table}});var s=o(172);Object.defineProperty(t,"CellHookData",{enumerable:!0,get:function(){return s.CellHookData}});var u=o(260);function d(t){(0,e.default)(t)}Object.defineProperty(t,"Cell",{enumerable:!0,get:function(){return u.Cell}}),Object.defineProperty(t,"Column",{enumerable:!0,get:function(){return u.Column}}),Object.defineProperty(t,"Row",{enumerable:!0,get:function(){return u.Row}}),t.applyPlugin=d,t.__createTable=function(t,e){var o=(0,n.parseInput)(t,e);return(0,l.createTable)(t,o)},t.__drawTable=function(t,e){(0,i.drawTable)(t,e)};try{var h=o(964);h.jsPDF&&(h=h.jsPDF),d(h)}catch(t){}t.default=function(t,e){var o=(0,n.parseInput)(t,e),r=(0,l.createTable)(t,o);(0,i.drawTable)(t,r)}}(),r}()}));</script>
-<script>const APP_VERSION = '1.9.0';
+<script>const APP_VERSION = '2.2.1';
 'use strict';
 /* ================= Utilidades ================= */
 const $ = (s, r = document) => r.querySelector(s);
@@ -86449,6 +86497,8 @@ const ICONS = {
   star: '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
   heart: '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>',
   hands: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"/>',
+  coffee: '<path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><path d="M6 2v2M10 2v2M14 2v2"/>',
+  globe: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
   more: '<circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>'
 };
 const ic = (n, cls = '') => `<svg class="i ${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[n] || ''}</svg>`;
@@ -86487,7 +86537,7 @@ const DB = {
   }
 };
 
-const COLLECTIONS = ['events', 'contacts', 'msgTemplates', 'clips', 'docs', 'letters', 'congs', 'minLog', 'minCursos', 'metas', 'ayudaH', 'ayudaV', 'ayudaA'];
+const COLLECTIONS = ['events', 'contacts', 'msgTemplates', 'clips', 'docs', 'letters', 'congs', 'minLog', 'minCursos', 'metas', 'ayudaH', 'ayudaV', 'ayudaA', 'asiVol', 'asiPausa', 'discursos'];
 const DEFAULT_AREAS = [
   { id: 'cong', name: 'Congregación', parent: null },
   { id: 'cong-ancianos', name: 'Cuerpo de ancianos', parent: 'cong' },
@@ -86506,13 +86556,15 @@ const DEFAULT_AREAS = [
   { id: 'sup', name: 'Superintendente de circuito', parent: null },
   { id: 'sup-discursos', name: 'Discursos', parent: 'sup' },
   { id: 'sup-agendas', name: 'Agendas', parent: 'sup' },
-  { id: 'sup-visitas', name: 'Visitas a congregaciones', parent: 'sup' }
+  { id: 'sup-visitas', name: 'Visitas a congregaciones', parent: 'sup' },
+  { id: 'asi', name: 'Asamblea internacional', parent: null },
+  { id: 'asi-vol', name: 'Voluntarios', parent: 'asi' }
 ];
 function defaultState() {
   return {
     v: 1,
     areas: JSON.parse(JSON.stringify(DEFAULT_AREAS)),
-    events: [], contacts: [], clips: [], docs: [], letters: [], congs: [], minLog: [], minCursos: [], metas: [], ayudaH: [], ayudaV: [], ayudaA: [],
+    events: [], contacts: [], clips: [], docs: [], letters: [], congs: [], minLog: [], minCursos: [], metas: [], ayudaH: [], ayudaV: [], ayudaA: [], asiVol: [], asiPausa: [], discursos: [], lock: null,
     msgTemplates: [{ id: uid(), name: 'Saludo general', text: 'Hola {nombre_pila}, ¿qué tal? Te escribo para recordarte que…', updatedAt: Date.now() }],
     deleted: {},
     settings: { prefix: '34', waMode: 'wa', defRemind: 1440, theme: 'auto' },
@@ -86525,6 +86577,7 @@ function save() {
   S.meta.lastChange = Date.now();
   clearTimeout(saveTimer);
   saveTimer = setTimeout(() => DB.set('state', S), 250);
+  if (typeof scheduleAlarmSync === 'function') scheduleAlarmSync();
 }
 function saveNow() { clearTimeout(saveTimer); return DB.set('state', S); }
 function touch(o) { o.updatedAt = Date.now(); return o; }
@@ -86558,7 +86611,7 @@ function areaTree() {
   walk(null, 0);
   return out;
 }
-function areaClass(id) { const t = topArea(id); return t === 'cong' ? 'cong' : t === 'circ' ? 'circ' : t === 'sup' ? 'sup' : ''; }
+function areaClass(id) { const t = topArea(id); return t === 'cong' ? 'cong' : t === 'circ' ? 'circ' : t === 'sup' ? 'sup' : t === 'asi' ? 'asi' : ''; }
 function areaOptions(sel, { all = false, general = true } = {}) {
   let h = '';
   if (all) h += `<option value=""${!sel ? ' selected' : ''}>Todo</option>`;
@@ -87410,7 +87463,7 @@ async function exportParagraphs(fmt, title, paras, base) {
 
 /* ================= Navegación ================= */
 const NAV = [
-  ['home', 'Inicio', 'home'], ['cal', 'Calendario', 'cal'], ['dir', 'Directorio', 'users'], ['ministerio', 'Mi ministerio', 'send'], ['grupo', 'Mi grupo', 'heart'], ['ayuda', 'Ayuda a hermanos', 'hands'], ['visitas', 'Visitas', 'star'], ['msg', 'WhatsApp', 'msg'],
+  ['home', 'Inicio', 'home'], ['cal', 'Calendario', 'cal'], ['dir', 'Directorio', 'users'], ['ministerio', 'Mi ministerio', 'send'], ['grupo', 'Mi grupo', 'heart'], ['ayuda', 'Ayuda a hermanos', 'hands'], ['discursos', 'Mis discursos', 'list'], ['visitas', 'Visitas', 'star'], ['asamblea', 'Asamblea internacional', 'globe'], ['msg', 'WhatsApp', 'msg'],
   ['docs', 'Documentos', 'file'], ['letters', 'Cartas', 'mail'], ['clips', 'Recortes', 'cut'], ['set', 'Copias y ajustes', 'db']
 ];
 const MOBILE_NAV = ['home', 'cal', 'dir', 'msg'];
@@ -87447,9 +87500,9 @@ ACT.moreNav = () => {
 };
 ACT.goClose = el => { closeModal(); go(el.dataset.v); };
 CH.areaFilter = el => { UI.area = el.value; render(); };
-const TITLES = { home: 'Inicio', cal: 'Calendario', dir: 'Directorio', msg: 'Mensajes de WhatsApp', docs: 'Documentos', letters: 'Cartas', clips: 'Recortes', grupo: 'Mi grupo', visitas: 'Visitas a congregaciones', ministerio: 'Mi ministerio', ayuda: 'Ayuda a hermanos', set: 'Copias de seguridad y ajustes' };
+const TITLES = { home: 'Inicio', cal: 'Calendario', dir: 'Directorio', msg: 'Mensajes de WhatsApp', docs: 'Documentos', letters: 'Cartas', clips: 'Recortes', grupo: 'Mi grupo', visitas: 'Visitas a congregaciones', ministerio: 'Mi ministerio', ayuda: 'Ayuda a hermanos', asamblea: 'Asamblea internacional · voluntarios', discursos: 'Mis discursos', set: 'Copias de seguridad y ajustes' };
 function render() {
-  renderNav();
+  renderNav(); ensureSearchBtn();
   $('#title').textContent = TITLES[UI.view] || '';
   const fn = VIEWS[UI.view] || VIEWS.home;
   $('#view').innerHTML = fn();
@@ -87477,6 +87530,7 @@ VIEWS.home = () => {
   return `
   ${needBackup ? `<div class="banner mb">${ic('db')}<div style="flex:1">Tienes cambios sin copia de seguridad desde ${S.meta.lastBackup ? fmtStamp(S.meta.lastBackup) : 'el principio'}.</div><button class="btn sm" data-act="backupNow">Hacer copia</button></div>` : ''}
   ${alerts.length ? `<div class="card mb"><h2>Avisos</h2><div class="list">${alerts.map(e => `<div class="item" data-act="editEvent" data-id="${e.id}">${dateBox(e.date)}<div class="body"><div class="t">${esc(e.title)}</div><div class="s">${e.time || ''} ${esc(areaPath(e.area))}</div></div><button class="btn sm" data-act="ackAlert" data-id="${e.id}">${ic('check', 's')}Visto</button></div>`).join('')}</div></div>` : ''}
+  ${pendientesHtml()}
   <div class="kpi mb">${blocks.map(b => {
     const nC = S.contacts.filter(c => (c.areas || []).some(id => isUnder(id, b.id))).length;
     const nE = S.events.filter(e => isUnder(e.area, b.id) && (e.end || e.date) >= today).length;
@@ -88076,7 +88130,7 @@ function grupoInformes() {
     ${kpi('Cursos bíblicos', R.cursos, 'informados')}
   </div>
   <div class="card"><div class="row mb"><span class="small muted" style="flex:1">Marca a cada persona según su informe. Quien no tenga informe o no haya predicado queda como <b>irregular</b>.</span>
-    <button class="btn sm" data-act="infAllSi">Marcar todos «Predicó»</button></div>
+    ${R.rows.some(x => !x.r.st) ? `<button class="btn sm wa" data-act="infRemind">${ic('bell', 's')}Recordar a los que faltan (${R.rows.filter(x => !x.r.st).length})</button>` : ''}<button class="btn sm" data-act="infAllSi">Marcar todos «Predicó»</button></div>
     ${R.rows.map(row).join('')}
     <div class="row mt"><span class="sp"></span><button class="btn" data-act="infCopy">${ic('copy', 's')}Copiar</button><button class="btn wa" data-act="infWA">${ic('msg', 's')}Enviar texto por WhatsApp</button><button class="btn wa" data-act="infPDF">${ic('file', 's')}Enviar PDF</button></div></div>`;
 }
@@ -89380,6 +89434,729 @@ ACT.ayDay = el => {
   ]).then(v => { if (v) ACT.ayRonda({ dataset: { d, t: v } }); });
 };
 
+/* ================= ASAMBLEA INTERNACIONAL · VOLUNTARIOS Y CRONOGRAMA ================= */
+const ASI_DEFAULT_MSG = `¡{Querido} {hermano} {nombre}! 👋
+Te escribimos desde la oficina de gestión de voluntarios de la asamblea internacional de Las Palmas. *¡Muchísimas gracias por tu excelente disposición para colaborar!*
+Nos gustaría mucho conocerte un poco más. Si te viene bien, podríamos hablar *en el Salón del Reino de Arrecife el próximo sábado 21 a las {hora} horas*.
+Si no te es posible a esa hora, avísanos y buscamos otro momento o día que te cuadre mejor. En cualquier caso, te pedimos que nos respondas a este mensaje para saber que te ha llegado correctamente.
+¡Un saludo muy afectuoso! 😊`;
+const ASI_DEFAULT_MSG_M = `¡{Queridos} {hermanos} {nombre}! 👋
+Les escribimos desde la oficina de gestión de voluntarios de la asamblea internacional de Las Palmas. *¡Muchísimas gracias por su excelente disposición para colaborar!*
+Nos gustaría mucho conocerles un poco más. Si les viene bien, podríamos hablar *en el Salón del Reino de Arrecife el próximo sábado 21 a las {hora} horas*.
+Si no les es posible a esa hora, avísennos y buscamos otro momento o día que les cuadre mejor. En cualquier caso, les pedimos que nos respondan a este mensaje para saber que les ha llegado correctamente.
+¡Un saludo muy afectuoso! 😊`;
+const asiMsg = () => S.settings.asiMsg || ASI_DEFAULT_MSG;
+const asiMsgM = () => S.settings.asiMsgM || ASI_DEFAULT_MSG_M;
+UI.asiF = 'todos'; UI.asiQ = ''; UI.asiTab = 'lista';
+const asiNames = v => v.conyuge ? `${v.name} y ${v.conyuge}` : v.name;
+
+/* ---------- Masculino / femenino según el nombre ---------- */
+const FEM = new Set('carmen isabel raquel pilar consuelo rosario mercedes dolores beatriz ines belen nieves luz esther ester ruth noemi abigail miriam lourdes montserrat asuncion concepcion encarnacion soledad rocio amparo marisol maribel irene leire iris yanet janet jannet lisbeth elizabeth ingrid astrid judit judith sharon karen abril flor mabel cristel raquel naomi edith jasmin yasmin jazmin marlen marleny maryuri yuri nathaly nataly nicole michelle rachel deborah sarai ruth lidia rut liz noeli yamile yamileth arlet arlette scarlett madeleine madelein gisel giselle maite itziar ainhoa begoña nerea aranzazu almudena milagros remedios angeles socorro trinidad paz cruz sol mar estrella rebeca loida eunice priscila evelyn evelin jenifer jennifer heidy heidi kelly katherine kathy lucy mary rose rosemary nancy doris gladys ivonne yvonne'.split(' '));
+const MASC = new Set('luca borja jeremias elias matias tobias josue isaias zacarias nehemias jonas lucas andres nicolas tomas jesus moises ismael gabriel daniel samuel manuel miguel angel rafael ezequiel natan nathan eliud leo noel abel isaac joel jose juan luis jorge felipe vicente enrique jaime dante adrian alejandro alberto carlos cesar david diego eduardo fernando francisco gonzalo hector hugo ivan javier joaquin julian lorenzo marcos mario martin oscar pablo pedro raul ricardo roberto ruben salvador sergio victor xavier yeray airam aday acoran jonay benjamin tito paco pepe cristian christian kevin brian bryan alexis jean said omar ali'.split(' '));
+function guessSex(name) {
+  const t = norm(name).trim();
+  if (/^(hna|hermana|sra|srta|dna|doña)\b/.test(t)) return 'f';
+  if (/^(hno|hermano|sr|don)\b/.test(t)) return 'm';
+  const first = norm(firstNameOf(name)).trim();
+  if (first === 'maria' || first === 'ma' || first === 'mª') return 'f';
+  if (FEM.has(first)) return 'f';
+  if (MASC.has(first)) return 'm';
+  if (/a$/.test(first)) return 'f';
+  if (/(o|e|s|n|l|r|el|on|an|in|io)$/.test(first)) return 'm';
+  return 'm';
+}
+const sexSure = name => { if (/^(hna|hno|hermana|hermano|sra?|srta|don|doña)\b/i.test(String(name).trim())) return true; const first = norm(firstNameOf(name)).trim(); return FEM.has(first) || MASC.has(first) || /^(maria|hna|hno)/.test(first) || /[ao]$/.test(first); };
+const firstNameOf = n => { const s = String(n || '').trim().replace(/^(hno|hna|hermano|hermana|sr|sra|srta)\.?\s+/i, ''); if (s.includes(',')) return s.split(',')[1].trim().split(/\s+/)[0] || s; return s.split(/\s+/)[0] || s; };
+function asiText(v) {
+  const par = !!(v.conyuge || '').trim(), f = v.sexo === 'f';
+  const vals = par
+    ? { querido: 'queridos', hermano: 'hermanos', nombre: firstNameOf(v.name) + ' y ' + firstNameOf(v.conyuge), nombre_completo: v.name + ' y ' + v.conyuge }
+    : { querido: f ? 'querida' : 'querido', hermano: f ? 'hermana' : 'hermano', nombre: firstNameOf(v.name), nombre_completo: v.name };
+  Object.assign(vals, { hora: v.hora || '___', fecha: v.fecha || '' }); vals.querida = vals.querido; vals.hermana = vals.hermano; vals.queridos = vals.querido; vals.hermanos = vals.hermano;
+  return (par ? asiMsgM() : asiMsg()).replace(/\{\s*([^{}]+?)\s*\}/g, (m, k) => {
+    const key = norm(k).replace(/\s+/g, '_'); if (!(key in vals)) return m;
+    const r = vals[key];
+    return /^[A-ZÁÉÍÓÚÑ]/.test(k) && /^(querid|herman)/.test(key) ? r[0].toUpperCase() + r.slice(1) : r;
+  });
+}
+
+/* ---------- Lectura de horas y teléfonos ---------- */
+function horaDe(v) {
+  if (v instanceof Date) return `${pad(v.getHours())}:${pad(v.getMinutes())}`;
+  if (typeof v === 'number' && v > 0 && v < 1) { const m = Math.round(v * 1440); return `${pad(Math.floor(m / 60))}:${pad(m % 60)}`; }
+  const m = String(v ?? '').match(/\b([01]?\d|2[0-3])\s*[:.hH]\s*([0-5]\d)\b/) || String(v ?? '').match(/^\s*([01]?\d|2[0-3])\s*(?:h|hrs?|horas)?\s*$/i);
+  return m ? `${pad(+m[1])}:${m[2] || '00'}` : '';
+}
+const telDe = v => { const m = String(v ?? '').replace(/[^\d+ ]/g, ' ').match(/(\+?\d[\d ]{7,16}\d)/); if (!m) return ''; const d = m[1].replace(/\s/g, ''); return d.replace(/^\+/, '').length >= 9 ? m[1].trim() : ''; };
+function rowToVol(cells) {
+  const txt = cells.map(c => c instanceof Date ? '' : String(c ?? '')).join(' | ');
+  let hora = '', tel = '', name = '';
+  cells.forEach(c => { if (!hora) { const h = (c instanceof Date || (typeof c === 'number' && c < 1)) ? horaDe(c) : ''; if (h) hora = h; } });
+  cells.forEach(c => { if (!tel && !(c instanceof Date)) tel = telDe(c); });
+  if (!hora) hora = horaDe(txt.replace(tel, ' '));
+  const nameCell = cells.map(c => c instanceof Date ? '' : String(c ?? '').trim()).find(s => /[a-záéíóúñ]{2,}/i.test(s) && !telDe(s) && !/^\d/.test(s) && !/^(nombre|tel|hora|m[oó]vil|phone)/i.test(s));
+  name = (nameCell || txt.replace(tel, ' ').replace(/\b([01]?\d|2[0-3])\s*[:.hH]\s*[0-5]\d\b/, ' ').replace(/[|]/g, ' ')).replace(/\s+/g, ' ').trim();
+  return name && (tel || hora) ? { name, phone: tel, hora } : null;
+}
+async function readVolFile(file) {
+  const ext = extOf(file.name), out = [];
+  if (['xlsx', 'xls', 'xlsm', 'ods', 'csv'].includes(ext)) {
+    const buf = await file.arrayBuffer();
+    const wb = ext === 'csv' ? XLSX.read(new TextDecoder().decode(buf), { type: 'string', raw: true }) : XLSX.read(buf, { type: 'array', cellNF: true });
+    wb.SheetNames.forEach(sn => {
+      const rows = sheetRows(wb.Sheets[sn]).filter(r => r.some(c => String(c ?? '').trim()));
+      if (!rows.length) return;
+      const head = rows[0].map(h => norm(h));
+      const col = (...k) => head.findIndex(h => k.some(x => h.includes(x)));
+      const isTel = h => /telef|movil|celular|phone|tlf|whatsapp/.test(h), isCony = h => /conyuge|esposa|esposo|matrimonio|pareja/.test(h);
+      const tels = head.map((h, k) => isTel(h) ? k : -1).filter(k => k >= 0);
+      const iT2 = tels.find(k => isCony(head[k])) ?? (tels.length > 1 ? tels[1] : -1), iT = tels.find(k => k !== iT2) ?? -1;
+      let iN = head.findIndex(h => /nombre|hermano|voluntario|name/.test(h) && !isTel(h)); const iH = col('hora', 'horario', 'cita');
+      const iS = col('sexo', 'genero', 'h/m'), iC = head.findIndex(h => isCony(h) && !isTel(h));
+      if (iC >= 0 && iN === iC) { const j = head.findIndex((h, k) => k !== iC && /nombre|hermano|voluntario|name/.test(h)); if (j >= 0) iN = j; }
+      const hasHead = iN >= 0 && (iT >= 0 || iH >= 0);
+      rows.slice(hasHead ? 1 : 0).forEach(r => {
+        let v;
+        if (hasHead) {
+          const n = String(r[iN] ?? '').trim(); if (!n) return;
+          v = { name: n, phone: iT >= 0 ? (telDe(r[iT]) || String(r[iT] ?? '').trim()) : '', hora: iH >= 0 ? horaDe(r[iH]) : '' };
+          if (iC >= 0) v.conyuge = String(r[iC] ?? '').trim();
+          if (iT2 >= 0) v.phone2 = telDe(r[iT2]) || String(r[iT2] ?? '').trim();
+          if (iS >= 0) { const s = norm(r[iS]).trim(); if (/^(mujer|f|fem|hna|hermana)/.test(s)) v.sexo = 'f'; else if (/^(h|hombre|masc|v|var|hno|hermano)/.test(s)) v.sexo = 'm'; }
+        }
+        else v = rowToVol(r);
+        if (v) out.push(v);
+      });
+    });
+  } else if (ext === 'pdf') {
+    const pages = await pdfPagesRaw(await file.arrayBuffer());
+    pages.forEach(pg => {
+      const L = lines(pg.items).sort((a, b) => a.y - b.y || a.x - b.x);
+      const rows = []; L.forEach(l => { const r = rows.find(r => Math.abs(r.y - l.y) < 5); if (r) r.cells.push(l); else rows.push({ y: l.y, cells: [l] }); });
+      rows.forEach(r => { const v = rowToVol(r.cells.sort((a, b) => a.x - b.x).map(c => c.s)); if (v) out.push(v); });
+    });
+  } else if (['docx', 'docm'].includes(ext)) {
+    const r = await readDocx(await file.arrayBuffer());
+    r.blocks.forEach(b => { const v = rowToVol(b.cells || [b.text]); if (v) out.push(v); });
+  } else throw new Error('Usa un Excel, PDF o Word.');
+  return out;
+}
+
+
+/* ---------- Cronograma de entrevistas ---------- */
+const cronCfg = () => Object.assign({ start: '10:00', p: 15, m: 20 }, S.settings.asiCron || {});
+const hm2m = h => { const m = String(h || '').match(/^(\d{1,2}):(\d{2})/); return m ? +m[1] * 60 + +m[2] : null; };
+const m2hm = m => `${pad(Math.floor(m / 60) % 24)}:${pad(m % 60)}`;
+const inCron = v => typeof v.ord === 'number';
+function cronItems() {
+  return [...S.asiVol.filter(inCron).map(v => ({ k: 'v', o: v, ord: v.ord })), ...S.asiPausa.map(p => ({ k: 'p', o: p, ord: p.ord }))]
+    .sort((a, b) => a.ord - b.ord || (a.k === 'p' ? 1 : -1));
+}
+function cronCompute() {
+  const c = cronCfg(); let t = hm2m(c.start) ?? 600;
+  return cronItems().map(it => {
+    const fx = it.k === 'v' ? hm2m(it.o.fija) : null, prevEnd = t;
+    const s = fx != null ? fx : t;
+    if (it.k === 'p') { const h = hm2m(it.o.hasta); t = it.o.modo === 'hasta' && h != null ? Math.max(t, h) : t + (+it.o.min || 0); }
+    else t = s + (+it.o.dur || (it.o.conyuge ? (+c.m || 20) : (+c.p || 15)));
+    return { ...it, s, e: t, solapa: fx != null && fx < prevEnd };
+  });
+}
+/* Pone a cada persona del cronograma la hora que le toca (la usa el mensaje de WhatsApp) */
+function cronSync() {
+  cronCompute().forEach(it => { if (it.k === 'v' && it.o.hora !== m2hm(it.s)) { it.o.hora = m2hm(it.s); upsert('asiVol', it.o); } });
+}
+function cronRenum() {
+  cronItems().forEach((it, i) => { if (it.o.ord !== i + 1) { it.o.ord = i + 1; upsert(it.k === 'v' ? 'asiVol' : 'asiPausa', it.o); } });
+  cronSync();
+}
+const cronNext = () => cronItems().reduce((m, it) => Math.max(m, it.ord), 0) + 1;
+
+/* ---------- Vista ---------- */
+const ST_L = { pend: 'Pendiente', env: 'Enviado', conf: 'Confirmado' };
+VIEWS.asamblea = () => {
+  const tabs = `<div class="seg mb asi-tabs"><button class="${UI.asiTab === 'lista' ? 'on' : ''}" data-act="asiTab" data-t="lista">${ic('users', 's')}Voluntarios</button><button class="${UI.asiTab === 'crono' ? 'on' : ''}" data-act="asiTab" data-t="crono">${ic('cal', 's')}Cronograma</button></div>`;
+  return tabs + (UI.asiTab === 'crono' ? cronView() : asiList());
+};
+ACT.asiTab = el => { UI.asiTab = el.dataset.t; render(); };
+
+function asiList() {
+  const all = [...S.asiVol];
+  const cnt = { pend: all.filter(v => (v.st || 'pend') === 'pend').length, env: all.filter(v => v.st === 'env').length, conf: all.filter(v => v.st === 'conf').length };
+  const q = norm(UI.asiQ);
+  const l = all.filter(v => (UI.asiF === 'todos' || (v.st || 'pend') === UI.asiF) && (!q || norm(asiNames(v) + ' ' + v.phone + ' ' + (v.hora || '')).includes(q)))
+    .sort((a, b) => (a.hora || '99').localeCompare(b.hora || '99') || a.name.localeCompare(b.name, 'es'));
+  const kpi = (k, t, n, s) => `<div class="k${UI.asiF === k ? ' sel' : ''}" data-act="asiF" data-f="${k}"><span class="small muted">${t}</span><b>${n}</b><span class="tiny">${s}</span></div>`;
+  const row = v => {
+    const st = v.st || 'pend', sure = sexSure(v.name), par = !!v.conyuge;
+    return `<div class="asi-row st-${st}" data-id="${v.id}">
+      <div class="asi-main" data-act="asiEdit" data-id="${v.id}"><div class="t"><b>${esc(asiNames(v))}</b>${par ? ' <span class="pill">matrimonio</span>' : ''}${v.hora ? ` <span class="pill role">${esc(v.hora)} h</span>` : ' <span class="pill warn">Sin hora</span>'}</div>
+        <div class="tiny">${esc(asiPhones(v))}${st === 'env' && v.sentAt ? ' · enviado ' + fmtStamp(v.sentAt) : ''}${st === 'conf' && v.confAt ? ' · confirmado ' + fmtStamp(v.confAt) : ''}${v.notas ? ' · ' + esc(v.notas) : ''}</div></div>
+      <div class="asi-ctl">
+        ${par ? '' : `<div class="seg asi-sex${!sure && !v.sexoManual ? ' unsure' : ''}" title="${!sure && !v.sexoManual ? 'Revisa: no estoy seguro por el nombre' : 'Hermano o hermana'}"><button class="${v.sexo !== 'f' ? 'on' : ''}" data-act="asiSex" data-v="m">Hno.</button><button class="${v.sexo === 'f' ? 'on' : ''}" data-act="asiSex" data-v="f">Hna.</button></div>`}
+        <button class="btn sm wa" data-act="asiSend"${v.phone || v.phone2 ? '' : ' disabled'}>${ic('msg', 's')}${st === 'pend' ? 'Enviar' : 'Reenviar'}</button>
+        <div class="seg asi-st"><button class="${st === 'pend' ? 'on' : ''}" data-act="asiSt" data-v="pend">Pendiente</button><button class="${st === 'env' ? 'on' : ''}" data-act="asiSt" data-v="env">Enviado</button><button class="${st === 'conf' ? 'on ok' : ''}" data-act="asiSt" data-v="conf">${ic('check', 's')}Confirmado</button></div>
+      </div></div>`;
+  };
+  return `<div class="toolbar"><span class="small muted asi-intro">Importa un Excel o PDF con nombre, teléfono y hora (y cónyuge si lo hay), y envía a cada uno su mensaje.</span>
+    <button class="btn" data-act="asiMsgEdit">${ic('edit', 's')}Mensaje</button><button class="btn" data-act="asiExport">${ic('down', 's')}Exportar</button><button class="btn" data-act="asiAdd">${ic('plus', 's')}Añadir</button><button class="btn pri" data-act="asiImport">${ic('up', 's')}Importar Excel / PDF</button></div>
+  ${dupBanner()}<div class="kpi mb">${kpi('todos', 'Todos', all.length, 'voluntarios')}${kpi('pend', 'Pendientes', cnt.pend, 'sin enviar')}${kpi('env', 'Enviados', cnt.env, 'esperando respuesta')}${kpi('conf', 'Confirmados', cnt.conf, all.length ? Math.round(cnt.conf / all.length * 100) + ' % del total' : '')}</div>
+  <div class="toolbar"><div class="search">${ic('search', 's')}<input type="search" id="asiQ" placeholder="Buscar nombre, teléfono u hora…" value="${esc(UI.asiQ)}" data-in="asiQ"></div>
+    ${cnt.pend ? `<button class="btn wa" data-act="asiNext">${ic('send', 's')}Enviar siguiente pendiente (${cnt.pend})</button>` : ''}</div>
+  <div class="card">${l.length ? l.map(row).join('') : `<div class="empty">${all.length ? 'Nadie en este filtro.' : 'Aún no hay voluntarios. Pulsa <b>Importar Excel / PDF</b> o <b>Añadir</b>, o añádelos en el <b>Cronograma</b>.'}</div>`}
+  ${all.length ? `<div class="row mt"><span class="tiny" style="flex:1">El recuadro «Hno./Hna.» con borde amarillo indica que el nombre no deja claro si es hombre o mujer: revísalo.</span><button class="btn sm danger" data-act="asiClear">${ic('trash', 's')}Vaciar lista</button></div>` : ''}</div>`;
+}
+
+function cronView() {
+  const c = cronCfg(), L = cronCompute();
+  const out = S.asiVol.filter(v => !inCron(v)).length;
+  const nV = L.filter(i => i.k === 'v'), nM = nV.filter(i => i.o.conyuge).length;
+  const end = L.length ? m2hm(L[L.length - 1].e) : '';
+  const row = (it, i) => {
+    const o = it.o, mv = `<button class="btn sm icon ghost" data-act="crUp" title="Subir"${i ? '' : ' disabled'}>▲</button><button class="btn sm icon ghost" data-act="crDown" title="Bajar"${i < L.length - 1 ? '' : ' disabled'}>▼</button>`;
+    if (it.k === 'p') return `<div class="cr-row cr-pause" data-k="p" data-id="${o.id}"><div class="cr-h">${m2hm(it.s)}<span>${m2hm(it.e)}</span></div>
+      <div class="cr-n" data-act="crPausa" data-id="${o.id}"><b class="cr-pt">${ic('coffee', 's')}${esc(o.label || 'Pausa')}</b><div class="tiny">${it.e - it.s} min${o.modo === 'hasta' ? ' · se reanuda a las ' + esc(o.hasta) : ''}</div></div><div class="cr-ctl">${mv}</div></div>`;
+    const st = o.st || 'pend';
+    return `<div class="cr-row st-${st}" data-k="v" data-id="${o.id}"><div class="cr-h cr-hb${o.fija ? ' fija' : ''}${it.solapa ? ' solapa' : ''}" data-act="crHora" title="Cambiar la hora">${m2hm(it.s)}${o.fija ? ' 📌' : ''}<span>${m2hm(it.e)}</span></div>
+      <div class="cr-n" data-act="asiEdit" data-id="${o.id}"><b>${esc(o.name)}</b>${o.conyuge ? `<span class="cr-c">y ${esc(o.conyuge)}</span>` : ''}<div class="tiny">${esc(asiPhones(o))} · ${it.e - it.s} min</div></div>
+      <div class="cr-ctl"><button class="pill st-p st-${st}" data-act="crSt" title="Cambiar estado">${st === 'conf' ? '✓ ' : ''}${ST_L[st]}</button><button class="btn sm icon wa" data-act="asiSend"${o.phone || o.phone2 ? '' : ' disabled'} title="Enviar WhatsApp">${ic('msg', 's')}</button>${mv}</div></div>`;
+  };
+  return `${dupBanner()}<div class="card mb cr-cfg"><div class="row">
+      <label class="f"><span>Empiezan las entrevistas a las</span><input type="time" id="crStart" value="${esc(c.start)}" data-ch="crCfg" data-k="start"></label>
+      <label class="f"><span>Una persona (min)</span><input type="number" min="5" max="120" step="5" value="${c.p}" data-ch="crCfg" data-k="p"></label>
+      <label class="f"><span>Matrimonio (min)</span><input type="number" min="5" max="120" step="5" value="${c.m}" data-ch="crCfg" data-k="m"></label>
+      <span class="sp"></span><div class="row" style="gap:6px"><button class="btn" data-act="crPausa">${ic('coffee', 's')}Añadir pausa</button>${out ? `<button class="btn" data-act="crFromList">${ic('plus', 's')}Desde la lista (${out})</button>` : ''}<button class="btn" data-act="crExport">${ic('down', 's')}Exportar</button></div></div>
+    ${L.length ? `<div class="tiny mt">${nV.length} entrevista${nV.length === 1 ? '' : 's'} (${nV.length - nM} persona${nV.length - nM === 1 ? '' : 's'}, ${nM} matrimonio${nM === 1 ? '' : 's'}) · de ${esc(c.start)} a <b>${end}</b>. Las horas se recalculan solas al añadir, mover o quitar a alguien. Toca una hora para cambiarla.</div>` : ''}</div>
+  <div class="card cr-list">${L.length ? L.map(row).join('') : '<div class="empty">Escribe abajo el nombre de la primera persona. Cada una ocupa 15 minutos, o 20 si es un matrimonio.</div>'}
+    <div class="cr-add"><div class="cr-h">${L.length ? end : esc(c.start)}</div>
+      <input type="text" id="crN" placeholder="Nombre" autocomplete="off"><input type="text" id="crC" placeholder="Cónyuge (si es matrimonio)" autocomplete="off"><input type="tel" id="crT" placeholder="Teléfono" autocomplete="off"><input type="tel" id="crT2" placeholder="Teléfono del cónyuge" autocomplete="off">
+      <button class="btn pri" data-act="crAdd">${ic('plus', 's')}Añadir</button></div></div>`;
+}
+AFTER.asamblea = () => {
+  if (UI.asiTab !== 'crono') return;
+  ['#crN', '#crC', '#crT', '#crT2'].forEach(s => { const e = $(s); if (e) e.onkeydown = ev => { if (ev.key === 'Enter') { ev.preventDefault(); ACT.crAdd(); } }; });
+  if (UI.crFocus) { UI.crFocus = false; const n = $('#crN'); if (n) { n.focus(); n.scrollIntoView({ block: 'center' }); } }
+};
+CH.crCfg = el => { const c = cronCfg(); c[el.dataset.k] = el.dataset.k === 'start' ? el.value : Math.max(1, +el.value || 15); S.settings.asiCron = c; save(); cronSync(); render(); };
+ACT.crAdd = () => {
+  const name = $('#crN').value.trim(), conyuge = $('#crC').value.trim(), phone = $('#crT').value.trim(), phone2 = $('#crT2').value.trim();
+  if (!name) { toast('Escribe el nombre'); $('#crN').focus(); return; }
+  const ex = S.asiVol.find(v => !inCron(v) && norm(v.name) === norm(name));
+  const v = ex ? { ...ex, conyuge: conyuge || ex.conyuge || '', phone: phone || ex.phone, phone2: phone2 || ex.phone2 || '', ord: cronNext() }
+    : { id: uid(), name, conyuge, phone, phone2, hora: '', sexo: guessSex(name), st: 'pend', notas: '', ord: cronNext() };
+  upsert('asiVol', v); cronSync(); UI.crFocus = true; render();
+};
+const crIt = el => { const r = el.closest('[data-k]'); return { k: r.dataset.k, o: byId(r.dataset.k === 'v' ? 'asiVol' : 'asiPausa', r.dataset.id) }; };
+function crMove(el, d) {
+  const it = crIt(el), L = cronItems(), i = L.findIndex(x => x.o.id === it.o.id), j = i + d;
+  if (j < 0 || j >= L.length) return;
+  const a = L[i].o, b = L[j].o, t = a.ord; a.ord = b.ord; b.ord = t;
+  if (a.ord === b.ord) a.ord += d * 0.5;
+  upsert(L[i].k === 'v' ? 'asiVol' : 'asiPausa', a); upsert(L[j].k === 'v' ? 'asiVol' : 'asiPausa', b); cronRenum(); keepScroll();
+}
+ACT.crHora = el => {
+  const v = crIt(el).o, c = cronCfg(), it = cronCompute().find(x => x.o.id === v.id), auto = v.conyuge ? +c.m || 20 : +c.p || 15;
+  const m = openModal('Hora de ' + esc(asiNames(v)), `
+    <div class="row nw"><label class="f" style="flex:1"><span>Empieza a las</span><input type="time" id="chH" value="${m2hm(it.s)}"></label><label class="f" style="flex:1"><span>Dura (minutos)</span><input type="number" id="chD" min="5" max="240" step="5" value="${+v.dur || auto}"></label></div>
+    <p class="tiny" style="margin-top:0">Las entrevistas que vienen detrás se colocan a continuación de esta. ${v.fija ? 'Ahora tiene la hora <b>fijada</b> 📌.' : 'Ahora la hora se calcula sola.'}</p>`,
+    `${v.fija || v.dur ? '<button class="btn" data-x="auto">Volver a automática</button>' : ''}<span class="sp"></span><button class="btn pri" data-x="ok">Guardar</button>`);
+  $('[data-x=ok]', m).onclick = () => {
+    const h = $('#chH', m).value, d = +$('#chD', m).value || auto;
+    const n = { ...v }; if (h && h !== m2hm(it.s)) n.fija = h; if (d !== auto) n.dur = d; else delete n.dur;
+    upsert('asiVol', n); cronSync(); closeModal(); keepScroll();
+  };
+  const a = $('[data-x=auto]', m); if (a) a.onclick = () => { const n = { ...v }; delete n.fija; delete n.dur; upsert('asiVol', n); cronSync(); closeModal(); keepScroll(); };
+  setTimeout(() => $('#chH', m).focus(), 50);
+};
+ACT.crUp = el => crMove(el, -1); ACT.crDown = el => crMove(el, 1);
+ACT.crSt = el => { const v = crIt(el).o, n = { pend: 'env', env: 'conf', conf: 'pend' }[v.st || 'pend']; v.st = n; if (n === 'conf') v.confAt = Date.now(); if (n === 'env' && !v.sentAt) v.sentAt = Date.now(); upsert('asiVol', v); keepScroll(); };
+ACT.crFromList = () => {
+  const l = S.asiVol.filter(v => !inCron(v)).sort((a, b) => (a.hora || '99').localeCompare(b.hora || '99') || a.name.localeCompare(b.name, 'es'));
+  const m = openModal('Añadir al cronograma', `<p class="small muted" style="margin-top:0">Se añaden al final, en este orden. Luego puedes moverlos con ▲ ▼.</p>
+    <div class="list" style="max-height:380px;overflow:auto">${l.map(v => `<label class="chk" style="padding:7px 4px;border-bottom:1px solid var(--line)"><input type="checkbox" value="${v.id}" checked><span style="flex:1"><b>${esc(asiNames(v))}</b><br><span class="tiny">${esc(v.phone || '')}${v.hora ? ' · tenía ' + esc(v.hora) : ''}</span></span></label>`).join('')}</div>`,
+    `<button class="btn pri" data-x="ok">Añadir</button>`);
+  $('[data-x=ok]', m).onclick = () => { let o = cronNext(); $$('input:checked', m).forEach(c => { const v = byId('asiVol', c.value); v.ord = o++; upsert('asiVol', v); }); cronSync(); closeModal(); render(); };
+};
+ACT.crPausa = el => {
+  const id = el && el.dataset ? el.dataset.id : null;
+  const p = id ? { ...byId('asiPausa', id) } : { id: uid(), label: 'Comida', modo: 'min', min: 60, hasta: '' };
+  const L = cronCompute();
+  const m = openModal(id ? 'Pausa' : 'Añadir pausa', `
+    <label class="f"><span>Nombre</span><input type="text" id="paL" value="${esc(p.label || '')}" placeholder="Comida, descanso…"></label>
+    <div class="seg mb" id="paM"><button data-m="min" class="${p.modo !== 'hasta' ? 'on' : ''}">Dura unos minutos</button><button data-m="hasta" class="${p.modo === 'hasta' ? 'on' : ''}">Se reanuda a una hora</button></div>
+    <div class="row nw"><label class="f" id="paMinW" style="flex:1"><span>Minutos</span><input type="number" id="paMin" min="5" step="5" value="${+p.min || 30}"></label><label class="f" id="paHW" style="flex:1"><span>Reanudar a las</span><input type="time" id="paH" value="${esc(p.hasta || '')}"></label></div>
+    ${id ? '' : `<label class="f"><span>Ponerla después de</span><select id="paPos">${L.map((it, i) => `<option value="${it.ord}"${i === L.length - 1 ? ' selected' : ''}>${m2hm(it.s)} · ${esc(it.k === 'v' ? asiNames(it.o) : (it.o.label || 'Pausa'))}</option>`).join('') || '<option value="0">Al principio</option>'}</select></label>`}`,
+    `${id ? `<button class="btn danger" data-x="del">${ic('trash', 's')}Quitar pausa</button>` : ''}<span class="sp"></span><button class="btn pri" data-x="ok">Guardar</button>`);
+  let modo = p.modo === 'hasta' ? 'hasta' : 'min';
+  const sh = () => { $('#paMinW', m).style.display = modo === 'min' ? '' : 'none'; $('#paHW', m).style.display = modo === 'hasta' ? '' : 'none'; };
+  $$('[data-m]', m).forEach(b => b.onclick = () => { modo = b.dataset.m; $$('[data-m]', m).forEach(x => x.classList.toggle('on', x === b)); sh(); }); sh();
+  $('[data-x=ok]', m).onclick = () => {
+    const n = { ...p, label: $('#paL', m).value.trim() || 'Pausa', modo, min: +$('#paMin', m).value || 0, hasta: $('#paH', m).value };
+    if (modo === 'hasta' && !n.hasta) { toast('Pon la hora a la que se reanuda'); return; }
+    if (!id) n.ord = (+($('#paPos', m) || {}).value || 0) + 0.5;
+    upsert('asiPausa', n); cronRenum(); closeModal(); render();
+  };
+  if (id) $('[data-x=del]', m).onclick = () => { removeItem('asiPausa', id); cronRenum(); closeModal(); render(); };
+};
+ACT.crExport = () => exportDialog('Exportar cronograma', '', ['xlsx', 'pdf', 'docx'], async fmt => {
+  const L = cronCompute(); if (!L.length) { toast('El cronograma está vacío'); return null; }
+  return exportTable(fmt, `Cronograma de entrevistas · desde las ${cronCfg().start}`, ['Hora', 'Hasta', 'Nombre', 'Cónyuge', 'Teléfono', 'Tel. cónyuge', 'Estado'],
+    L.map(it => it.k === 'p' ? [m2hm(it.s), m2hm(it.e), '— ' + (it.o.label || 'Pausa') + ' —', '', '', '', ''] : [m2hm(it.s), m2hm(it.e), it.o.name, it.o.conyuge || '', it.o.phone || '', it.o.conyuge ? it.o.phone2 || '' : '', ST_L[it.o.st || 'pend']]), 'cronograma-entrevistas');
+});
+
+/* ---------- Acciones de la lista ---------- */
+ACT.asiF = el => { UI.asiF = el.dataset.f; render(); };
+IN.asiQ = el => { UI.asiQ = el.value; const p = el.selectionStart; render(); const n = $('#asiQ'); n.focus(); n.setSelectionRange(p, p); };
+const asiRow = el => byId('asiVol', el.closest('[data-id]').dataset.id);
+const keepScroll = () => { const y = window.scrollY; render(); window.scrollTo(0, y); };
+ACT.asiSex = el => { const v = asiRow(el); v.sexo = el.dataset.v; v.sexoManual = true; upsert('asiVol', v); keepScroll(); };
+ACT.asiSt = el => { const v = asiRow(el); v.st = el.dataset.v; if (v.st === 'conf') v.confAt = Date.now(); if (v.st === 'env' && !v.sentAt) v.sentAt = Date.now(); upsert('asiVol', v); keepScroll(); };
+ACT.asiSend = el => { const v = asiRow(el); asiSendTo(v); };
+/* ---------- Matrimonios repetidos (una fila por cada cónyuge en el Excel) ---------- */
+const d9 = t => String(t || '').replace(/\D/g, '').slice(-9);
+const fnN = n => norm(firstNameOf(n)).trim();
+const surN = n => { const s = String(n || ''); const part = s.includes(',') ? s.split(',')[0] : s.trim().split(/\s+/).slice(1).join(' '); return norm(part).split(/[\s-]+/).filter(w => w.length > 2); };
+function sameCouple(a, b) {
+  if (!a.conyuge || !b.conyuge || a === b) return false;
+  const pa = [d9(a.phone), d9(a.phone2)].filter(Boolean), pb = [d9(b.phone), d9(b.phone2)].filter(Boolean);
+  if (pa.some(x => pb.includes(x))) return true;
+  const cross = fnN(a.conyuge) === fnN(b.name) && fnN(b.conyuge) === fnN(a.name);
+  if (!cross) return false;
+  const sa = [...surN(a.name), ...surN(a.conyuge)], sb = [...surN(b.name), ...surN(b.conyuge)];
+  return sa.some(w => sb.includes(w)) || !pa.length || !pb.length;
+}
+const ST_RANK = { pend: 0, env: 1, conf: 2 };
+function mergeCouple(a, b) {
+  const ph = [a.phone, a.phone2, b.phone, b.phone2].filter(Boolean), uniq = [];
+  ph.forEach(x => { if (!uniq.some(y => d9(y) === d9(x))) uniq.push(x); });
+  const m = { ...a, phone: a.phone || uniq[0] || '', phone2: '' };
+  m.phone2 = uniq.find(x => d9(x) !== d9(m.phone)) || '';
+  if ((ST_RANK[b.st || 'pend'] || 0) > (ST_RANK[a.st || 'pend'] || 0)) { m.st = b.st; m.sentAt = b.sentAt || m.sentAt; m.confAt = b.confAt || m.confAt; }
+  if (b.notas && b.notas !== a.notas) m.notas = [a.notas, b.notas].filter(Boolean).join(' · ');
+  return m;
+}
+function couplePairs(list) {
+  const used = new Set(), out = [];
+  list.forEach((a, i) => { if (used.has(a)) return; const b = list.slice(i + 1).find(x => !used.has(x) && sameCouple(a, x)); if (b) { used.add(a); used.add(b); out.push([a, b]); } });
+  return out;
+}
+const dupCouples = () => { const L = [...S.asiVol].sort((a, b) => (inCron(a) ? a.ord : 1e9) - (inCron(b) ? b.ord : 1e9)); return couplePairs(L); };
+const dupBanner = () => { const n = dupCouples().length; return n ? `<div class="banner warn mb">${ic('users')}<div style="flex:1">Hay <b>${n} matrimonio${n === 1 ? '' : 's'} repetido${n === 1 ? '' : 's'}</b>: cada cónyuge tiene su propia fila (por ejemplo «${esc(dupCouples()[0][0].name)}» y «${esc(dupCouples()[0][1].name)}»), y así cada matrimonio ocupa dos turnos.</div><button class="btn pri" data-act="asiJoin">Unirlos (${n})</button></div>` : ''; };
+ACT.asiJoin = async () => {
+  const P = dupCouples(); if (!P.length) return;
+  if (!await confirmDlg(`Se unirán ${P.length} matrimonios en una sola entrevista de ${cronCfg().m} minutos cada uno, con los dos teléfonos. Se conserva el primero de cada pareja en el cronograma.`, 'Unir')) return;
+  P.forEach(([a, b]) => { upsert('asiVol', mergeCouple(a, b)); removeItem('asiVol', b.id); });
+  cronRenum(); render(); toast(`${P.length} matrimonios unidos`);
+};
+function mergeRows(rows) {
+  const L = rows.map(r => ({ ...r })), P = couplePairs(L), drop = new Set();
+  P.forEach(([a, b]) => { Object.assign(a, mergeCouple(a, b)); drop.add(b); });
+  return L.filter(r => !drop.has(r));
+}
+const asiPhones = v => { const a = v.phone || '', b = v.conyuge ? (v.phone2 || '') : ''; if (!a && !b) return 'Sin teléfono'; if (!v.conyuge) return a; return `${firstNameOf(v.name)}: ${a || '—'} · ${firstNameOf(v.conyuge)}: ${b || '—'}`; };
+/* A un matrimonio se le envía el mensaje a los dos teléfonos (WhatsApp abre un chat cada vez) */
+function asiSendTo(v) {
+  const two = v.conyuge && v.phone2;
+  if (!v.phone && !two) { toast('No tiene teléfono'); return; }
+  const mark = () => { if ((v.st || 'pend') === 'pend') v.st = 'env'; v.sentAt = Date.now(); upsert('asiVol', v); };
+  if (!two || !v.phone) { openWA(v.phone || v.phone2, asiText(v)); mark(); keepScroll(); return; }
+  openWA(v.phone, asiText(v)); mark(); keepScroll();
+  const n2 = firstNameOf(v.conyuge);
+  const m = openModal('Enviar también al cónyuge', `<p style="margin-top:0">Ya se ha abierto WhatsApp con el mensaje para <b>${esc(firstNameOf(v.name))}</b> (${esc(v.phone)}).</p><p>Cuando lo envíes, vuelve aquí y pulsa el botón para mandárselo también a <b>${esc(n2)}</b> (${esc(v.phone2)}).</p>`,
+    `<button class="btn" data-x="no">Ahora no</button><button class="btn wa" data-x="ok">${ic('msg', 's')}Enviar a ${esc(n2)}</button>`);
+  $('[data-x=no]', m).onclick = () => closeModal();
+  $('[data-x=ok]', m).onclick = () => { openWA(v.phone2, asiText(v)); v.sent2At = Date.now(); upsert('asiVol', v); closeModal(); keepScroll(); };
+}
+ACT.asiNext = () => {
+  const v = [...S.asiVol].filter(v => (v.st || 'pend') === 'pend' && (v.phone || (v.conyuge && v.phone2))).sort((a, b) => (a.hora || '99').localeCompare(b.hora || '99') || a.name.localeCompare(b.name, 'es'))[0];
+  if (!v) { toast('No quedan pendientes con teléfono'); return; }
+  asiSendTo(v);
+};
+ACT.asiAdd = () => asiEdit(null);
+ACT.asiEdit = el => asiEdit(el.dataset.id);
+function asiEdit(id) {
+  const v = id ? { ...byId('asiVol', id) } : { id: uid(), name: '', conyuge: '', phone: '', hora: '', sexo: 'm', st: 'pend', notas: '' };
+  const cr = inCron(v);
+  const m = openModal(id ? esc(asiNames(v)) : 'Nuevo voluntario', `
+    <div class="row nw"><label class="f" style="flex:1"><span>Nombre</span><input type="text" id="avN" value="${esc(v.name)}"></label><label class="f" style="flex:1"><span>Cónyuge (si es matrimonio)</span><input type="text" id="avC" value="${esc(v.conyuge || '')}"></label></div>
+    <div class="row nw"><label class="f" style="flex:2"><span>Teléfono</span><input type="tel" id="avP" value="${esc(v.phone)}"></label><label class="f" style="flex:2" id="avP2W"><span>Teléfono del cónyuge</span><input type="tel" id="avP2" value="${esc(v.phone2 || '')}"></label><label class="f" style="flex:1"><span>Hora</span><input type="time" id="avH" value="${esc(v.hora || '')}"${cr ? ' title="Si la cambias, queda fijada en el cronograma"' : ''}></label></div>
+    <div class="row nw"><label class="f" style="flex:1" id="avSW"><span>Es</span><select id="avS"><option value="m"${v.sexo !== 'f' ? ' selected' : ''}>Hermano</option><option value="f"${v.sexo === 'f' ? ' selected' : ''}>Hermana</option></select></label>
+      <label class="f" style="flex:1"><span>Estado</span><select id="avE">${Object.entries(ST_L).map(([k, l]) => `<option value="${k}"${(v.st || 'pend') === k ? ' selected' : ''}>${l}</option>`).join('')}</select></label></div>
+    <label class="f"><span>Notas</span><input type="text" id="avNo" value="${esc(v.notas || '')}" placeholder="Ej.: prefiere el domingo"></label>
+    <label class="chk"><input type="checkbox" id="avCr"${cr ? ' checked' : ''}> En el cronograma de entrevistas${cr ? ' (la hora se calcula sola; puedes cambiarla arriba)' : ''}</label>
+    ${id ? `<div class="mt"><span class="tiny">Su mensaje:</span><div class="card" style="background:var(--surface2);box-shadow:none;margin-top:4px"><div class="clip-text small">${esc(asiText(v))}</div></div></div>` : ''}`,
+    `${id ? `<button class="btn danger" data-x="del">${ic('trash', 's')}Eliminar</button>` : ''}<span class="sp"></span><button class="btn pri" data-x="ok">Guardar</button>`);
+  const sw = () => { const c = !!$('#avC', m).value.trim(); $('#avSW', m).style.visibility = c ? 'hidden' : ''; $('#avP2W', m).style.display = c ? '' : 'none'; };
+  $('#avC', m).oninput = sw; sw();
+  $('#avN', m).oninput = e => { if (!v.sexoManual) $('#avS', m).value = guessSex(e.target.value); };
+  $('#avS', m).onchange = () => { v.sexoManual = true; };
+  $('[data-x=ok]', m).onclick = () => {
+    const n = { ...v, name: $('#avN', m).value.trim(), conyuge: $('#avC', m).value.trim(), phone: $('#avP', m).value.trim(), phone2: $('#avP2', m).value.trim(), hora: $('#avH', m).value, sexo: $('#avS', m).value, st: $('#avE', m).value, notas: $('#avNo', m).value.trim() };
+    if (!n.name) { toast('Escribe el nombre'); return; }
+    if (n.st === 'conf' && !n.confAt) n.confAt = Date.now();
+    if (cr && n.hora && n.hora !== v.hora) n.fija = n.hora;
+    const want = $('#avCr', m).checked;
+    if (want && !cr) n.ord = cronNext(); if (!want && cr) delete n.ord;
+    upsert('asiVol', n); cronRenum(); closeModal(); render();
+  };
+  if (id) $('[data-x=del]', m).onclick = async () => { if (await confirmDlg(`¿Eliminar a ${esc(asiNames(v))}?`, 'Eliminar', true)) { removeItem('asiVol', id); cronRenum(); closeModal(); render(); } };
+  setTimeout(() => $('#avN', m).focus(), 50);
+}
+ACT.asiClear = async () => {
+  if (!await confirmDlg(`¿Vaciar la lista de ${S.asiVol.length} voluntarios y el cronograma? Haz antes una copia o exporta si la necesitas.`, 'Vaciar', true)) return;
+  [...S.asiVol].forEach(v => removeItem('asiVol', v.id)); [...S.asiPausa].forEach(p => removeItem('asiPausa', p.id)); render();
+};
+
+ACT.asiImport = async () => {
+  const [f] = await pickFiles('.xlsx,.xls,.xlsm,.ods,.csv,.pdf,.docx'); if (!f) return;
+  let rows;
+  try { rows = await readVolFile(f); } catch (e) { toast('No se pudo leer: ' + e.message, { ms: 6000 }); return; }
+  if (!rows.length) { toast('No he encontrado filas con nombre, teléfono y hora', { ms: 6000 }); return; }
+  const key = r => (r.phone || '').replace(/\D/g, '').slice(-9) || norm(r.name);
+  const ex = new Map(S.asiVol.map(v => [key(v), v]));
+  const nRaw = rows.length; rows = mergeRows(rows);
+  const items = rows.map(r => ({ ...r, sexo: r.sexo || guessSex(r.name), prev: ex.get(key(r)) }));
+  const nNew = items.filter(i => !i.prev).length, sinHora = items.some(i => !i.hora);
+  const m = openModal(`Importar ${items.length} voluntarios`, `
+    ${nRaw > rows.length ? `<p class="small" style="margin-top:0">${ic('users', 's')} He unido <b>${nRaw - rows.length} matrimonio${nRaw - rows.length === 1 ? '' : 's'}</b> que venían en dos filas (una por cónyuge).</p>` : ''}<p class="small muted" style="margin-top:0">${nNew} nuevo${nNew === 1 ? '' : 's'}${items.length - nNew ? ` · ${items.length - nNew} ya estaban (se actualiza su hora y teléfono)` : ''}. Revisa «Hno./Hna.» antes de importar.</p>
+    <div class="rep-tw" style="max-height:400px;overflow:auto"><table class="rep-t"><thead><tr><th></th><th>Nombre</th><th>Teléfono</th><th>Hora</th><th>Es</th></tr></thead><tbody>
+    ${items.map((i, k) => `<tr data-k="${k}"><td><input type="checkbox" class="aiC" checked></td><td>${esc(asiNames(i))}${i.prev ? ' <span class="tiny">(ya estaba)</span>' : ''}</td><td class="small">${i.phone || (i.conyuge && i.phone2) ? esc(asiPhones(i)) : '<span class="pill warn">falta</span>'}</td><td><input type="time" class="aiH" value="${i.hora}" style="padding:3px 5px"></td>
+      <td>${i.conyuge ? '<span class="tiny">matrimonio</span><select class="aiS" style="display:none"><option value="m">m</option></select>' : `<select class="aiS" style="padding:3px 5px${sexSure(i.name) ? '' : ';border-color:var(--warn)'}"><option value="m"${i.sexo !== 'f' ? ' selected' : ''}>Hno.</option><option value="f"${i.sexo === 'f' ? ' selected' : ''}>Hna.</option></select>`}</td></tr>`).join('')}
+    </tbody></table></div><p class="tiny">Las listas con borde amarillo son nombres dudosos: compruébalos.</p>
+    <label class="chk"><input type="checkbox" id="aiCr"${sinHora ? ' checked' : ''}> Añadirlos al cronograma en este orden (las horas se calculan solas)</label>`,
+    `<button class="btn" data-x="no">Cancelar</button><button class="btn pri" data-x="ok">Importar</button>`, { wide: true });
+  $('[data-x=no]', m).onclick = () => closeModal();
+  $('[data-x=ok]', m).onclick = () => {
+    let n = 0; const toCr = $('#aiCr', m).checked; let o = cronNext();
+    $$('tr[data-k]', m).forEach(tr => {
+      if (!$('.aiC', tr).checked) return; const i = items[+tr.dataset.k];
+      const sexo = $('.aiS', tr).value, hora = $('.aiH', tr).value;
+      let v;
+      if (i.prev) { v = { ...i.prev, hora: hora || i.prev.hora, phone: i.phone || i.prev.phone, phone2: i.phone2 || i.prev.phone2 || '', conyuge: i.conyuge || i.prev.conyuge || '' }; if (!i.conyuge && sexo !== i.prev.sexo) { v.sexo = sexo; v.sexoManual = true; } }
+      else v = { id: uid(), name: i.name, conyuge: i.conyuge || '', phone: i.phone, phone2: i.phone2 || '', hora, sexo, sexoManual: sexo !== guessSex(i.name), st: 'pend', notas: '', src: f.name };
+      if (toCr && !inCron(v)) v.ord = o++;
+      upsert('asiVol', v); n++;
+    });
+    cronSync(); closeModal(); UI.asiF = 'todos'; if (toCr) UI.asiTab = 'crono'; render(); toast(`${n} voluntarios importados`);
+  };
+};
+
+ACT.asiMsgEdit = () => {
+  const draft = { p: asiMsg(), m: asiMsgM() }; let mode = 'p', pv = 'f';
+  const one = S.asiVol.find(v => !v.conyuge), two = S.asiVol.find(v => v.conyuge);
+  const m = openModal('Mensaje para los voluntarios', `
+    <div class="seg mb"><button class="on" data-md="p">Una persona</button><button data-md="m">Matrimonio</button></div>
+    <textarea id="amT" rows="11"></textarea>
+    <div class="row mt"><span class="tiny">Insertar:</span><span id="amF"></span><span class="sp"></span><button class="btn sm ghost" data-x="reset">Mensaje original</button></div>
+    <div class="row mt" style="gap:6px"><span class="tiny">Vista previa:</span><div class="seg" id="amPv"><button class="on" data-pv="f">Hermana</button><button data-pv="m">Hermano</button></div></div>
+    <div class="card" style="background:var(--surface2);box-shadow:none;margin-top:6px"><div class="clip-text small" id="amP"></div></div>
+    <p class="tiny" id="amHelp"></p>`,
+    `<button class="btn pri" data-x="ok">Guardar</button>`, { wide: true });
+  const ta = $('#amT', m);
+  const FLD = { p: [['{Querido}', 'Querido/a'], ['{hermano}', 'hermano/a'], ['{nombre}', 'Nombre'], ['{hora}', 'Hora']], m: [['{Queridos}', 'Queridos'], ['{hermanos}', 'hermanos'], ['{nombre}', 'Nombres'], ['{hora}', 'Hora']] };
+  const prev = () => {
+    draft[mode] = ta.value;
+    const keep = [S.settings.asiMsg, S.settings.asiMsgM]; S.settings.asiMsg = draft.p; S.settings.asiMsgM = draft.m;
+    const s = mode === 'm' ? (two || { name: 'Juan Pérez', conyuge: 'María López', hora: '11:00' }) : { ...(one && (one.sexo || 'm') === pv ? one : { name: pv === 'f' ? 'María García' : 'Juan Pérez', hora: '10:30' }), sexo: pv, conyuge: '' };
+    $('#amP', m).textContent = asiText(s); [S.settings.asiMsg, S.settings.asiMsgM] = keep;
+  };
+  const show = () => {
+    ta.value = draft[mode]; $('#amPv', m).style.display = mode === 'p' ? '' : 'none';
+    $('#amF', m).innerHTML = FLD[mode].map(([f, l]) => `<button class="btn sm" data-f="${f}">${l}</button>`).join(' ');
+    $$('[data-f]', m).forEach(b => b.onclick = () => { const s = ta.selectionStart ?? ta.value.length, e = ta.selectionEnd ?? s; ta.value = ta.value.slice(0, s) + b.dataset.f + ta.value.slice(e); ta.focus(); ta.setSelectionRange(s + b.dataset.f.length, s + b.dataset.f.length); prev(); });
+    $('#amHelp', m).textContent = mode === 'p' ? '{Querido} se convierte en «Querido» o «Querida», y {hermano} en «hermano» o «hermana», según cada persona. {nombre} es su nombre de pila y {hora}, la hora que le toca. Los asteriscos (*texto*) salen en negrita en WhatsApp.'
+      : 'Este mensaje se usa cuando la ficha tiene cónyuge. {nombre} se convierte en «Juan y María» y {hora} en la hora de la entrevista.';
+    prev();
+  };
+  ta.oninput = prev;
+  $$('[data-md]', m).forEach(b => b.onclick = () => { draft[mode] = ta.value; mode = b.dataset.md; $$('[data-md]', m).forEach(x => x.classList.toggle('on', x === b)); show(); });
+  $$('[data-pv]', m).forEach(b => b.onclick = () => { pv = b.dataset.pv; $$('[data-pv]', m).forEach(x => x.classList.toggle('on', x === b)); prev(); });
+  $('[data-x=reset]', m).onclick = () => { ta.value = mode === 'm' ? ASI_DEFAULT_MSG_M : ASI_DEFAULT_MSG; prev(); };
+  $('[data-x=ok]', m).onclick = () => { draft[mode] = ta.value; S.settings.asiMsg = draft.p; S.settings.asiMsgM = draft.m; save(); closeModal(); render(); toast('Mensajes guardados'); };
+  show();
+};
+ACT.asiExport = () => exportDialog('Exportar voluntarios', '', ['xlsx', 'pdf', 'docx'], async fmt => {
+  const l = [...S.asiVol].sort((a, b) => (a.hora || '99').localeCompare(b.hora || '99') || a.name.localeCompare(b.name, 'es'));
+  if (!l.length) { toast('La lista está vacía'); return null; }
+  return exportTable(fmt, 'Asamblea internacional · voluntarios', ['Hora', 'Nombre', 'Cónyuge', 'Teléfono', 'Tel. cónyuge', 'Hno./Hna.', 'Estado', 'Notas'], l.map(v => [v.hora || '', v.name, v.conyuge || '', v.phone || '', v.conyuge ? v.phone2 || '' : '', v.conyuge ? 'Matrimonio' : v.sexo === 'f' ? 'Hna.' : 'Hno.', ST_L[v.st || 'pend'], v.notas || '']), 'voluntarios-asamblea');
+});
+
+/* ================= AVISOS CON LA APP CERRADA (Android y Windows) ================= */
+let alarmTimer = null, alarmLast = '';
+function alarmList() {
+  const now = Date.now(), lim = now + 120 * 864e5;
+  return S.events.filter(e => e.remind >= 0).map(e => ({ e, at: eventTime(e) - e.remind * 60000 }))
+    .filter(x => x.at > now - 60000 && x.at < lim).sort((a, b) => a.at - b.at).slice(0, 300)
+    .map(({ e, at }) => ({ id: e.id, at, title: 'Recordatorio: ' + e.title, body: `${fmtMed(e.date)}${e.time ? ' · ' + e.time : ''}${e.area ? ' · ' + areaPath(e.area) : ''}${e.note ? '\n' + String(e.note).slice(0, 200) : ''}` }));
+}
+function syncAlarms() {
+  const l = alarmList(), j = JSON.stringify(l);
+  if (j === alarmLast) return; alarmLast = j;
+  try { if (ANDR && window.AndroidBridge.setAlarms) window.AndroidBridge.setAlarms(j); } catch (e) {}
+  try { if (DESK && window.api.setAlarms) window.api.setAlarms(l); } catch (e) {}
+}
+function scheduleAlarmSync() { clearTimeout(alarmTimer); alarmTimer = setTimeout(syncAlarms, 1200); }
+const nativeNotif = () => (ANDR && !!(window.AndroidBridge && window.AndroidBridge.setAlarms)) || (DESK && !!window.api.setAlarms);
+ACT.askNotifNative = () => { try { window.AndroidBridge.askNotif(); } catch (e) {} setTimeout(render, 2500); };
+CH.setBackground = async el => { await window.api.setBackground(el.checked); toast(el.checked ? 'Mi Agenda seguirá en segundo plano para avisarte' : 'Al cerrar la ventana, Mi Agenda se cerrará del todo'); };
+function notifCardHtml() {
+  if (ANDR && nativeNotif()) {
+    let ok = true; try { ok = window.AndroidBridge.notifOk(); } catch (e) {}
+    return `<p class="small muted">El móvil te avisa a la hora de cada recordatorio aunque Mi Agenda esté cerrada.</p>${ok ? '<span class="pill ok">Avisos activados</span>' : `<button class="btn pri" data-act="askNotifNative">${ic('bell', 's')}Permitir avisos</button><p class="tiny">Si no aparece la pregunta, actívalos en Ajustes del móvil › Aplicaciones › Mi Agenda › Notificaciones.</p>`}`;
+  }
+  if (DESK && nativeNotif()) return `<p class="small muted">Windows te avisa a la hora de cada recordatorio. Para que también avise con la ventana cerrada, Mi Agenda se queda en segundo plano (icono junto al reloj) y se abre sola al encender el ordenador.</p>
+    <label class="chk"><input type="checkbox" id="bgChk" data-ch="setBackground"> Seguir en segundo plano para avisarme</label><p class="tiny">Para cerrarla del todo: clic derecho en su icono junto al reloj › «Salir del todo».</p>`;
+  if (IOS) return `<p class="small muted">En el iPad los avisos solo salen con Mi Agenda abierta. Para que suene con la app cerrada, usa el botón <b>.ics</b> del evento: se añade al Calendario del iPad con su alarma.</p>`;
+  return '';
+}
+
+/* ================= BUSCADOR GENERAL ================= */
+function gsCollect(q) {
+  const t = norm(q).trim(); if (t.length < 2) return [];
+  const has = (...xs) => xs.some(x => x && norm(String(x)).includes(t));
+  const snip = (s, n = 90) => { s = String(s || '').replace(/\s+/g, ' '); const i = norm(s).indexOf(t); if (i < 0) return s.slice(0, n); const a = Math.max(0, i - 30); return (a ? '…' : '') + s.slice(a, a + n) + (s.length > a + n ? '…' : ''); };
+  const R = [];
+  const add = (g, icon, title, sub, act, data) => R.push({ g, icon, title, sub, act, data });
+  S.contacts.filter(c => has(c.name, c.roles, c.notes, c.email, String(c.phone || '').replace(/\D/g, ''))).forEach(c => add('Contactos', 'users', c.name, [c.roles, c.phone].filter(Boolean).join(' · '), 'gsContact', c.id));
+  S.events.filter(e => has(e.title, e.note)).sort((a, b) => b.date.localeCompare(a.date)).forEach(e => add('Eventos', 'cal', e.title, fmtShort(e.date) + (e.time ? ' ' + e.time : '') + (has(e.note) && !has(e.title) ? ' · ' + snip(e.note) : ''), 'gsEvent', e.id));
+  S.asiVol.filter(v => has(v.name, v.conyuge, v.notas, String(v.phone || '').replace(/\D/g, ''), String(v.phone2 || '').replace(/\D/g, ''))).forEach(v => add('Asamblea internacional', 'globe', asiNames(v), [v.hora && v.hora + ' h', v.phone].filter(Boolean).join(' · '), 'gsAsi', v.id));
+  S.discursos.filter(d => has(d.titulo, d.lugar, d.notas, d.num && '#' + d.num)).forEach(d => add('Discursos', 'star', (d.num ? `Nº ${d.num} · ` : '') + (d.titulo || ''), [d.fecha && fmtShort(d.fecha), d.lugar].filter(Boolean).join(' · '), 'gsDisc', d.id));
+  S.ayudaH.filter(h => has(h.name, h.notas, h.dir)).forEach(h => add('Ayuda a hermanos', 'hands', h.name, snip(h.notas || h.dir || ''), 'gsAy', 'ayudaH:' + h.id));
+  S.ayudaV.filter(h => has(h.name, h.notas)).forEach(h => add('Ayuda a hermanos', 'hands', h.name, 'Visita a hermanos', 'gsAy', 'ayudaV:' + h.id));
+  S.congs.filter(c => has(c.name)).forEach(c => add('Visitas a congregaciones', 'star', c.name, '', 'gsCong', c.id));
+  S.metas.filter(m => has(m.t, m.n)).forEach(m => add('Metas', 'send', m.t, snip(m.n || ''), 'gsMeta', m.id));
+  S.letters.filter(l => has(l.name, l.text, l.html && l.html.replace(/<[^>]+>/g, ' '))).forEach(l => add('Cartas', 'mail', l.name, '', 'gsLetter', l.id));
+  S.docs.forEach(d => { const b = (d.blocks || []).find(b => has(b.text)); if (has(d.name) || b) add('Documentos', 'file', d.name, b ? snip(b.text) : '', 'gsDoc', d.id); });
+  S.clips.filter(c => has(c.text, c.source)).forEach(c => add('Recortes', 'cut', c.source || 'Recorte', snip(c.text), 'gsClip', c.id));
+  return R;
+}
+ACT.gSearch = () => {
+  const m = openModal('Buscar en todo', `<div class="search" style="margin-bottom:12px">${ic('search', 's')}<input type="search" id="gsQ" placeholder="Nombre, teléfono, palabra…" autocomplete="off"></div><div id="gsR"><p class="small muted">Busca a la vez en contactos, eventos, voluntarios, discursos, cartas, documentos, recortes, metas y visitas.</p></div>`, '', { wide: true });
+  const run = () => {
+    const q = $('#gsQ', m).value, R = gsCollect(q), box = $('#gsR', m);
+    if (norm(q).trim().length < 2) { box.innerHTML = '<p class="small muted">Escribe al menos 2 letras.</p>'; return; }
+    if (!R.length) { box.innerHTML = '<div class="empty">No he encontrado nada.</div>'; return; }
+    const groups = [...new Set(R.map(r => r.g))];
+    box.innerHTML = `<p class="tiny">${R.length} resultado${R.length === 1 ? '' : 's'}</p>` + groups.map(g => { const l = R.filter(r => r.g === g); return `<div class="gs-g"><div class="gs-h">${esc(g)} · ${l.length}</div><div class="list">${l.slice(0, 25).map(r => `<div class="item" data-act="${r.act}" data-id="${esc(r.data)}"><span class="gs-i">${ic(r.icon, 's')}</span><div class="body"><div class="t">${esc(r.title)}</div>${r.sub ? `<div class="s">${esc(r.sub)}</div>` : ''}</div>${ic('right', 's')}</div>`).join('')}${l.length > 25 ? `<div class="tiny" style="padding:6px">…y ${l.length - 25} más. Afina la búsqueda.</div>` : ''}</div></div>`; }).join('');
+  };
+  $('#gsQ', m).oninput = run; setTimeout(() => $('#gsQ', m).focus(), 50);
+};
+const gsClose = () => { while (modalStack.length) closeModal(); };
+ACT.gsContact = el => { gsClose(); editContact(el.dataset.id); };
+ACT.gsEvent = el => { gsClose(); editEvent(el.dataset.id); };
+ACT.gsAsi = el => { gsClose(); UI.asiTab = 'lista'; go('asamblea'); asiEdit(el.dataset.id); };
+ACT.gsDisc = el => { gsClose(); go('discursos'); discEdit(el.dataset.id); };
+ACT.gsAy = el => { gsClose(); const [c, id] = el.dataset.id.split(':'); go('ayuda', { ayTab: c === 'ayudaH' ? 'h' : 'v' }); ACT.ayEdit({ dataset: { c, id } }); };
+ACT.gsCong = el => { gsClose(); go('visitas', { congId: el.dataset.id, congTab: 'rep' }); };
+ACT.gsMeta = el => { gsClose(); go('ministerio', { minTab: 'met' }); };
+ACT.gsLetter = el => { gsClose(); go('letters', { letterId: el.dataset.id }); };
+ACT.gsDoc = el => { gsClose(); go('docs', { docId: el.dataset.id }); };
+ACT.gsClip = el => { gsClose(); go('clips'); clipEdit(el.dataset.id); };
+function ensureSearchBtn() {
+  const top = $('header.top'); if (!top || $('#gsBtn')) return;
+  const b = document.createElement('button'); b.id = 'gsBtn'; b.className = 'btn icon ghost'; b.dataset.act = 'gSearch'; b.title = 'Buscar en todo (Ctrl+K)'; b.innerHTML = ic('search');
+  top.insertBefore(b, top.querySelector('.areasel'));
+}
+window.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k' && !document.body.classList.contains('locked')) { e.preventDefault(); ACT.gSearch(); } });
+
+/* ================= LO PENDIENTE (Inicio) ================= */
+function pendientes() {
+  const today = todayISO(), out = [];
+  // Ayuda a hermanos: visitas sin confirmar que aún no han pasado
+  S.ayudaA.filter(a => (a.to || a.from) >= today && !ayConf(a)).sort((a, b) => a.from.localeCompare(b.from)).forEach(a => {
+    const falta = (a.v || []).filter(v => v && !(a.conf || {})[v]).map(v => ayName('ayudaV', v));
+    out.push({ ic: 'hands', t: `Visita a ${ayName('ayudaH', a.h)} sin confirmar`, s: `${periodLabel(a)}${falta.length ? ' · falta: ' + falta.join(', ') : ''}`, act: 'pdAyuda', ym: a.from.slice(0, 7) });
+  });
+  // Mi grupo: informes del mes pasado que faltan
+  const ms = grupoMembers();
+  if (ms.length) {
+    const ym = ymAdd(today.slice(0, 7), -1), miss = ms.filter(c => !infOf(c, ym).st);
+    if (miss.length) out.push({ ic: 'heart', t: `Faltan ${miss.length} informe${miss.length === 1 ? '' : 's'} de ${ymLong(ym)}`, s: miss.slice(0, 6).map(c => c.name).join(', ') + (miss.length > 6 ? '…' : ''), act: 'pdGrupo', ym });
+  }
+  // Metas que vencen en 15 días o ya vencidas
+  const lim = isoOf(new Date(Date.now() + 15 * 864e5));
+  S.metas.filter(m => m.estado !== 'hecha' && m.fecha && m.fecha <= lim).sort((a, b) => a.fecha.localeCompare(b.fecha)).forEach(m => {
+    const d = Math.round((parseISO(m.fecha) - parseISO(today)) / 864e5);
+    out.push({ ic: 'send', t: `Meta: ${m.t}`, s: d < 0 ? `venció hace ${-d} día${d === -1 ? '' : 's'}` : d === 0 ? 'vence hoy' : `vence en ${d} día${d === 1 ? '' : 's'} (${fmtShort(m.fecha)})`, act: 'pdMeta', warn: d < 0 });
+  });
+  return out;
+}
+function pendientesHtml() {
+  const P = pendientes(); if (!P.length) return '';
+  return `<div class="card mb pend-card"><h2>Lo pendiente · ${P.length}</h2><div class="list">${P.slice(0, 10).map(p => `<div class="item" data-act="${p.act}" data-ym="${p.ym || ''}"><span class="gs-i${p.warn ? ' warn' : ''}">${ic(p.ic, 's')}</span><div class="body"><div class="t">${esc(p.t)}</div><div class="s">${esc(p.s)}</div></div>${ic('right', 's')}</div>`).join('')}</div>${P.length > 10 ? `<p class="tiny">…y ${P.length - 10} más.</p>` : ''}</div>`;
+}
+ACT.pdAyuda = el => go('ayuda', { ayTab: 'cal', ayMonth: el.dataset.ym });
+ACT.pdGrupo = el => go('grupo', { grupoTab: 'inf', grupoMonth: el.dataset.ym });
+ACT.pdMeta = () => go('ministerio', { minTab: 'met' });
+
+/* ================= MI GRUPO · RECORDAR INFORMES ================= */
+const INF_REC_DEFAULT = 'Hola {nombre} 😊 ¿Me puedes pasar tu informe de predicación de {mes}? ¡Muchas gracias!';
+ACT.infRemind = () => {
+  const ym = UI.grupoMonth, miss = grupoMembers().filter(c => !infOf(c, ym).st);
+  if (!miss.length) { toast('Todos han dado su informe'); return; }
+  const txt = c => (S.settings.infRecMsg || INF_REC_DEFAULT).replace(/\{\s*nombre\s*\}/gi, firstNameOf(c.name)).replace(/\{\s*mes\s*\}/gi, ymLong(ym));
+  const m = openModal(`Recordar informe · ${ymLong(ym)}`, `
+    <label class="f"><span>Mensaje ({nombre} y {mes} se cambian solos)</span><textarea id="irT" rows="3">${esc(S.settings.infRecMsg || INF_REC_DEFAULT)}</textarea></label>
+    <div class="list" id="irL">${miss.map(c => `<div class="item" style="cursor:default" data-id="${c.id}"><div class="body"><div class="t">${esc(c.name)}</div><div class="s">${esc(c.phone || 'Sin teléfono')}${((c.infAsk || {})[ym]) ? ' · recordado ' + fmtStamp(c.infAsk[ym]) : ''}</div></div><button class="btn sm wa" data-x="send"${c.phone ? '' : ' disabled'}>${ic('msg', 's')}Enviar</button></div>`).join('')}</div>
+    <p class="tiny">Se envía uno a uno: pulsa «Enviar», manda el mensaje en WhatsApp y vuelve a Mi Agenda para el siguiente.</p>`, `<button class="btn" data-x="close">Cerrar</button>`);
+  $('#irT', m).oninput = e => { S.settings.infRecMsg = e.target.value; save(); };
+  $('[data-x=close]', m).onclick = () => closeModal();
+  $$('[data-x=send]', m).forEach(b => b.onclick = () => {
+    const c = byId('contacts', b.closest('[data-id]').dataset.id);
+    openWA(c.phone, txt(c)); c.infAsk = { ...(c.infAsk || {}), [ym]: Date.now() }; upsert('contacts', c);
+    b.textContent = '✓ Enviado'; b.classList.remove('wa');
+  });
+};
+
+/* ================= HISTORIAL DE DISCURSOS ================= */
+const DISC_T = [['pub', 'Discurso público'], ['sc', 'Como superintendente'], ['otro', 'Otro']];
+UI.discTab = 'hist'; UI.discQ = '';
+const discTitle = num => { const l = S.discursos.filter(d => String(d.num) === String(num) && d.titulo).sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0)); return l[0] ? l[0].titulo : ''; };
+VIEWS.discursos = () => {
+  const q = norm(UI.discQ), today = todayISO();
+  const all = [...S.discursos].sort((a, b) => (b.fecha || '').localeCompare(a.fecha || ''));
+  const hit = d => !q || norm(`${d.num} ${d.titulo} ${d.lugar} ${d.notas}`).includes(q);
+  const tabs = `<div class="seg mb asi-tabs"><button class="${UI.discTab === 'hist' ? 'on' : ''}" data-act="discTab" data-t="hist">Historial</button><button class="${UI.discTab === 'bos' ? 'on' : ''}" data-act="discTab" data-t="bos">Por bosquejo</button></div>`;
+  const tb = `<div class="toolbar"><div class="search">${ic('search', 's')}<input type="search" id="discQ" placeholder="Número, título o congregación…" value="${esc(UI.discQ)}" data-in="discQ"></div><button class="btn" data-act="discExport">${ic('down', 's')}Exportar</button><button class="btn pri" data-act="discAdd">${ic('plus', 's')}Añadir discurso</button></div>`;
+  if (!all.length) return tabs + tb + `<div class="card"><div class="empty">Apunta aquí cada discurso que das: número de bosquejo, título, fecha y congregación. Así sabrás dónde has dado cada uno y no lo repetirás.</div></div>`;
+  let body;
+  if (UI.discTab === 'bos') {
+    const g = {}; all.forEach(d => { const k = d.num ? String(d.num) : 't:' + norm(d.titulo); (g[k] = g[k] || []).push(d); });
+    const rows = Object.values(g).filter(l => l.some(hit)).map(l => ({ l, last: l.filter(d => d.fecha && d.fecha <= today)[0], d: l[0] })).sort((a, b) => ((a.last || {}).fecha || '0').localeCompare((b.last || {}).fecha || '0'));
+    body = `<p class="small muted">Ordenados por el que hace más tiempo que no das.</p><div class="card"><div class="list">${rows.map(({ l, last, d }) => `<div class="item" data-act="discNew" data-num="${esc(d.num || '')}" data-tit="${esc(d.titulo || '')}"><span class="disc-n">${esc(d.num || '—')}</span><div class="body"><div class="t">${esc(discTitle(d.num) || d.titulo || 'Sin título')}</div>
+      <div class="s">${l.length} ${l.length === 1 ? 'vez' : 'veces'} · ${last ? 'último: ' + fmtShort(last.fecha) + ' en ' + esc(last.lugar || '¿?') + ' (' + haceTexto(last.fecha) + ')' : 'aún no lo has dado'}</div><div class="tiny">${esc([...new Set(l.map(x => x.lugar).filter(Boolean))].join(' · '))}</div></div>${ic('plus', 's')}</div>`).join('')}</div></div>`;
+  } else {
+    const l = all.filter(hit);
+    body = `<div class="card"><div class="list">${l.map(d => `<div class="item" data-act="discEditA" data-id="${d.id}">${d.fecha ? dateBox(d.fecha) : '<span class="disc-n">?</span>'}<div class="body"><div class="t">${d.num ? `<b>Nº ${esc(d.num)}</b> · ` : ''}${esc(d.titulo || 'Sin título')}</div><div class="s">${esc(d.lugar || 'Sin congregación')} · ${DISC_T.find(t => t[0] === d.tipo)?.[1] || ''}${d.fecha > today ? ' · <b>próximo</b>' : ''}</div>${d.notas ? `<div class="tiny">${esc(d.notas)}</div>` : ''}</div></div>`).join('') || '<div class="empty">Nada coincide.</div>'}</div></div>`;
+  }
+  return tabs + tb + body;
+};
+ACT.discTab = el => { UI.discTab = el.dataset.t; render(); };
+IN.discQ = el => { UI.discQ = el.value; const p = el.selectionStart; render(); const n = $('#discQ'); n.focus(); n.setSelectionRange(p, p); };
+ACT.discAdd = () => discEdit(null);
+ACT.discEditA = el => discEdit(el.dataset.id);
+ACT.discNew = el => discEdit(null, { num: el.dataset.num, titulo: el.dataset.tit });
+function discEdit(id, pre = {}) {
+  const d = id ? { ...byId('discursos', id) } : { id: uid(), num: '', titulo: '', fecha: todayISO(), lugar: '', tipo: S.settings.discTipo || 'pub', notas: '', ...pre };
+  const lugares = [...new Set([...S.discursos.map(x => x.lugar), ...S.congs.map(c => c.name)].filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es'));
+  const m = openModal(id ? 'Discurso' : 'Añadir discurso', `
+    <div class="row nw"><label class="f" style="width:110px;flex:none"><span>Nº bosquejo</span><input type="text" inputmode="numeric" id="dsN" value="${esc(d.num || '')}"></label><label class="f" style="flex:1"><span>Título</span><input type="text" id="dsT" value="${esc(d.titulo || '')}"></label></div>
+    <div class="row nw"><label class="f" style="flex:1"><span>Fecha</span><input type="date" id="dsF" value="${esc(d.fecha || '')}"></label><label class="f" style="flex:1"><span>Tipo</span><select id="dsY">${DISC_T.map(([k, l]) => `<option value="${k}"${d.tipo === k ? ' selected' : ''}>${l}</option>`).join('')}</select></label></div>
+    <label class="f"><span>Congregación o lugar</span><input type="text" id="dsL" list="dsLL" value="${esc(d.lugar || '')}"><datalist id="dsLL">${lugares.map(x => `<option value="${esc(x)}">`).join('')}</datalist></label>
+    <label class="f"><span>Notas</span><input type="text" id="dsO" value="${esc(d.notas || '')}" placeholder="Ej.: cambié las ilustraciones"></label>
+    <div id="dsW"></div>
+    ${id ? '' : `<label class="chk"><input type="checkbox" id="dsC"> Añadirlo también al calendario</label>`}`,
+    `${id ? `<button class="btn danger" data-x="del">${ic('trash', 's')}Eliminar</button>` : ''}<span class="sp"></span><button class="btn pri" data-x="ok">Guardar</button>`);
+  const warn = () => {
+    const n = $('#dsN', m).value.trim(), L = norm($('#dsL', m).value).trim();
+    if (n && !id && !$('#dsT', m).value.trim()) $('#dsT', m).value = discTitle(n);
+    const prev = S.discursos.filter(x => x.id !== d.id && n && String(x.num) === n).sort((a, b) => (b.fecha || '').localeCompare(a.fecha || ''));
+    const same = prev.filter(x => L && norm(x.lugar) === L);
+    $('#dsW', m).innerHTML = same.length ? `<div class="banner warn mb">${ic('bell')}<div>Ya diste este bosquejo en <b>${esc(same[0].lugar)}</b> el ${fmtShort(same[0].fecha)} (${haceTexto(same[0].fecha)}).</div></div>`
+      : prev.length ? `<p class="tiny">Lo has dado ${prev.length} ${prev.length === 1 ? 'vez' : 'veces'}; la última en ${esc(prev[0].lugar || '¿?')} el ${fmtShort(prev[0].fecha)}.</p>` : '';
+    const cb = $('#dsC', m); if (cb && !cb.dataset.touched) cb.checked = ($('#dsF', m).value || '') > todayISO();
+  };
+  ['#dsN', '#dsL', '#dsF'].forEach(s => { $(s, m).addEventListener('input', warn); $(s, m).addEventListener('change', warn); });
+  if ($('#dsC', m)) $('#dsC', m).onchange = e => { e.target.dataset.touched = 1; };
+  warn();
+  $('[data-x=ok]', m).onclick = () => {
+    const n = { ...d, num: $('#dsN', m).value.trim(), titulo: $('#dsT', m).value.trim(), fecha: $('#dsF', m).value, tipo: $('#dsY', m).value, lugar: $('#dsL', m).value.trim(), notas: $('#dsO', m).value.trim() };
+    if (!n.num && !n.titulo) { toast('Pon el número o el título'); return; }
+    S.settings.discTipo = n.tipo; upsert('discursos', n);
+    if ($('#dsC', m) && $('#dsC', m).checked && n.fecha) upsert('events', { id: uid(), title: `Discurso${n.num ? ' nº ' + n.num : ''}${n.lugar ? ' en ' + n.lugar : ''}`, date: n.fecha, time: '', end: '', area: n.tipo === 'sc' ? 'sup-discursos' : 'cong-misdiscursos', remind: S.settings.defRemind, note: n.titulo });
+    closeModal(); render();
+  };
+  if (id) $('[data-x=del]', m).onclick = async () => { if (await confirmDlg('¿Eliminar este discurso del historial?', 'Eliminar', true)) { removeItem('discursos', id); closeModal(); render(); } };
+  setTimeout(() => $(id ? '#dsT' : '#dsN', m).focus(), 50);
+}
+ACT.discExport = () => exportDialog('Exportar discursos', '', ['xlsx', 'pdf', 'docx'], async fmt => {
+  const l = [...S.discursos].sort((a, b) => (b.fecha || '').localeCompare(a.fecha || '')); if (!l.length) { toast('No hay discursos'); return null; }
+  return exportTable(fmt, 'Historial de discursos', ['Fecha', 'Nº', 'Título', 'Congregación', 'Tipo', 'Notas'], l.map(d => [d.fecha ? fmtShort(d.fecha) : '', d.num || '', d.titulo || '', d.lugar || '', DISC_T.find(t => t[0] === d.tipo)?.[1] || '', d.notas || '']), 'historial-discursos');
+});
+
+/* ================= BLOQUEO CON PIN / HUELLA ================= */
+/* Es una pantalla de privacidad: impide que otra persona vea la app al coger el móvil o el ordenador.
+   El PIN no viaja en las copias de seguridad y no cifra el archivo de datos. */
+async function pinHash(pin, salt) {
+  const txt = salt + ':' + pin;
+  try { const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(txt)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join(''); }
+  catch (e) { let h1 = 0x811c9dc5, h2 = 5381; for (let k = 0; k < 2000; k++) for (const ch of txt) { const c = ch.charCodeAt(0); h1 = Math.imul(h1 ^ c, 16777619) >>> 0; h2 = (Math.imul(h2, 33) ^ c) >>> 0; } return 'f' + h1.toString(16) + h2.toString(16); }
+}
+const lockOn = () => !!(S.lock && S.lock.hash);
+const canBio = () => { try { return ANDR && window.AndroidBridge.canBiometric && window.AndroidBridge.canBiometric(); } catch (e) { return false; } };
+let lockedNow = false, hiddenAt = 0;
+function showLock() {
+  if (!lockOn() || lockedNow) return;
+  lockedNow = true; document.body.classList.add('locked');
+  while (modalStack.length) closeModal();
+  let el = $('#lock'); if (!el) { el = document.createElement('div'); el.id = 'lock'; document.body.appendChild(el); }
+  let pin = '';
+  const bio = S.lock.bio && canBio();
+  el.innerHTML = `<div class="lk-box"><div class="lk-logo">${ic('db')}</div><h2>Mi Agenda</h2><p class="small muted" id="lkMsg">Escribe tu PIN</p><div class="lk-dots" id="lkD"></div>
+    <div class="lk-pad">${[1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => `<button data-k="${n}">${n}</button>`).join('')}${bio ? `<button data-k="bio" title="Huella">👆</button>` : '<span></span>'}<button data-k="0">0</button><button data-k="del" title="Borrar">⌫</button></div>
+    <button class="btn ghost sm" id="lkForgot">¿Has olvidado el PIN?</button></div>`;
+  const dots = () => { $('#lkD', el).innerHTML = Array.from({ length: Math.max(4, pin.length) }, (_, i) => `<span class="${i < pin.length ? 'on' : ''}"></span>`).join(''); };
+  const tryPin = async () => {
+    if (pin.length < (S.lock.len || 4)) return;
+    if (await pinHash(pin, S.lock.salt) === S.lock.hash) { unlock(); return; }
+    if (pin.length >= (S.lock.len || 4)) { $('#lkMsg', el).textContent = 'PIN incorrecto'; el.querySelector('.lk-box').classList.add('shake'); setTimeout(() => el.querySelector('.lk-box') && el.querySelector('.lk-box').classList.remove('shake'), 400); pin = ''; dots(); }
+  };
+  const key = k => { if (k === 'del') pin = pin.slice(0, -1); else if (k === 'bio') { askBio(); return; } else if (pin.length < 8) pin += k; dots(); tryPin(); };
+  $$('[data-k]', el).forEach(b => b.onclick = () => key(b.dataset.k));
+  el.onkeydown = null;
+  window.__lockKey = e => { if (!lockedNow) return; if (/^\d$/.test(e.key)) key(e.key); else if (e.key === 'Backspace') key('del'); };
+  $('#lkForgot', el).onclick = () => { $('#lkMsg', el).innerHTML = 'El PIN no se puede recuperar. Para quitarlo: desinstala Mi Agenda en este dispositivo (o borra sus datos), vuelve a instalarla e importa tu última copia de seguridad: las copias no llevan el PIN.'; };
+  dots();
+  if (bio) setTimeout(askBio, 300);
+}
+window.addEventListener('keydown', e => { if (lockedNow && window.__lockKey) { e.preventDefault(); e.stopPropagation(); window.__lockKey(e); } }, true);
+function askBio() { try { window.AndroidBridge.biometric(); } catch (e) {} }
+window.__bioOk = ok => { if (ok) unlock(); };
+function unlock() { lockedNow = false; document.body.classList.remove('locked'); const el = $('#lock'); if (el) el.remove(); }
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) hiddenAt = Date.now();
+  else if (lockOn() && hiddenAt && Date.now() - hiddenAt >= (S.lock.mins ?? 5) * 60000) showLock();
+});
+function lockCardHtml() {
+  const on = lockOn();
+  return `<div class="card"><h2>Bloqueo con PIN</h2>
+    <p class="small muted" style="margin-top:0">Pide un PIN al abrir Mi Agenda${ANDR ? ' (o tu huella)' : ''}, para que nadie vea los datos de los hermanos si coge tu ${ANDR ? 'móvil' : IOS ? 'iPad' : 'ordenador'}.</p>
+    ${on ? `<span class="pill ok">${ic('check', 's')}Activado</span>
+      <label class="f mt"><span>Volver a pedirlo tras salir de la app durante</span><select data-ch="lockMins">${[[0, 'Siempre'], [1, '1 minuto'], [5, '5 minutos'], [15, '15 minutos'], [60, '1 hora']].map(([v, l]) => `<option value="${v}"${(S.lock.mins ?? 5) === v ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
+      ${canBio() ? `<label class="chk"><input type="checkbox" data-ch="lockBio"${S.lock.bio ? ' checked' : ''}> Desbloquear también con la huella</label>` : ''}
+      <div class="row mt"><button class="btn" data-act="lockSet">Cambiar PIN</button><button class="btn danger" data-act="lockOff">Quitar el PIN</button><button class="btn" data-act="lockNow">Bloquear ahora</button></div>`
+    : `<button class="btn pri" data-act="lockSet">${ic('db', 's')}Poner un PIN</button>`}
+    <p class="tiny mt">El PIN es de este dispositivo: no va en las copias de seguridad. Protege la pantalla, pero no cifra el archivo de datos.</p></div>`;
+}
+CH.lockMins = el => { S.lock = { ...S.lock, mins: +el.value }; save(); };
+CH.lockBio = el => { S.lock = { ...S.lock, bio: el.checked }; save(); };
+ACT.lockNow = () => showLock();
+ACT.lockOff = async () => {
+  const p = await pinAsk('Escribe tu PIN actual para quitarlo'); if (p == null) return;
+  if (await pinHash(p, S.lock.salt) !== S.lock.hash) { toast('PIN incorrecto'); return; }
+  S.lock = null; save(); render(); toast('PIN quitado');
+};
+ACT.lockSet = async () => {
+  if (lockOn()) { const p = await pinAsk('Escribe tu PIN actual'); if (p == null) return; if (await pinHash(p, S.lock.salt) !== S.lock.hash) { toast('PIN incorrecto'); return; } }
+  const a = await pinAsk('Nuevo PIN (de 4 a 8 cifras)'); if (a == null) return;
+  if (!/^\d{4,8}$/.test(a)) { toast('El PIN debe tener de 4 a 8 cifras'); return; }
+  const b = await pinAsk('Repite el nuevo PIN'); if (b == null) return;
+  if (a !== b) { toast('Los PIN no coinciden'); return; }
+  const salt = uid();
+  S.lock = { ...(S.lock || { mins: 5, bio: canBio() }), salt, hash: await pinHash(a, salt), len: a.length };
+  await saveNow(); render(); toast('PIN guardado. Se pedirá al abrir Mi Agenda.');
+};
+function pinAsk(title) {
+  return new Promise(res => {
+    let done = false;
+    const m = openModal(title, `<input type="password" inputmode="numeric" autocomplete="off" id="pinI" maxlength="8" style="font-size:22px;letter-spacing:6px;text-align:center">`, `<button class="btn" data-x="no">Cancelar</button><button class="btn pri" data-x="ok">Aceptar</button>`, { onClose: () => { if (!done) res(null); } });
+    const ok = () => { done = true; const v = $('#pinI', m).value.trim(); closeModal(); res(v); };
+    $('[data-x=ok]', m).onclick = ok; $('[data-x=no]', m).onclick = () => { closeModal(); };
+    $('#pinI', m).onkeydown = e => { if (e.key === 'Enter') ok(); };
+    setTimeout(() => $('#pinI', m).focus(), 50);
+  });
+}
+
 /* ================= VER EL DOCUMENTO ORIGINAL ================= */
 const EXT_MIME = { pdf: 'application/pdf', docx: MIME.docx, docm: MIME.docx, xlsx: MIME.xlsx, xls: 'application/vnd.ms-excel', xlsm: MIME.xlsx, csv: 'text/csv', txt: 'text/plain', md: 'text/plain', ods: 'application/vnd.oasis.opendocument.spreadsheet' };
 async function fileToOriginal(f) {
@@ -89910,9 +90687,9 @@ VIEWS.set = () => {
   </div>
   <div class="card"><h2>Recordatorios</h2>
     <label class="f"><span>Recordatorio por defecto en eventos nuevos</span><select data-ch="setRemind">${REMINDERS.map(([v, l]) => `<option value="${v}"${v === S.settings.defRemind ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
-    <p class="small muted">Los avisos aparecen mientras la app está abierta. Para que suenen también con la app cerrada, usa el botón <b>.ics</b> de cada evento (o Calendario › Exportar › .ics) y se añadirán al calendario del teléfono o de Outlook con su alarma.</p>
-    ${ANDR || IOS ? '<p class="tiny">En el móvil y en el iPad, el botón <b>.ics</b> abre el evento directamente en tu Calendario para que te avise aunque Mi Agenda esté cerrada.</p>' : perm === 'granted' ? '<span class="pill ok">Notificaciones activadas</span>' : perm === 'unsupported' ? '<span class="pill">Este navegador no admite notificaciones aquí</span>' : `<button class="btn" data-act="askNotif">${ic('bell', 's')}Activar notificaciones</button>`}
+    ${nativeNotif() || IOS ? notifCardHtml() : `<p class="small muted">Los avisos aparecen mientras la app está abierta. Para que suenen también con la app cerrada, usa el botón <b>.ics</b> de cada evento.</p>${perm === 'granted' ? '<span class="pill ok">Notificaciones activadas</span>' : perm === 'unsupported' ? '' : `<button class="btn" data-act="askNotif">${ic('bell', 's')}Activar notificaciones</button>`}`}
   </div>
+  ${lockCardHtml()}
   <div class="card"><h2>Tu nombre en los documentos</h2>
     <p class="small muted" style="margin-top:0">Al importar programas y documentos, la app busca estos nombres y te agenda las asignaciones. Uno por línea. También reconoce abreviaturas como «Luciano S.».</p>
     <textarea rows="3" data-in="setNames">${esc(myNames().join('\n'))}</textarea></div>
@@ -89927,7 +90704,7 @@ VIEWS.set = () => {
     <button class="btn danger" data-act="wipe">${ic('trash', 's')}Borrar todos los datos</button>
   </div></div>`;
 };
-AFTER.set = async () => { if (DESK) { const p = await window.api.dataPath(); $('#storeInfo').textContent = 'Carpeta de datos: ' + p; return; } try { const e = await navigator.storage.estimate(); $('#storeInfo').textContent = `Espacio usado: ${(e.usage / 1048576).toFixed(1)} MB`; } catch (e) {} };
+AFTER.set = async () => { if (DESK) { const bc = $('#bgChk'); if (bc && window.api.getBackground) bc.checked = await window.api.getBackground(); const p = await window.api.dataPath(); $('#storeInfo').textContent = 'Carpeta de datos: ' + p; return; } try { const e = await navigator.storage.estimate(); $('#storeInfo').textContent = `Espacio usado: ${(e.usage / 1048576).toFixed(1)} MB`; } catch (e) {} };
 IN.setNames = el => { S.settings.myNames = el.value.split('\n').map(x => x.trim()).filter(Boolean); save(); };
 IN.setPrefix = el => { S.settings.prefix = el.value.replace(/\D/g, ''); save(); };
 CH.setWaMode = el => { S.settings.waMode = el.value; save(); };
@@ -89965,7 +90742,7 @@ ACT.wipe = async () => {
 
 /* ---- Copias de seguridad ---- */
 function backupBlob() {
-  return new Blob([JSON.stringify({ app: 'mi-agenda-organizacion', v: 1, exportedAt: Date.now(), state: S })], { type: 'application/json' });
+  return new Blob([JSON.stringify({ app: 'mi-agenda-organizacion', v: 1, exportedAt: Date.now(), state: { ...S, lock: null } })], { type: 'application/json' });
 }
 async function markBackup() { S.meta.lastBackup = Date.now() + 1000; await saveNow(); render(); }
 ACT.backupNow = async () => {
@@ -89978,7 +90755,7 @@ ACT.restoreDaily = async () => {
   const data = await window.api.restoreDaily(); if (!data) return;
   if (!data.state) { toast('Ese archivo no es una copia válida'); return; }
   if (!await confirmDlg(`¿Sustituir todos los datos actuales por la copia del <b>${fmtStamp(data.exportedAt || data.state.meta.lastChange)}</b>?`, 'Sustituir', true)) return;
-  S = Object.assign(defaultState(), data.state); normalizeState(); await saveNow(); go('home'); toast('Copia restaurada');
+  const keepLock = S.lock; S = Object.assign(defaultState(), data.state); S.lock = keepLock; normalizeState(); await saveNow(); go('home'); toast('Copia restaurada');
 };
 ACT.backupShare = async () => { await shareFile(backupBlob(), `MiAgenda_datos_${stampName()}.json`, 'Copia de seguridad de Mi Agenda'); await markBackup(); };
 ACT.backupImport = async () => {
@@ -89990,7 +90767,7 @@ ACT.backupImport = async () => {
   const ch = await choiceDlg('Importar copia', `<p>Copia del <b>${fmtStamp(data.exportedAt)}</b>: ${st.events.length} eventos, ${st.contacts.length} contactos, ${st.docs.length} documentos, ${st.letters.length} cartas, ${st.clips.length} recortes.</p><p class="small muted"><b>Combinar</b>: une la copia con lo que tienes aquí, conservando la versión más reciente de cada cosa. <b>Reemplazar</b>: borra lo de este dispositivo y deja solo lo de la copia.</p>`,
     [{ label: 'Cancelar', value: null }, { label: 'Reemplazar todo', value: 'replace', cls: 'danger' }, { label: 'Combinar', value: 'merge', cls: 'pri' }]);
   if (!ch) return;
-  if (ch === 'replace') { const keepBackup = S.meta.lastBackup; S = Object.assign(defaultState(), st); S.meta = { ...S.meta, lastBackup: Math.max(keepBackup, data.exportedAt) }; }
+  if (ch === 'replace') { const keepBackup = S.meta.lastBackup, keepLock = S.lock; S = Object.assign(defaultState(), st); S.lock = keepLock; S.meta = { ...S.meta, lastBackup: Math.max(keepBackup, data.exportedAt) }; }
   else mergeState(st);
   normalizeState(); await saveNow(); UI.area = ''; go('home'); toast(ch === 'merge' ? 'Copia combinada correctamente' : 'Copia restaurada');
 };
@@ -90043,7 +90820,7 @@ function checkReminders() {
 function notify(e) {
   const msg = `${e.title} — ${fmtMed(e.date)}${e.time ? ' ' + e.time : ''}`;
   toast(`<b>Recordatorio</b><br>${esc(msg)}`, { bell: true, html: true, ms: 12000 });
-  try { if ('Notification' in window && Notification.permission === 'granted') new Notification('Recordatorio', { body: msg, tag: e.id }); } catch (x) {}
+  try { if (!nativeNotif() && 'Notification' in window && Notification.permission === 'granted') new Notification('Recordatorio', { body: msg, tag: e.id }); } catch (x) {}
 }
 
 /* ================= Botón Atrás (Android) ================= */
@@ -90063,6 +90840,9 @@ async function init() {
   normalizeState();
   applyTheme();
   render();
+  showLock();
+  syncAlarms();
+  if (ANDR && nativeNotif() && !S.settings.notifAsked && S.events.some(e => e.remind >= 0)) { S.settings.notifAsked = true; save(); try { if (!window.AndroidBridge.notifOk()) window.AndroidBridge.askNotif(); } catch (e) {} }
   checkReminders();
   setInterval(checkReminders, 30000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) checkReminders(); else saveNow(); });
