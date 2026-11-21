@@ -356,6 +356,32 @@ body.locked .app,body.locked .bnav,body.locked .ov{visibility:hidden}
 .cr-pt{display:inline-flex;gap:6px;align-items:center}
 .cr-hb{cursor:pointer;border-radius:8px;padding:2px 4px;margin:-2px -4px}.cr-hb:hover{background:var(--accent-soft)}
 .cr-hb.fija{color:var(--accent)}.cr-hb.solapa{color:var(--danger,#c0392b)}
+/* Circuito */
+.circ-tabs{flex-wrap:wrap;height:auto}
+.dept-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.dept-card{cursor:pointer;margin:0;transition:box-shadow .15s}.dept-card:hover{box-shadow:0 0 0 2px var(--circ-soft)}
+.dept-h{display:flex;align-items:center;gap:6px;margin-bottom:6px}.dept-h b{flex:1;color:var(--circ)}
+.dept-l{margin-top:8px;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+.dp-row .body{cursor:pointer}
+.org{overflow-x:auto;text-align:center;padding:20px 12px}
+.org-top{display:flex;flex-direction:column;align-items:center}
+.org-box{display:inline-block;border:1px solid var(--line2);border-radius:10px;padding:8px 12px;background:var(--surface);min-width:150px;cursor:pointer;text-align:center}
+.org-box b{display:block;font-size:13.5px}.org-box.top{border-color:var(--circ);background:var(--circ-soft)}
+.org-v{width:2px;height:18px;background:var(--line2);margin:0 auto}
+.org-bar{height:2px;background:var(--line2);margin:0 6%}
+.org-depts{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px 10px;padding-top:0}
+.org-wrap{border:2px solid var(--line2);border-radius:14px;padding:12px;background:var(--surface2)}.org-wl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ink2);margin:-2px 0 10px}
+.org-dept .org-box{width:100%;min-width:0}
+.org-dn{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--circ);margin-bottom:4px}
+.org-aux{font-size:12px;color:var(--ink2);border-top:1px dashed var(--line2);margin-top:6px;padding-top:5px}
+.fact-kpi .k.in b{color:var(--circ)}.fact-kpi .k.out b{color:var(--danger,#c0392b)}
+.fact-t td.num,.fact-t th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.fact-t td.in{color:var(--circ)}.fact-t td.out{color:var(--danger,#c0392b)}
+.fact-t tr[data-act]{cursor:pointer}.fact-t tr[data-act]:hover td{background:var(--surface2)}
+.fact-t tr.tot td{border-top:2px solid var(--line2);font-weight:700}.fact-t tr.ini td{color:var(--ink2)}
+.nowrap{white-space:nowrap}
+.btn.pri.out{background:var(--danger,#c0392b);border-color:var(--danger,#c0392b)}
+@media (max-width:600px){.org-depts{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -86445,7 +86471,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
  *
  */
 !function(t,e){if("object"==typeof exports&&"object"==typeof module)module.exports=e(function(){try{return require("jspdf")}catch(t){}}());else if("function"==typeof define&&define.amd)define(["jspdf"],e);else{var n="object"==typeof exports?e(function(){try{return require("jspdf")}catch(t){}}()):e(t.jspdf);for(var o in n)("object"==typeof exports?exports:t)[o]=n[o]}}("undefined"!=typeof globalThis?globalThis:void 0!==this?this:"undefined"!=typeof window?window:"undefined"!=typeof self?self:global,(function(t){return function(){"use strict";var e={172:function(t,e){var n,o=this&&this.__extends||(n=function(t,e){return n=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n])},n(t,e)},function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Class extends value "+String(e)+" is not a constructor or null");function o(){this.constructor=t}n(t,e),t.prototype=null===e?Object.create(e):(o.prototype=e.prototype,new o)});Object.defineProperty(e,"__esModule",{value:!0}),e.CellHookData=e.HookData=void 0;var r=function(t,e,n){this.table=e,this.pageNumber=e.pageNumber,this.pageCount=this.pageNumber,this.settings=e.settings,this.cursor=n,this.doc=t.getDocument()};e.HookData=r;var i=function(t){function e(e,n,o,r,i,l){var a=t.call(this,e,n,l)||this;return a.cell=o,a.row=r,a.column=i,a.section=r.section,a}return o(e,t),e}(r);e.CellHookData=i},340:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0});var o=n(4),r=n(136),i=n(744),l=n(776),a=n(664),s=n(972);e.default=function(t){t.API.autoTable=function(){for(var t,e=[],n=0;n<arguments.length;n++)e[n]=arguments[n];1===e.length?t=e[0]:(console.error("Use of deprecated autoTable initiation"),(t=e[2]||{}).columns=e[0],t.body=e[1]);var o=(0,l.parseInput)(this,t),r=(0,s.createTable)(this,o);return(0,a.drawTable)(this,r),this},t.API.lastAutoTable=!1,t.API.previousAutoTable=!1,t.API.autoTable.previous=!1,t.API.autoTableText=function(t,e,n,o){(0,r.default)(t,e,n,o,this)},t.API.autoTableSetDefaults=function(t){return i.DocHandler.setDefaults(t,this),this},t.autoTableSetDefaults=function(t,e){i.DocHandler.setDefaults(t,e)},t.API.autoTableHtmlToJson=function(t,e){var n;if(void 0===e&&(e=!1),"undefined"==typeof window)return console.error("Cannot run autoTableHtmlToJson in non browser environment"),null;var r=new i.DocHandler(this),l=(0,o.parseHtml)(r,t,window,e,!1),a=l.head,s=l.body;return{columns:(null===(n=a[0])||void 0===n?void 0:n.map((function(t){return t.content})))||[],rows:s,data:s}},t.API.autoTableEndPosY=function(){console.error("Use of deprecated function: autoTableEndPosY. Use doc.lastAutoTable.finalY instead.");var t=this.lastAutoTable;return t&&t.finalY?t.finalY:0},t.API.autoTableAddPageContent=function(e){return console.error("Use of deprecated function: autoTableAddPageContent. Use jsPDF.autoTableSetDefaults({didDrawPage: () => {}}) instead."),t.API.autoTable.globalDefaults||(t.API.autoTable.globalDefaults={}),t.API.autoTable.globalDefaults.addPageContent=e,this},t.API.autoTableAddPage=function(){return console.error("Use of deprecated function: autoTableAddPage. Use doc.addPage()"),this.addPage(),this}}},136:function(t,e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(t,e,n,o,r){o=o||{};var i=r.internal.scaleFactor,l=r.internal.getFontSize()/i,a=l*(r.getLineHeightFactor?r.getLineHeightFactor():1.15),s="",u=1;if("middle"!==o.valign&&"bottom"!==o.valign&&"center"!==o.halign&&"right"!==o.halign||(u=(s="string"==typeof t?t.split(/\r\n|\r|\n/g):t).length||1),n+=l*(2-1.15),"middle"===o.valign?n-=u/2*a:"bottom"===o.valign&&(n-=u*a),"center"===o.halign||"right"===o.halign){var d=l;if("center"===o.halign&&(d*=.5),s&&u>=1){for(var h=0;h<s.length;h++)r.text(s[h],e-r.getStringUnitWidth(s[h])*d,n),n+=a;return r}e-=r.getStringUnitWidth(t)*d}return"justify"===o.halign?r.text(t,e,n,{maxWidth:o.maxWidth||100,align:"justify"}):r.text(t,e,n),r}},420:function(t,e){function n(t,e){var n=t>0,o=e||0===e;return n&&o?"DF":n?"S":o?"F":null}function o(t,e){var n,o,r,i;if(t=t||e,Array.isArray(t)){if(t.length>=4)return{top:t[0],right:t[1],bottom:t[2],left:t[3]};if(3===t.length)return{top:t[0],right:t[1],bottom:t[2],left:t[1]};if(2===t.length)return{top:t[0],right:t[1],bottom:t[0],left:t[1]};t=1===t.length?t[0]:e}return"object"==typeof t?("number"==typeof t.vertical&&(t.top=t.vertical,t.bottom=t.vertical),"number"==typeof t.horizontal&&(t.right=t.horizontal,t.left=t.horizontal),{left:null!==(n=t.left)&&void 0!==n?n:e,top:null!==(o=t.top)&&void 0!==o?o:e,right:null!==(r=t.right)&&void 0!==r?r:e,bottom:null!==(i=t.bottom)&&void 0!==i?i:e}):("number"!=typeof t&&(t=e),{top:t,right:t,bottom:t,left:t})}Object.defineProperty(e,"__esModule",{value:!0}),e.getPageAvailableWidth=e.parseSpacing=e.getFillStyle=e.addTableBorder=e.getStringWidth=void 0,e.getStringWidth=function(t,e,n){return n.applyStyles(e,!0),(Array.isArray(t)?t:[t]).map((function(t){return n.getTextWidth(t)})).reduce((function(t,e){return Math.max(t,e)}),0)},e.addTableBorder=function(t,e,o,r){var i=e.settings.tableLineWidth,l=e.settings.tableLineColor;t.applyStyles({lineWidth:i,lineColor:l});var a=n(i,!1);a&&t.rect(o.x,o.y,e.getWidth(t.pageSize().width),r.y-o.y,a)},e.getFillStyle=n,e.parseSpacing=o,e.getPageAvailableWidth=function(t,e){var n=o(e.settings.margin,0);return t.pageSize().width-(n.left+n.right)}},796:function(t,e){var n,o=this&&this.__extends||(n=function(t,e){return n=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n])},n(t,e)},function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Class extends value "+String(e)+" is not a constructor or null");function o(){this.constructor=t}n(t,e),t.prototype=null===e?Object.create(e):(o.prototype=e.prototype,new o)});Object.defineProperty(e,"__esModule",{value:!0}),e.getTheme=e.defaultStyles=e.HtmlRowInput=void 0;var r=function(t){function e(e){var n=t.call(this)||this;return n._element=e,n}return o(e,t),e}(Array);e.HtmlRowInput=r,e.defaultStyles=function(t){return{font:"helvetica",fontStyle:"normal",overflow:"linebreak",fillColor:!1,textColor:20,halign:"left",valign:"top",fontSize:10,cellPadding:5/t,lineColor:200,lineWidth:0,cellWidth:"auto",minCellHeight:0,minCellWidth:0}},e.getTheme=function(t){return{striped:{table:{fillColor:255,textColor:80,fontStyle:"normal"},head:{textColor:255,fillColor:[41,128,185],fontStyle:"bold"},body:{},foot:{textColor:255,fillColor:[41,128,185],fontStyle:"bold"},alternateRow:{fillColor:245}},grid:{table:{fillColor:255,textColor:80,fontStyle:"normal",lineWidth:.1},head:{textColor:255,fillColor:[26,188,156],fontStyle:"bold",lineWidth:0},body:{},foot:{textColor:255,fillColor:[26,188,156],fontStyle:"bold",lineWidth:0},alternateRow:{}},plain:{head:{fontStyle:"bold"},foot:{fontStyle:"bold"}}}[t]}},903:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0}),e.parseCss=void 0;var o=n(420);function r(t,e){var n=i(t,e);if(!n)return null;var o=n.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d*\.?\d*))?\)$/);if(!o||!Array.isArray(o))return null;var r=[parseInt(o[1]),parseInt(o[2]),parseInt(o[3])];return 0===parseInt(o[4])||isNaN(r[0])||isNaN(r[1])||isNaN(r[2])?null:r}function i(t,e){var n=e(t);return"rgba(0, 0, 0, 0)"===n||"transparent"===n||"initial"===n||"inherit"===n?null==t.parentElement?null:i(t.parentElement,e):n}e.parseCss=function(t,e,n,i,l){var a={},s=96/72,u=r(e,(function(t){return l.getComputedStyle(t).backgroundColor}));null!=u&&(a.fillColor=u);var d=r(e,(function(t){return l.getComputedStyle(t).color}));null!=d&&(a.textColor=d);var h=function(t,e){var n=[t.paddingTop,t.paddingRight,t.paddingBottom,t.paddingLeft],r=96/(72/e),i=(parseInt(t.lineHeight)-parseInt(t.fontSize))/e/2,l=n.map((function(t){return parseInt(t||"0")/r})),a=(0,o.parseSpacing)(l,0);i>a.top&&(a.top=i);i>a.bottom&&(a.bottom=i);return a}(i,n);h&&(a.cellPadding=h);var c="borderTopColor",f=s*n,g=i.borderTopWidth;if(i.borderBottomWidth===g&&i.borderRightWidth===g&&i.borderLeftWidth===g){var p=(parseFloat(g)||0)/f;p&&(a.lineWidth=p)}else a.lineWidth={top:(parseFloat(i.borderTopWidth)||0)/f,right:(parseFloat(i.borderRightWidth)||0)/f,bottom:(parseFloat(i.borderBottomWidth)||0)/f,left:(parseFloat(i.borderLeftWidth)||0)/f},a.lineWidth.top||(a.lineWidth.right?c="borderRightColor":a.lineWidth.bottom?c="borderBottomColor":a.lineWidth.left&&(c="borderLeftColor"));console.log(a.lineWidth);var y=r(e,(function(t){return l.getComputedStyle(t)[c]}));null!=y&&(a.lineColor=y);var v=["left","right","center","justify"];-1!==v.indexOf(i.textAlign)&&(a.halign=i.textAlign),-1!==(v=["middle","bottom","top"]).indexOf(i.verticalAlign)&&(a.valign=i.verticalAlign);var m=parseInt(i.fontSize||"");isNaN(m)||(a.fontSize=m/s);var b=function(t){var e="";("bold"===t.fontWeight||"bolder"===t.fontWeight||parseInt(t.fontWeight)>=700)&&(e="bold");"italic"!==t.fontStyle&&"oblique"!==t.fontStyle||(e+="italic");return e}(i);b&&(a.fontStyle=b);var w=(i.fontFamily||"").toLowerCase();return-1!==t.indexOf(w)&&(a.font=w),a}},744:function(t,e){Object.defineProperty(e,"__esModule",{value:!0}),e.DocHandler=void 0;var n={},o=function(){function t(t){this.jsPDFDocument=t,this.userStyles={textColor:t.getTextColor?this.jsPDFDocument.getTextColor():0,fontSize:t.internal.getFontSize(),fontStyle:t.internal.getFont().fontStyle,font:t.internal.getFont().fontName,lineWidth:t.getLineWidth?this.jsPDFDocument.getLineWidth():0,lineColor:t.getDrawColor?this.jsPDFDocument.getDrawColor():0}}return t.setDefaults=function(t,e){void 0===e&&(e=null),e?e.__autoTableDocumentDefaults=t:n=t},t.unifyColor=function(t){return Array.isArray(t)?t:"number"==typeof t?[t,t,t]:"string"==typeof t?[t]:null},t.prototype.applyStyles=function(e,n){var o,r,i;void 0===n&&(n=!1),e.fontStyle&&this.jsPDFDocument.setFontStyle&&this.jsPDFDocument.setFontStyle(e.fontStyle);var l=this.jsPDFDocument.internal.getFont(),a=l.fontStyle,s=l.fontName;if(e.font&&(s=e.font),e.fontStyle){a=e.fontStyle;var u=this.getFontList()[s];u&&-1===u.indexOf(a)&&(this.jsPDFDocument.setFontStyle&&this.jsPDFDocument.setFontStyle(u[0]),a=u[0])}if(this.jsPDFDocument.setFont(s,a),e.fontSize&&this.jsPDFDocument.setFontSize(e.fontSize),!n){var d=t.unifyColor(e.fillColor);d&&(o=this.jsPDFDocument).setFillColor.apply(o,d),(d=t.unifyColor(e.textColor))&&(r=this.jsPDFDocument).setTextColor.apply(r,d),(d=t.unifyColor(e.lineColor))&&(i=this.jsPDFDocument).setDrawColor.apply(i,d),"number"==typeof e.lineWidth&&this.jsPDFDocument.setLineWidth(e.lineWidth)}},t.prototype.splitTextToSize=function(t,e,n){return this.jsPDFDocument.splitTextToSize(t,e,n)},t.prototype.rect=function(t,e,n,o,r){return this.jsPDFDocument.rect(t,e,n,o,r)},t.prototype.getLastAutoTable=function(){return this.jsPDFDocument.lastAutoTable||null},t.prototype.getTextWidth=function(t){return this.jsPDFDocument.getTextWidth(t)},t.prototype.getDocument=function(){return this.jsPDFDocument},t.prototype.setPage=function(t){this.jsPDFDocument.setPage(t)},t.prototype.addPage=function(){return this.jsPDFDocument.addPage()},t.prototype.getFontList=function(){return this.jsPDFDocument.getFontList()},t.prototype.getGlobalOptions=function(){return n||{}},t.prototype.getDocumentOptions=function(){return this.jsPDFDocument.__autoTableDocumentDefaults||{}},t.prototype.pageSize=function(){var t=this.jsPDFDocument.internal.pageSize;return null==t.width&&(t={width:t.getWidth(),height:t.getHeight()}),t},t.prototype.scaleFactor=function(){return this.jsPDFDocument.internal.scaleFactor},t.prototype.getLineHeightFactor=function(){var t=this.jsPDFDocument;return t.getLineHeightFactor?t.getLineHeightFactor():1.15},t.prototype.getLineHeight=function(t){return t/this.scaleFactor()*this.getLineHeightFactor()},t.prototype.pageNumber=function(){var t=this.jsPDFDocument.internal.getCurrentPageInfo();return t?t.pageNumber:this.jsPDFDocument.internal.getNumberOfPages()},t}();e.DocHandler=o},4:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0}),e.parseHtml=void 0;var o=n(903),r=n(796);function i(t,e,n,i,a,s){for(var u=new r.HtmlRowInput(i),d=0;d<i.cells.length;d++){var h=i.cells[d],c=n.getComputedStyle(h);if(a||"none"!==c.display){var f=void 0;s&&(f=(0,o.parseCss)(t,h,e,c,n)),u.push({rowSpan:h.rowSpan,colSpan:h.colSpan,styles:f,_element:h,content:l(h)})}}var g=n.getComputedStyle(i);if(u.length>0&&(a||"none"!==g.display))return u}function l(t){var e=t.cloneNode(!0);return e.innerHTML=e.innerHTML.replace(/\n/g,"").replace(/ +/g," "),e.innerHTML=e.innerHTML.split(/<br.*?>/).map((function(t){return t.trim()})).join("\n"),e.innerText||e.textContent||""}e.parseHtml=function(t,e,n,o,r){var l,a,s;void 0===o&&(o=!1),void 0===r&&(r=!1),s="string"==typeof e?n.document.querySelector(e):e;var u=Object.keys(t.getFontList()),d=t.scaleFactor(),h=[],c=[],f=[];if(!s)return console.error("Html table could not be found with input: ",e),{head:h,body:c,foot:f};for(var g=0;g<s.rows.length;g++){var p=s.rows[g],y=null===(a=null===(l=null==p?void 0:p.parentElement)||void 0===l?void 0:l.tagName)||void 0===a?void 0:a.toLowerCase(),v=i(u,d,n,p,o,r);v&&("thead"===y?h.push(v):"tfoot"===y?f.push(v):c.push(v))}return{head:h,body:c,foot:f}}},776:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0}),e.parseInput=void 0;var o=n(4),r=n(356),i=n(420),l=n(744),a=n(792);e.parseInput=function(t,e){var n=new l.DocHandler(t),s=n.getDocumentOptions(),u=n.getGlobalOptions();(0,a.default)(n,u,s,e);var d,h=(0,r.assign)({},u,s,e);"undefined"!=typeof window&&(d=window);var c=function(t,e,n){for(var o={styles:{},headStyles:{},bodyStyles:{},footStyles:{},alternateRowStyles:{},columnStyles:{}},i=function(i){if("columnStyles"===i){var l=t[i],a=e[i],s=n[i];o.columnStyles=(0,r.assign)({},l,a,s)}else{var u=[t,e,n].map((function(t){return t[i]||{}}));o[i]=(0,r.assign)({},u[0],u[1],u[2])}},l=0,a=Object.keys(o);l<a.length;l++){i(a[l])}return o}(u,s,e),f=function(t,e,n){for(var o={didParseCell:[],willDrawCell:[],didDrawCell:[],willDrawPage:[],didDrawPage:[]},r=0,i=[t,e,n];r<i.length;r++){var l=i[r];l.didParseCell&&o.didParseCell.push(l.didParseCell),l.willDrawCell&&o.willDrawCell.push(l.willDrawCell),l.didDrawCell&&o.didDrawCell.push(l.didDrawCell),l.willDrawPage&&o.willDrawPage.push(l.willDrawPage),l.didDrawPage&&o.didDrawPage.push(l.didDrawPage)}return o}(u,s,e),g=function(t,e){var n,o,r,l,a,s,u,d,h,c,f,g,p,y,v=(0,i.parseSpacing)(e.margin,40/t.scaleFactor()),m=null!==(n=function(t,e){var n=t.getLastAutoTable(),o=t.scaleFactor(),r=t.pageNumber(),i=!1;if(n&&n.startPageNumber){i=n.startPageNumber+n.pageNumber-1===r}if("number"==typeof e)return e;if((null==e||!1===e)&&i&&null!=(null==n?void 0:n.finalY))return n.finalY+20/o;return null}(t,e.startY))&&void 0!==n?n:v.top;p=!0===e.showFoot?"everyPage":!1===e.showFoot?"never":null!==(o=e.showFoot)&&void 0!==o?o:"everyPage";y=!0===e.showHead?"everyPage":!1===e.showHead?"never":null!==(r=e.showHead)&&void 0!==r?r:"everyPage";var b=null!==(l=e.useCss)&&void 0!==l&&l,w=e.theme||(b?"plain":"striped"),P=!!e.horizontalPageBreak,S=null!==(a=e.horizontalPageBreakRepeat)&&void 0!==a?a:null;return{includeHiddenHtml:null!==(s=e.includeHiddenHtml)&&void 0!==s&&s,useCss:b,theme:w,startY:m,margin:v,pageBreak:null!==(u=e.pageBreak)&&void 0!==u?u:"auto",rowPageBreak:null!==(d=e.rowPageBreak)&&void 0!==d?d:"auto",tableWidth:null!==(h=e.tableWidth)&&void 0!==h?h:"auto",showHead:y,showFoot:p,tableLineWidth:null!==(c=e.tableLineWidth)&&void 0!==c?c:0,tableLineColor:null!==(f=e.tableLineColor)&&void 0!==f?f:200,horizontalPageBreak:P,horizontalPageBreakRepeat:S,horizontalPageBreakBehaviour:null!==(g=e.horizontalPageBreakBehaviour)&&void 0!==g?g:"afterAllRows"}}(n,h),p=function(t,e,n){var r=e.head||[],i=e.body||[],l=e.foot||[];if(e.html){var a=e.includeHiddenHtml;if(n){var s=(0,o.parseHtml)(t,e.html,n,a,e.useCss)||{};r=s.head||r,i=s.body||r,l=s.foot||r}else console.error("Cannot parse html in non browser environment")}var u=e.columns||function(t,e,n){var o=t[0]||e[0]||n[0]||[],r=[];return Object.keys(o).filter((function(t){return"_element"!==t})).forEach((function(t){var e,n=1;"object"!=typeof(e=Array.isArray(o)?o[parseInt(t)]:o[t])||Array.isArray(e)||(n=(null==e?void 0:e.colSpan)||1);for(var i=0;i<n;i++){var l={dataKey:Array.isArray(o)?r.length:t+(i>0?"_".concat(i):"")};r.push(l)}})),r}(r,i,l);return{columns:u,head:r,body:i,foot:l}}(n,h,d);return{id:e.tableId,content:p,hooks:f,styles:c,settings:g}}},792:function(t,e){function n(t){t.rowHeight?(console.error("Use of deprecated style rowHeight. It is renamed to minCellHeight."),t.minCellHeight||(t.minCellHeight=t.rowHeight)):t.columnWidth&&(console.error("Use of deprecated style columnWidth. It is renamed to cellWidth."),t.cellWidth||(t.cellWidth=t.columnWidth))}Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(t,e,o,r){for(var i=function(e){e&&"object"!=typeof e&&console.error("The options parameter should be of type object, is: "+typeof e),void 0!==e.extendWidth&&(e.tableWidth=e.extendWidth?"auto":"wrap",console.error("Use of deprecated option: extendWidth, use tableWidth instead.")),void 0!==e.margins&&(void 0===e.margin&&(e.margin=e.margins),console.error("Use of deprecated option: margins, use margin instead.")),e.startY&&"number"!=typeof e.startY&&(console.error("Invalid value for startY option",e.startY),delete e.startY),!e.didDrawPage&&(e.afterPageContent||e.beforePageContent||e.afterPageAdd)&&(console.error("The afterPageContent, beforePageContent and afterPageAdd hooks are deprecated. Use didDrawPage instead"),e.didDrawPage=function(n){t.applyStyles(t.userStyles),e.beforePageContent&&e.beforePageContent(n),t.applyStyles(t.userStyles),e.afterPageContent&&e.afterPageContent(n),t.applyStyles(t.userStyles),e.afterPageAdd&&n.pageNumber>1&&n.afterPageAdd(n),t.applyStyles(t.userStyles)}),["createdHeaderCell","drawHeaderRow","drawRow","drawHeaderCell"].forEach((function(t){e[t]&&console.error('The "'.concat(t,'" hook has changed in version 3.0, check the changelog for how to migrate.'))})),[["showFoot","showFooter"],["showHead","showHeader"],["didDrawPage","addPageContent"],["didParseCell","createdCell"],["headStyles","headerStyles"]].forEach((function(t){var n=t[0],o=t[1];e[o]&&(console.error("Use of deprecated option ".concat(o,". Use ").concat(n," instead")),e[n]=e[o])})),[["padding","cellPadding"],["lineHeight","rowHeight"],"fontSize","overflow"].forEach((function(t){var n="string"==typeof t?t:t[0],o="string"==typeof t?t:t[1];void 0!==e[n]&&(void 0===e.styles[o]&&(e.styles[o]=e[n]),console.error("Use of deprecated option: "+n+", use the style "+o+" instead."))}));for(var o=0,r=["styles","bodyStyles","headStyles","footStyles"];o<r.length;o++){n(e[r[o]]||{})}for(var i=e.columnStyles||{},l=0,a=Object.keys(i);l<a.length;l++){n(i[a[l]]||{})}},l=0,a=[e,o,r];l<a.length;l++){i(a[l])}}},260:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0}),e.Column=e.Cell=e.Row=e.Table=void 0;var o=n(796),r=n(172),i=n(420),l=function(){function t(t,e){this.pageNumber=1,this.pageCount=1,this.id=t.id,this.settings=t.settings,this.styles=t.styles,this.hooks=t.hooks,this.columns=e.columns,this.head=e.head,this.body=e.body,this.foot=e.foot}return t.prototype.getHeadHeight=function(t){return this.head.reduce((function(e,n){return e+n.getMaxCellHeight(t)}),0)},t.prototype.getFootHeight=function(t){return this.foot.reduce((function(e,n){return e+n.getMaxCellHeight(t)}),0)},t.prototype.allRows=function(){return this.head.concat(this.body).concat(this.foot)},t.prototype.callCellHooks=function(t,e,n,o,i,l){for(var a=0,s=e;a<s.length;a++){var u=!1===(0,s[a])(new r.CellHookData(t,this,n,o,i,l));if(n.text=Array.isArray(n.text)?n.text:[n.text],u)return!1}return!0},t.prototype.callEndPageHooks=function(t,e){t.applyStyles(t.userStyles);for(var n=0,o=this.hooks.didDrawPage;n<o.length;n++){(0,o[n])(new r.HookData(t,this,e))}},t.prototype.callWillDrawPageHooks=function(t,e){for(var n=0,o=this.hooks.willDrawPage;n<o.length;n++){(0,o[n])(new r.HookData(t,this,e))}},t.prototype.getWidth=function(t){if("number"==typeof this.settings.tableWidth)return this.settings.tableWidth;if("wrap"===this.settings.tableWidth)return this.columns.reduce((function(t,e){return t+e.wrappedWidth}),0);var e=this.settings.margin;return t-e.left-e.right},t}();e.Table=l;var a=function(){function t(t,e,n,r,i){void 0===i&&(i=!1),this.height=0,this.raw=t,t instanceof o.HtmlRowInput&&(this.raw=t._element,this.element=t._element),this.index=e,this.section=n,this.cells=r,this.spansMultiplePages=i}return t.prototype.getMaxCellHeight=function(t){var e=this;return t.reduce((function(t,n){var o;return Math.max(t,(null===(o=e.cells[n.index])||void 0===o?void 0:o.height)||0)}),0)},t.prototype.hasRowSpan=function(t){var e=this;return t.filter((function(t){var n=e.cells[t.index];return!!n&&n.rowSpan>1})).length>0},t.prototype.canEntireRowFit=function(t,e){return this.getMaxCellHeight(e)<=t},t.prototype.getMinimumRowHeight=function(t,e){var n=this;return t.reduce((function(t,o){var r=n.cells[o.index];if(!r)return 0;var i=e.getLineHeight(r.styles.fontSize),l=r.padding("vertical")+i;return l>t?l:t}),0)},t}();e.Row=a;var s=function(){function t(t,e,n){var o,r;this.contentHeight=0,this.contentWidth=0,this.wrappedWidth=0,this.minReadableWidth=0,this.minWidth=0,this.width=0,this.height=0,this.x=0,this.y=0,this.styles=e,this.section=n,this.raw=t;var i=t;null==t||"object"!=typeof t||Array.isArray(t)?(this.rowSpan=1,this.colSpan=1):(this.rowSpan=t.rowSpan||1,this.colSpan=t.colSpan||1,i=null!==(r=null!==(o=t.content)&&void 0!==o?o:t.title)&&void 0!==r?r:t,t._element&&(this.raw=t._element));var l=null!=i?""+i:"";this.text=l.split(/\r\n|\r|\n/g)}return t.prototype.getTextPos=function(){var t,e;if("top"===this.styles.valign)t=this.y+this.padding("top");else if("bottom"===this.styles.valign)t=this.y+this.height-this.padding("bottom");else{var n=this.height-this.padding("vertical");t=this.y+n/2+this.padding("top")}if("right"===this.styles.halign)e=this.x+this.width-this.padding("right");else if("center"===this.styles.halign){var o=this.width-this.padding("horizontal");e=this.x+o/2+this.padding("left")}else e=this.x+this.padding("left");return{x:e,y:t}},t.prototype.getContentHeight=function(t,e){void 0===e&&(e=1.15);var n=(Array.isArray(this.text)?this.text.length:1)*(this.styles.fontSize/t*e)+this.padding("vertical");return Math.max(n,this.styles.minCellHeight)},t.prototype.padding=function(t){var e=(0,i.parseSpacing)(this.styles.cellPadding,0);return"vertical"===t?e.top+e.bottom:"horizontal"===t?e.left+e.right:e[t]},t}();e.Cell=s;var u=function(){function t(t,e,n){this.wrappedWidth=0,this.minReadableWidth=0,this.minWidth=0,this.width=0,this.dataKey=t,this.raw=e,this.index=n}return t.prototype.getMaxCustomCellWidth=function(t){for(var e=0,n=0,o=t.allRows();n<o.length;n++){var r=o[n].cells[this.index];r&&"number"==typeof r.styles.cellWidth&&(e=Math.max(e,r.styles.cellWidth))}return e},t}();e.Column=u},356:function(t,e){Object.defineProperty(e,"__esModule",{value:!0}),e.assign=void 0,e.assign=function(t,e,n,o,r){if(null==t)throw new TypeError("Cannot convert undefined or null to object");for(var i=Object(t),l=1;l<arguments.length;l++){var a=arguments[l];if(null!=a)for(var s in a)Object.prototype.hasOwnProperty.call(a,s)&&(i[s]=a[s])}return i}},972:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0}),e.createTable=void 0;var o=n(744),r=n(260),i=n(324),l=n(796),a=n(356);function s(t,e,n,o,i,l){var a={};return e.map((function(e,s){for(var u=0,h={},c=0,f=0,g=0,p=n;g<p.length;g++){var y=p[g];if(null==a[y.index]||0===a[y.index].left)if(0===f){var v=void 0,m={};"object"!=typeof(v=Array.isArray(e)?e[y.index-c-u]:e[y.dataKey])||Array.isArray(v)||(m=(null==v?void 0:v.styles)||{});var b=d(t,y,s,i,o,l,m),w=new r.Cell(v,b,t);h[y.dataKey]=w,h[y.index]=w,f=w.colSpan-1,a[y.index]={left:w.rowSpan-1,times:f}}else f--,c++;else a[y.index].left--,f=a[y.index].times,u++}return new r.Row(e,s,t,h)}))}function u(t,e){var n={};return t.forEach((function(t){if(null!=t.raw){var o=function(t,e){if("head"===t){if("object"==typeof e)return e.header||e.title||null;if("string"==typeof e||"number"==typeof e)return e}else if("foot"===t&&"object"==typeof e)return e.footer;return null}(e,t.raw);null!=o&&(n[t.dataKey]=o)}})),Object.keys(n).length>0?n:null}function d(t,e,n,o,r,i,s){var u,d=(0,l.getTheme)(o);"head"===t?u=r.headStyles:"body"===t?u=r.bodyStyles:"foot"===t&&(u=r.footStyles);var h=(0,a.assign)({},d.table,d[t],r.styles,u),c=r.columnStyles[e.dataKey]||r.columnStyles[e.index]||{},f="body"===t?c:{},g="body"===t&&n%2==0?(0,a.assign)({},d.alternateRow,r.alternateRowStyles):{},p=(0,l.defaultStyles)(i),y=(0,a.assign)({},p,h,g,f);return(0,a.assign)(y,s)}e.createTable=function(t,e){var n=new o.DocHandler(t),l=function(t,e){var n=t.content,o=function(t){return t.map((function(t,e){var n,o,i;return i="object"==typeof t&&null!==(o=null!==(n=t.dataKey)&&void 0!==n?n:t.key)&&void 0!==o?o:e,new r.Column(i,t,e)}))}(n.columns);if(0===n.head.length){(i=u(o,"head"))&&n.head.push(i)}if(0===n.foot.length){var i;(i=u(o,"foot"))&&n.foot.push(i)}var l=t.settings.theme,a=t.styles;return{columns:o,head:s("head",n.head,o,a,l,e),body:s("body",n.body,o,a,l,e),foot:s("foot",n.foot,o,a,l,e)}}(e,n.scaleFactor()),a=new r.Table(e,l);return(0,i.calculateWidths)(n,a),n.applyStyles(n.userStyles),a}},664:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0}),e.addPage=e.drawTable=void 0;var o=n(420),r=n(260),i=n(744),l=n(356),a=n(136),s=n(224);function u(t,e,n,o){var r=e.settings;t.applyStyles(t.userStyles),"firstPage"!==r.showHead&&"everyPage"!==r.showHead||e.head.forEach((function(r){return g(t,e,r,n,o)}))}function d(t,e,n,o,r,i){t.applyStyles(t.userStyles),i=null!=i?i:e.body.length;var l=Math.min(n+i,e.body.length),a=-1;return e.body.slice(n,l).forEach((function(i,l){var s=n+l===e.body.length-1,u=y(t,e,s,o);i.canEntireRowFit(u,r)&&(g(t,e,i,o,r),a=n+l)})),a}function h(t,e,n,o){var r=e.settings;t.applyStyles(t.userStyles),"lastPage"!==r.showFoot&&"everyPage"!==r.showFoot||e.foot.forEach((function(r){return g(t,e,r,n,o)}))}function c(t,e,n){var o=n.getLineHeight(t.styles.fontSize),r=t.padding("vertical"),i=Math.floor((e-r)/o);return Math.max(0,i)}function f(t,e,n,o,i,a,s){var u=y(t,e,o,a);if(n.canEntireRowFit(u,s))g(t,e,n,a,s);else if(function(t,e,n,o){var r=t.pageSize().height,i=o.settings.margin,l=r-(i.top+i.bottom);"body"===e.section&&(l-=o.getHeadHeight(o.columns)+o.getFootHeight(o.columns));var a=e.getMinimumRowHeight(o.columns,t),s=a<n;if(a>l)return console.error("Will not be able to print row ".concat(e.index," correctly since it's minimum height is larger than page height")),!0;if(!s)return!1;var u=e.hasRowSpan(o.columns);return e.getMaxCellHeight(o.columns)>l?(u&&console.error("The content of row ".concat(e.index," will not be drawn correctly since drawing rows with a height larger than the page height and has cells with rowspans is not supported.")),!0):!u&&"avoid"!==o.settings.rowPageBreak}(t,n,u,e)){var d=function(t,e,n,o){var i={};t.spansMultiplePages=!0,t.height=0;for(var a=0,s=0,u=n.columns;s<u.length;s++){var d=u[s];if(b=t.cells[d.index]){Array.isArray(b.text)||(b.text=[b.text]);var h=new r.Cell(b.raw,b.styles,b.section);(h=(0,l.assign)(h,b)).text=[];var f=c(b,e,o);b.text.length>f&&(h.text=b.text.splice(f,b.text.length));var g=o.scaleFactor(),p=o.getLineHeightFactor();b.contentHeight=b.getContentHeight(g,p),b.contentHeight>=e&&(b.contentHeight=e,h.styles.minCellHeight-=e),b.contentHeight>t.height&&(t.height=b.contentHeight),h.contentHeight=h.getContentHeight(g,p),h.contentHeight>a&&(a=h.contentHeight),i[d.index]=h}}var y=new r.Row(t.raw,-1,t.section,i,!0);y.height=a;for(var v=0,m=n.columns;v<m.length;v++){var b;d=m[v],(h=y.cells[d.index])&&(h.height=y.height),(b=t.cells[d.index])&&(b.height=t.height)}return y}(n,u,e,t);g(t,e,n,a,s),v(t,e,i,a,s),f(t,e,d,o,i,a,s)}else v(t,e,i,a,s),f(t,e,n,o,i,a,s)}function g(t,e,n,o,r){o.x=e.settings.margin.left;for(var i=0,l=r;i<l.length;i++){var s=l[i],u=n.cells[s.index];if(u)if(t.applyStyles(u.styles),u.x=o.x,u.y=o.y,!1!==e.callCellHooks(t,e.hooks.willDrawCell,u,n,s,o)){p(t,u,o);var d=u.getTextPos();(0,a.default)(u.text,d.x,d.y,{halign:u.styles.halign,valign:u.styles.valign,maxWidth:Math.ceil(u.width-u.padding("left")-u.padding("right"))},t.getDocument()),e.callCellHooks(t,e.hooks.didDrawCell,u,n,s,o),o.x+=s.width}else o.x+=s.width;else o.x+=s.width}o.y+=n.height}function p(t,e,n){var r=e.styles;if(t.getDocument().setFillColor(t.getDocument().getFillColor()),"number"==typeof r.lineWidth){var i=(0,o.getFillStyle)(r.lineWidth,r.fillColor);i&&t.rect(e.x,n.y,e.width,e.height,i)}else"object"==typeof r.lineWidth&&(r.fillColor&&t.rect(e.x,n.y,e.width,e.height,"F"),function(t,e,n,o){var r,i,l,a;o.top&&(r=n.x,i=n.y,l=n.x+e.width,a=n.y,o.right&&(l+=.5*o.right),o.left&&(r-=.5*o.left),s(o.top,r,i,l,a));o.bottom&&(r=n.x,i=n.y+e.height,l=n.x+e.width,a=n.y+e.height,o.right&&(l+=.5*o.right),o.left&&(r-=.5*o.left),s(o.bottom,r,i,l,a));o.left&&(r=n.x,i=n.y,l=n.x,a=n.y+e.height,o.top&&(i-=.5*o.top),o.bottom&&(a+=.5*o.bottom),s(o.left,r,i,l,a));o.right&&(r=n.x+e.width,i=n.y,l=n.x+e.width,a=n.y+e.height,o.top&&(i-=.5*o.top),o.bottom&&(a+=.5*o.bottom),s(o.right,r,i,l,a));function s(e,n,o,r,i){t.getDocument().setLineWidth(e),t.getDocument().line(n,o,r,i,"S")}}(t,e,n,r.lineWidth))}function y(t,e,n,o){var r=e.settings.margin.bottom,i=e.settings.showFoot;return("everyPage"===i||"lastPage"===i&&n)&&(r+=e.getFootHeight(e.columns)),t.pageSize().height-o.y-r}function v(t,e,n,r,i,l){void 0===i&&(i=[]),void 0===l&&(l=!1),t.applyStyles(t.userStyles),"everyPage"!==e.settings.showFoot||l||e.foot.forEach((function(n){return g(t,e,n,r,i)})),e.callEndPageHooks(t,r);var a=e.settings.margin;(0,o.addTableBorder)(t,e,n,r),m(t),e.pageNumber++,e.pageCount++,r.x=a.left,r.y=a.top,n.y=a.top,e.callWillDrawPageHooks(t,r),"everyPage"===e.settings.showHead&&(e.head.forEach((function(n){return g(t,e,n,r,i)})),t.applyStyles(t.userStyles))}function m(t){var e=t.pageNumber();return t.setPage(e+1),t.pageNumber()===e&&(t.addPage(),!0)}e.drawTable=function(t,e){var n=e.settings,r=n.startY,a=n.margin,c={x:a.left,y:r},p=e.getHeadHeight(e.columns)+e.getFootHeight(e.columns),y=r+a.bottom+p;"avoid"===n.pageBreak&&(y+=e.body.reduce((function(t,e){return t+e.height}),0));var b=new i.DocHandler(t);("always"===n.pageBreak||null!=n.startY&&y>b.pageSize().height)&&(m(b),c.y=a.top),e.callWillDrawPageHooks(b,c);var w=(0,l.assign)({},c);e.startPageNumber=b.pageNumber(),n.horizontalPageBreak?function(t,e,n,o){var r=(0,s.calculateAllColumnsCanFitInPage)(t,e),i=e.settings;if("afterAllRows"===i.horizontalPageBreakBehaviour)r.forEach((function(r,i){t.applyStyles(t.userStyles),i>0?v(t,e,n,o,r.columns,!0):u(t,e,o,r.columns),function(t,e,n,o,r){t.applyStyles(t.userStyles),e.body.forEach((function(i,l){var a=l===e.body.length-1;f(t,e,i,a,n,o,r)}))}(t,e,n,o,r.columns),h(t,e,o,r.columns)}));else for(var l=-1,a=r[0],c=function(){var i=l;if(a){t.applyStyles(t.userStyles);var s=a.columns;l>=0?v(t,e,n,o,s,!0):u(t,e,o,s),i=d(t,e,l+1,o,s),h(t,e,o,s)}var c=i-l;r.slice(1).forEach((function(r){t.applyStyles(t.userStyles),v(t,e,n,o,r.columns,!0),d(t,e,l+1,o,r.columns,c),h(t,e,o,r.columns)})),l=i};l<e.body.length-1;)c()}(b,e,w,c):(b.applyStyles(b.userStyles),"firstPage"!==n.showHead&&"everyPage"!==n.showHead||e.head.forEach((function(t){return g(b,e,t,c,e.columns)})),b.applyStyles(b.userStyles),e.body.forEach((function(t,n){var o=n===e.body.length-1;f(b,e,t,o,w,c,e.columns)})),b.applyStyles(b.userStyles),"lastPage"!==n.showFoot&&"everyPage"!==n.showFoot||e.foot.forEach((function(t){return g(b,e,t,c,e.columns)}))),(0,o.addTableBorder)(b,e,w,c),e.callEndPageHooks(b,c),e.finalY=c.y,t.lastAutoTable=e,t.previousAutoTable=e,t.autoTable&&(t.autoTable.previous=e),b.applyStyles(b.userStyles)},e.addPage=v},224:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0}),e.calculateAllColumnsCanFitInPage=void 0;var o=n(420);function r(t,e,n){var r;void 0===n&&(n={});var i=(0,o.getPageAvailableWidth)(t,e),l=new Map,a=[],s=[],u=[];e.settings.horizontalPageBreakRepeat,Array.isArray(e.settings.horizontalPageBreakRepeat)?u=e.settings.horizontalPageBreakRepeat:"string"!=typeof e.settings.horizontalPageBreakRepeat&&"number"!=typeof e.settings.horizontalPageBreakRepeat||(u=[e.settings.horizontalPageBreakRepeat]),u.forEach((function(t){var n=e.columns.find((function(e){return e.dataKey===t||e.index===t}));n&&!l.has(n.index)&&(l.set(n.index,!0),a.push(n.index),s.push(e.columns[n.index]),i-=n.wrappedWidth)}));for(var d=!0,h=null!==(r=null==n?void 0:n.start)&&void 0!==r?r:0;h<e.columns.length;)if(l.has(h))h++;else{var c=e.columns[h].wrappedWidth;if(!(d||i>=c))break;d=!1,a.push(h),s.push(e.columns[h]),i-=c,h++}return{colIndexes:a,columns:s,lastIndex:h-1}}e.calculateAllColumnsCanFitInPage=function(t,e){for(var n=[],o=0;o<e.columns.length;o++){var i=r(t,e,{start:o});i.columns.length&&(n.push(i),o=i.lastIndex)}return n}},324:function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0}),e.ellipsize=e.resizeColumns=e.calculateWidths=void 0;var o=n(420);function r(t,e,n){for(var o=e,i=t.reduce((function(t,e){return t+e.wrappedWidth}),0),l=0;l<t.length;l++){var a=t[l],s=o*(a.wrappedWidth/i),u=a.width+s,d=n(a),h=u<d?d:u;e-=h-a.width,a.width=h}if(e=Math.round(1e10*e)/1e10){var c=t.filter((function(t){return!(e<0)||t.width>n(t)}));c.length&&(e=r(c,e,n))}return e}function i(t,e,n,r,i){return t.map((function(t){return function(t,e,n,r,i){var l=1e4*r.scaleFactor();if(e=Math.ceil(e*l)/l,e>=(0,o.getStringWidth)(t,n,r))return t;for(;e<(0,o.getStringWidth)(t+i,n,r)&&!(t.length<=1);)t=t.substring(0,t.length-1);return t.trim()+i}(t,e,n,r,i)}))}e.calculateWidths=function(t,e){!function(t,e){var n=t.scaleFactor(),r=e.settings.horizontalPageBreak,i=(0,o.getPageAvailableWidth)(t,e);e.allRows().forEach((function(l){for(var a=0,s=e.columns;a<s.length;a++){var u=s[a],d=l.cells[u.index];if(d){var h=e.hooks.didParseCell;e.callCellHooks(t,h,d,l,u,null);var c=d.padding("horizontal");d.contentWidth=(0,o.getStringWidth)(d.text,d.styles,t)+c;var f=(0,o.getStringWidth)(d.text.join(" ").split(/\s+/),d.styles,t);if(d.minReadableWidth=f+d.padding("horizontal"),"number"==typeof d.styles.cellWidth)d.minWidth=d.styles.cellWidth,d.wrappedWidth=d.styles.cellWidth;else if("wrap"===d.styles.cellWidth||!0===r)d.contentWidth>i?(d.minWidth=i,d.wrappedWidth=i):(d.minWidth=d.contentWidth,d.wrappedWidth=d.contentWidth);else{var g=10/n;d.minWidth=d.styles.minCellWidth||g,d.wrappedWidth=d.contentWidth,d.minWidth>d.wrappedWidth&&(d.wrappedWidth=d.minWidth)}}}})),e.allRows().forEach((function(t){for(var n=0,o=e.columns;n<o.length;n++){var r=o[n],i=t.cells[r.index];if(i&&1===i.colSpan)r.wrappedWidth=Math.max(r.wrappedWidth,i.wrappedWidth),r.minWidth=Math.max(r.minWidth,i.minWidth),r.minReadableWidth=Math.max(r.minReadableWidth,i.minReadableWidth);else{var l=e.styles.columnStyles[r.dataKey]||e.styles.columnStyles[r.index]||{},a=l.cellWidth||l.minCellWidth;a&&"number"==typeof a&&(r.minWidth=a,r.wrappedWidth=a)}i&&(i.colSpan>1&&!r.minWidth&&(r.minWidth=i.minWidth),i.colSpan>1&&!r.wrappedWidth&&(r.wrappedWidth=i.minWidth))}}))}(t,e);var n=[],l=0;e.columns.forEach((function(t){var o=t.getMaxCustomCellWidth(e);o?t.width=o:(t.width=t.wrappedWidth,n.push(t)),l+=t.width}));var a=e.getWidth(t.pageSize().width)-l;a&&(a=r(n,a,(function(t){return Math.max(t.minReadableWidth,t.minWidth)}))),a&&(a=r(n,a,(function(t){return t.minWidth}))),a=Math.abs(a),!e.settings.horizontalPageBreak&&a>.1/t.scaleFactor()&&(a=a<1?a:Math.round(a),console.warn("Of the table content, ".concat(a," units width could not fit page"))),function(t){for(var e=t.allRows(),n=0;n<e.length;n++)for(var o=e[n],r=null,i=0,l=0,a=0;a<t.columns.length;a++){var s=t.columns[a];if((l-=1)>1&&t.columns[a+1])i+=s.width,delete o.cells[s.index];else if(r){var u=r;delete o.cells[s.index],r=null,u.width=s.width+i}else{if(!(u=o.cells[s.index]))continue;if(l=u.colSpan,i=0,u.colSpan>1){r=u,i+=s.width;continue}u.width=s.width+i}}}(e),function(t,e){for(var n={count:0,height:0},o=0,r=t.allRows();o<r.length;o++){for(var l=r[o],a=0,s=t.columns;a<s.length;a++){var u=s[a],d=l.cells[u.index];if(d){e.applyStyles(d.styles,!0);var h=d.width-d.padding("horizontal");if("linebreak"===d.styles.overflow)d.text=e.splitTextToSize(d.text,h+1/e.scaleFactor(),{fontSize:d.styles.fontSize});else if("ellipsize"===d.styles.overflow)d.text=i(d.text,h,d.styles,e,"...");else if("hidden"===d.styles.overflow)d.text=i(d.text,h,d.styles,e,"");else if("function"==typeof d.styles.overflow){var c=d.styles.overflow(d.text,h);d.text="string"==typeof c?[c]:c}d.contentHeight=d.getContentHeight(e.scaleFactor(),e.getLineHeightFactor());var f=d.contentHeight/d.rowSpan;d.rowSpan>1&&n.count*n.height<f*d.rowSpan?n={height:f,count:d.rowSpan}:n&&n.count>0&&n.height>f&&(f=n.height),f>l.height&&(l.height=f)}}n.count--}}(e,t),function(t){for(var e={},n=1,o=t.allRows(),r=0;r<o.length;r++)for(var i=o[r],l=0,a=t.columns;l<a.length;l++){var s=a[l],u=e[s.index];if(n>1)n--,delete i.cells[s.index];else if(u)u.cell.height+=i.height,n=u.cell.colSpan,delete i.cells[s.index],u.left--,u.left<=1&&delete e[s.index];else{var d=i.cells[s.index];if(!d)continue;if(d.height=i.height,d.rowSpan>1){var h=o.length-r,c=d.rowSpan>h?h:d.rowSpan;e[s.index]={cell:d,left:c,row:i}}}}}(e)},e.resizeColumns=r,e.ellipsize=i},964:function(e){if(void 0===t){var n=new Error("Cannot find module 'undefined'");throw n.code="MODULE_NOT_FOUND",n}e.exports=t}},n={};function o(t){var r=n[t];if(void 0!==r)return r.exports;var i=n[t]={exports:{}};return e[t].call(i.exports,i,i.exports,o),i.exports}var r={};return function(){var t=r;Object.defineProperty(t,"__esModule",{value:!0}),t.Cell=t.Column=t.Row=t.Table=t.CellHookData=t.__drawTable=t.__createTable=t.applyPlugin=void 0;var e=o(340),n=o(776),i=o(664),l=o(972),a=o(260);Object.defineProperty(t,"Table",{enumerable:!0,get:function(){return a.Table}});var s=o(172);Object.defineProperty(t,"CellHookData",{enumerable:!0,get:function(){return s.CellHookData}});var u=o(260);function d(t){(0,e.default)(t)}Object.defineProperty(t,"Cell",{enumerable:!0,get:function(){return u.Cell}}),Object.defineProperty(t,"Column",{enumerable:!0,get:function(){return u.Column}}),Object.defineProperty(t,"Row",{enumerable:!0,get:function(){return u.Row}}),t.applyPlugin=d,t.__createTable=function(t,e){var o=(0,n.parseInput)(t,e);return(0,l.createTable)(t,o)},t.__drawTable=function(t,e){(0,i.drawTable)(t,e)};try{var h=o(964);h.jsPDF&&(h=h.jsPDF),d(h)}catch(t){}t.default=function(t,e){var o=(0,n.parseInput)(t,e),r=(0,l.createTable)(t,o);(0,i.drawTable)(t,r)}}(),r}()}));</script>
-<script>const APP_VERSION = '2.2.1';
+<script>const APP_VERSION = '2.3.0';
 'use strict';
 /* ================= Utilidades ================= */
 const $ = (s, r = document) => r.querySelector(s);
@@ -86498,6 +86524,9 @@ const ICONS = {
   heart: '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>',
   hands: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"/>',
   coffee: '<path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><path d="M6 2v2M10 2v2M14 2v2"/>',
+  sitemap: '<rect x="9" y="2" width="6" height="5" rx="1"/><rect x="2" y="17" width="6" height="5" rx="1"/><rect x="16" y="17" width="6" height="5" rx="1"/><path d="M12 7v5M5 17v-5h14v5"/>',
+  euro: '<path d="M18 7a7 7 0 1 0 0 10"/><path d="M4 10h10M4 14h10"/>',
+  mic: '<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/>',
   globe: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
   more: '<circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>'
 };
@@ -86537,7 +86566,7 @@ const DB = {
   }
 };
 
-const COLLECTIONS = ['events', 'contacts', 'msgTemplates', 'clips', 'docs', 'letters', 'congs', 'minLog', 'minCursos', 'metas', 'ayudaH', 'ayudaV', 'ayudaA', 'asiVol', 'asiPausa', 'discursos'];
+const COLLECTIONS = ['events', 'contacts', 'msgTemplates', 'clips', 'docs', 'letters', 'congs', 'minLog', 'minCursos', 'metas', 'ayudaH', 'ayudaV', 'ayudaA', 'asiVol', 'asiPausa', 'discursos', 'deptPer', 'movs', 'circAsig'];
 const DEFAULT_AREAS = [
   { id: 'cong', name: 'Congregación', parent: null },
   { id: 'cong-ancianos', name: 'Cuerpo de ancianos', parent: 'cong' },
@@ -86553,6 +86582,10 @@ const DEFAULT_AREAS = [
   { id: 'cong-ayuda', name: 'Ayuda a hermanos', parent: 'cong' },
   { id: 'circ', name: 'Circuito', parent: null },
   { id: 'circ-dept', name: 'Departamentos', parent: 'circ' },
+  ...[['acom', 'Acomodadores'], ['baut', 'Bautismo'], ['av', 'Audio/Video'], ['perd', 'Objetos perdidos'], ['aparc', 'Acomodadores de aparcamiento'], ['aux', 'Primeros auxilios'], ['limp', 'Limpieza'], ['trans', 'Transporte'], ['inst', 'Instalaciones'], ['seg', 'Seguridad']].map(([k, n]) => ({ id: 'circ-dept-' + k, name: n, parent: 'circ-dept' })),
+  { id: 'circ-org', name: 'Organigrama', parent: 'circ' },
+  { id: 'circ-fact', name: 'Facturas y pagos', parent: 'circ' },
+  { id: 'circ-asig', name: 'Asignaciones y discursos', parent: 'circ' },
   { id: 'sup', name: 'Superintendente de circuito', parent: null },
   { id: 'sup-discursos', name: 'Discursos', parent: 'sup' },
   { id: 'sup-agendas', name: 'Agendas', parent: 'sup' },
@@ -86564,7 +86597,7 @@ function defaultState() {
   return {
     v: 1,
     areas: JSON.parse(JSON.stringify(DEFAULT_AREAS)),
-    events: [], contacts: [], clips: [], docs: [], letters: [], congs: [], minLog: [], minCursos: [], metas: [], ayudaH: [], ayudaV: [], ayudaA: [], asiVol: [], asiPausa: [], discursos: [], lock: null,
+    events: [], contacts: [], clips: [], docs: [], letters: [], congs: [], minLog: [], minCursos: [], metas: [], ayudaH: [], ayudaV: [], ayudaA: [], asiVol: [], asiPausa: [], discursos: [], deptPer: [], movs: [], circAsig: [], lock: null,
     msgTemplates: [{ id: uid(), name: 'Saludo general', text: 'Hola {nombre_pila}, ¿qué tal? Te escribo para recordarte que…', updatedAt: Date.now() }],
     deleted: {},
     settings: { prefix: '34', waMode: 'wa', defRemind: 1440, theme: 'auto' },
@@ -87463,7 +87496,7 @@ async function exportParagraphs(fmt, title, paras, base) {
 
 /* ================= Navegación ================= */
 const NAV = [
-  ['home', 'Inicio', 'home'], ['cal', 'Calendario', 'cal'], ['dir', 'Directorio', 'users'], ['ministerio', 'Mi ministerio', 'send'], ['grupo', 'Mi grupo', 'heart'], ['ayuda', 'Ayuda a hermanos', 'hands'], ['discursos', 'Mis discursos', 'list'], ['visitas', 'Visitas', 'star'], ['asamblea', 'Asamblea internacional', 'globe'], ['msg', 'WhatsApp', 'msg'],
+  ['home', 'Inicio', 'home'], ['cal', 'Calendario', 'cal'], ['dir', 'Directorio', 'users'], ['ministerio', 'Mi ministerio', 'send'], ['grupo', 'Mi grupo', 'heart'], ['ayuda', 'Ayuda a hermanos', 'hands'], ['discursos', 'Mis discursos', 'list'], ['visitas', 'Visitas', 'star'], ['circuito', 'Circuito', 'sitemap'], ['asamblea', 'Asamblea internacional', 'globe'], ['msg', 'WhatsApp', 'msg'],
   ['docs', 'Documentos', 'file'], ['letters', 'Cartas', 'mail'], ['clips', 'Recortes', 'cut'], ['set', 'Copias y ajustes', 'db']
 ];
 const MOBILE_NAV = ['home', 'cal', 'dir', 'msg'];
@@ -87500,7 +87533,7 @@ ACT.moreNav = () => {
 };
 ACT.goClose = el => { closeModal(); go(el.dataset.v); };
 CH.areaFilter = el => { UI.area = el.value; render(); };
-const TITLES = { home: 'Inicio', cal: 'Calendario', dir: 'Directorio', msg: 'Mensajes de WhatsApp', docs: 'Documentos', letters: 'Cartas', clips: 'Recortes', grupo: 'Mi grupo', visitas: 'Visitas a congregaciones', ministerio: 'Mi ministerio', ayuda: 'Ayuda a hermanos', asamblea: 'Asamblea internacional · voluntarios', discursos: 'Mis discursos', set: 'Copias de seguridad y ajustes' };
+const TITLES = { home: 'Inicio', cal: 'Calendario', dir: 'Directorio', msg: 'Mensajes de WhatsApp', docs: 'Documentos', letters: 'Cartas', clips: 'Recortes', grupo: 'Mi grupo', visitas: 'Visitas a congregaciones', ministerio: 'Mi ministerio', ayuda: 'Ayuda a hermanos', asamblea: 'Asamblea internacional · voluntarios', discursos: 'Mis discursos', circuito: 'Circuito', set: 'Copias de seguridad y ajustes' };
 function render() {
   renderNav(); ensureSearchBtn();
   $('#title').textContent = TITLES[UI.view] || '';
@@ -89923,6 +89956,9 @@ function gsCollect(q) {
   S.discursos.filter(d => has(d.titulo, d.lugar, d.notas, d.num && '#' + d.num)).forEach(d => add('Discursos', 'star', (d.num ? `Nº ${d.num} · ` : '') + (d.titulo || ''), [d.fecha && fmtShort(d.fecha), d.lugar].filter(Boolean).join(' · '), 'gsDisc', d.id));
   S.ayudaH.filter(h => has(h.name, h.notas, h.dir)).forEach(h => add('Ayuda a hermanos', 'hands', h.name, snip(h.notas || h.dir || ''), 'gsAy', 'ayudaH:' + h.id));
   S.ayudaV.filter(h => has(h.name, h.notas)).forEach(h => add('Ayuda a hermanos', 'hands', h.name, 'Visita a hermanos', 'gsAy', 'ayudaV:' + h.id));
+  S.deptPer.filter(p => has(p.name, p.notas, String(p.phone || '').replace(/\D/g, ''))).forEach(p => add('Departamentos', 'users', p.name, `${p.rol === 'resp' ? 'Responsable' : 'Auxiliar'} · ${(areaById(p.dept) || {}).name || ''}`, 'gsDept', p.dept));
+  S.movs.filter(m => has(m.concepto, m.quien, m.ref, m.notas)).forEach(m => add('Facturas y pagos', 'euro', m.concepto, `${m.fecha ? fmtShort(m.fecha) + ' · ' : ''}${m.tipo === 'in' ? '+' : '−'}${eur(m.importe)}${m.ref ? ' · ' + m.ref : ''}`, 'gsMov', m.id));
+  S.circAsig.filter(a => has(a.titulo, a.lugar, a.notas, a.num)).forEach(a => add('Asignaciones y discursos', 'mic', a.titulo, [a.fecha && fmtShort(a.fecha), a.lugar].filter(Boolean).join(' · '), 'gsAsig', a.id));
   S.congs.filter(c => has(c.name)).forEach(c => add('Visitas a congregaciones', 'star', c.name, '', 'gsCong', c.id));
   S.metas.filter(m => has(m.t, m.n)).forEach(m => add('Metas', 'send', m.t, snip(m.n || ''), 'gsMeta', m.id));
   S.letters.filter(l => has(l.name, l.text, l.html && l.html.replace(/<[^>]+>/g, ' '))).forEach(l => add('Cartas', 'mail', l.name, '', 'gsLetter', l.id));
@@ -89947,6 +89983,9 @@ ACT.gsEvent = el => { gsClose(); editEvent(el.dataset.id); };
 ACT.gsAsi = el => { gsClose(); UI.asiTab = 'lista'; go('asamblea'); asiEdit(el.dataset.id); };
 ACT.gsDisc = el => { gsClose(); go('discursos'); discEdit(el.dataset.id); };
 ACT.gsAy = el => { gsClose(); const [c, id] = el.dataset.id.split(':'); go('ayuda', { ayTab: c === 'ayudaH' ? 'h' : 'v' }); ACT.ayEdit({ dataset: { c, id } }); };
+ACT.gsDept = el => { gsClose(); UI.circTab = 'dept'; UI.deptId = el.dataset.id; go('circuito'); };
+ACT.gsMov = el => { gsClose(); UI.circTab = 'fact'; go('circuito'); movEdit(el.dataset.id); };
+ACT.gsAsig = el => { gsClose(); UI.circTab = 'asig'; go('circuito'); asigEdit(el.dataset.id); };
 ACT.gsCong = el => { gsClose(); go('visitas', { congId: el.dataset.id, congTab: 'rep' }); };
 ACT.gsMeta = el => { gsClose(); go('ministerio', { minTab: 'met' }); };
 ACT.gsLetter = el => { gsClose(); go('letters', { letterId: el.dataset.id }); };
@@ -90157,6 +90196,435 @@ function pinAsk(title) {
   });
 }
 
+/* ================= CIRCUITO: DEPARTAMENTOS · ORGANIGRAMA · FACTURAS Y PAGOS · ASIGNACIONES Y DISCURSOS ================= */
+UI.circTab = 'dept'; UI.deptId = null; UI.factPer = 'todo'; UI.factDept = '*'; UI.factQ = ''; UI.asigF = 'todos'; UI.asigQ = '';
+const ROL_L = { resp: 'Responsable de departamento', aux: 'Auxiliar de departamento' };
+const deptList = () => S.areas.filter(a => a.parent === 'circ-dept');
+const deptPeople = (id, rol) => S.deptPer.filter(p => p.dept === id && (!rol || p.rol === rol)).sort((a, b) => a.name.localeCompare(b.name, 'es'));
+const eur = n => (+n || 0).toLocaleString('es-ES', { style: 'currency', currency: 'EUR' });
+function parseImp(s) {
+  if (typeof s === 'number') return s;
+  let t = String(s || '').replace(/[€\s]/g, '');
+  if (t.includes(',')) t = t.replace(/\./g, '').replace(',', '.');
+  const n = parseFloat(t); return isNaN(n) ? 0 : Math.round(n * 100) / 100;
+}
+
+VIEWS.circuito = () => {
+  const T = [['dept', 'Departamentos', 'users'], ['org', 'Organigrama', 'sitemap'], ['fact', 'Facturas y pagos', 'euro'], ['asig', 'Asignaciones y discursos', 'mic']];
+  const tabs = `<div class="seg mb asi-tabs circ-tabs">${T.map(([k, l, i]) => `<button class="${UI.circTab === k ? 'on' : ''}" data-act="circTab" data-t="${k}">${ic(i, 's')}${l}</button>`).join('')}</div>`;
+  const body = UI.circTab === 'org' ? orgView() : UI.circTab === 'fact' ? factView() : UI.circTab === 'asig' ? asigView() : (UI.deptId && areaById(UI.deptId) ? deptDetail(UI.deptId) : deptGrid());
+  return tabs + body;
+};
+ACT.circTab = el => { UI.circTab = el.dataset.t; UI.deptId = null; render(); };
+
+/* ---------- Departamentos ---------- */
+function deptGrid() {
+  const D = deptList(), nP = S.deptPer.length;
+  return `<div class="toolbar"><span class="small muted asi-intro">Cada departamento tiene sus responsables y auxiliares. Puedes añadirlos a mano o leerlos de un PDF, Excel o Word.</span>
+    <button class="btn" data-act="deptNew">${ic('plus', 's')}Departamento</button><button class="btn" data-act="deptExport">${ic('down', 's')}Exportar</button><button class="btn pri" data-act="deptImport">${ic('up', 's')}Importar PDF / Excel / Word</button></div>
+  <div class="dept-grid">${D.map(d => {
+    const R = deptPeople(d.id, 'resp'), A = deptPeople(d.id, 'aux');
+    return `<div class="card dept-card" data-act="deptOpen" data-id="${d.id}"><div class="dept-h"><b>${esc(d.name)}</b>${ic('right', 's')}</div>
+      <div class="tiny dept-l">Responsable${R.length === 1 ? '' : 's'}</div><div class="small">${R.length ? R.map(p => esc(p.name)).join('<br>') : '<span class="muted">Sin asignar</span>'}</div>
+      <div class="tiny dept-l">Auxiliares</div><div class="small">${A.length ? `${A.length} · ${A.slice(0, 3).map(p => esc(firstNameOf(p.name))).join(', ')}${A.length > 3 ? '…' : ''}` : '<span class="muted">Ninguno</span>'}</div></div>`;
+  }).join('')}</div>
+  ${!D.length ? '<div class="card"><div class="empty">No hay departamentos. Pulsa «Departamento» para crear uno.</div></div>' : ''}
+  ${nP ? `<p class="tiny mt">${nP} persona${nP === 1 ? '' : 's'} en ${D.length} departamentos.</p>` : ''}`;
+}
+ACT.deptOpen = el => { UI.deptId = el.dataset.id; render(); window.scrollTo(0, 0); };
+ACT.deptBack = () => { UI.deptId = null; render(); };
+function deptDetail(id) {
+  const d = areaById(id), R = deptPeople(id, 'resp'), A = deptPeople(id, 'aux');
+  const ev = S.events.filter(e => e.area === id && e.date >= todayISO()).sort((a, b) => a.date.localeCompare(b.date)).slice(0, 5);
+  const person = p => `<div class="item dp-row" data-id="${p.id}"><div class="avatar circ">${esc(initials(p.name))}</div><div class="body" data-act="dpEdit" data-id="${p.id}"><div class="t">${esc(p.name)}</div><div class="s">${esc([p.phone, p.email, p.notas].filter(Boolean).join(' · ') || 'Sin teléfono')}</div></div>
+    ${p.phone ? `<button class="btn sm icon wa" data-act="dpWA" data-id="${p.id}" title="WhatsApp">${ic('msg', 's')}</button>` : ''}</div>`;
+  const sec = (rol, L) => `<div class="card mb"><div class="row" style="margin-bottom:6px"><h2 style="margin:0;flex:1">${rol === 'resp' ? 'Responsable' + (L.length > 1 ? 's' : '') + ' de departamento' : 'Auxiliares de departamento'} <span class="muted small">· ${L.length}</span></h2><button class="btn sm" data-act="dpAdd" data-rol="${rol}">${ic('plus', 's')}Añadir</button></div>
+    <div class="list">${L.map(person).join('') || `<div class="empty small">${rol === 'resp' ? 'Aún no hay responsable.' : 'Aún no hay auxiliares.'}</div>`}</div></div>`;
+  return `<div class="toolbar"><button class="btn ghost" data-act="deptBack">${ic('left', 's')}Departamentos</button><h2 style="margin:0;flex:1">${esc(d.name)}</h2>
+    <button class="btn" data-act="deptRen">${ic('edit', 's')}Renombrar</button>${R.length + A.length ? `<button class="btn wa" data-act="deptMsg">${ic('send', 's')}Mensaje a todos</button>` : ''}<button class="btn pri" data-act="deptImport" data-dept="${id}">${ic('up', 's')}Importar</button></div>
+  ${sec('resp', R)}${sec('aux', A)}
+  ${ev.length ? `<div class="card"><h2>Próximos eventos de ${esc(d.name)}</h2><div class="list">${ev.map(e => `<div class="item" data-act="gsEvent" data-id="${e.id}">${dateBox(e.date)}<div class="body"><div class="t">${esc(e.title)}</div><div class="s">${e.time || 'Todo el día'}</div></div></div>`).join('')}</div></div>` : ''}
+  <div class="row mt"><span class="sp"></span><button class="btn sm danger" data-act="deptDel">${ic('trash', 's')}Eliminar departamento</button></div>`;
+}
+ACT.dpWA = el => { const p = byId('deptPer', el.dataset.id); openWA(p.phone, `Hola ${firstNameOf(p.name)}, `); };
+ACT.dpAdd = el => dpEdit(null, el.dataset.rol);
+ACT.dpEdit = el => dpEdit(el.dataset.id);
+function dpEdit(id, rol) {
+  const p = id ? { ...byId('deptPer', id) } : { id: uid(), dept: UI.deptId, rol: rol || 'aux', name: '', phone: '', email: '', notas: '' };
+  const m = openModal(id ? esc(p.name) : (p.rol === 'resp' ? 'Nuevo responsable' : 'Nuevo auxiliar'), `
+    <label class="f"><span>Nombre</span><input type="text" id="dpN" value="${esc(p.name)}" list="dpNL"><datalist id="dpNL">${S.contacts.map(c => `<option value="${esc(c.name)}">`).join('')}</datalist></label>
+    <div class="row nw"><label class="f" style="flex:1"><span>Teléfono</span><input type="tel" id="dpT" value="${esc(p.phone || '')}"></label><label class="f" style="flex:1"><span>Correo</span><input type="email" id="dpE" value="${esc(p.email || '')}"></label></div>
+    <div class="row nw"><label class="f" style="flex:1"><span>Departamento</span><select id="dpD">${deptList().map(d => `<option value="${d.id}"${d.id === p.dept ? ' selected' : ''}>${esc(d.name)}</option>`).join('')}</select></label>
+      <label class="f" style="flex:1"><span>Cargo</span><select id="dpR"><option value="resp"${p.rol === 'resp' ? ' selected' : ''}>Responsable</option><option value="aux"${p.rol === 'aux' ? ' selected' : ''}>Auxiliar</option></select></label></div>
+    <label class="f"><span>Notas</span><input type="text" id="dpO" value="${esc(p.notas || '')}"></label>`,
+    `${id ? `<button class="btn danger" data-x="del">${ic('trash', 's')}Quitar</button>` : ''}<span class="sp"></span><button class="btn pri" data-x="ok">Guardar</button>`);
+  $('#dpN', m).onchange = e => { const c = S.contacts.find(c => c.name === e.target.value); if (c) { if (!$('#dpT', m).value) $('#dpT', m).value = c.phone || ''; if (!$('#dpE', m).value) $('#dpE', m).value = c.email || ''; } };
+  $('[data-x=ok]', m).onclick = () => {
+    const n = { ...p, name: $('#dpN', m).value.trim(), phone: $('#dpT', m).value.trim(), email: $('#dpE', m).value.trim(), dept: $('#dpD', m).value, rol: $('#dpR', m).value, notas: $('#dpO', m).value.trim() };
+    if (!n.name) { toast('Escribe el nombre'); return; }
+    upsert('deptPer', n); closeModal(); render();
+  };
+  if (id) $('[data-x=del]', m).onclick = async () => { if (await confirmDlg(`¿Quitar a ${esc(p.name)} del departamento?`, 'Quitar', true)) { removeItem('deptPer', id); closeModal(); render(); } };
+  setTimeout(() => $('#dpN', m).focus(), 50);
+}
+ACT.deptNew = () => {
+  const m = openModal('Nuevo departamento', `<label class="f"><span>Nombre</span><input type="text" id="dnN" placeholder="Ej.: Información"></label>`, `<button class="btn pri" data-x="ok">Crear</button>`);
+  $('[data-x=ok]', m).onclick = () => { const n = $('#dnN', m).value.trim(); if (!n) return; const a = { id: 'circ-dept-' + uid(), name: n, parent: 'circ-dept', updatedAt: Date.now() }; const i = S.areas.map(x => x.parent === 'circ-dept').lastIndexOf(true); S.areas.splice(i + 1, 0, a); save(); closeModal(); UI.deptId = a.id; render(); };
+  setTimeout(() => $('#dnN', m).focus(), 50);
+};
+ACT.deptRen = () => ACT.areaRen({ dataset: { id: UI.deptId } });
+ACT.deptDel = async () => {
+  const d = areaById(UI.deptId), n = deptPeople(d.id).length;
+  if (!await confirmDlg(`¿Eliminar el departamento «${esc(d.name)}»${n ? ` y sus ${n} personas` : ''}?`, 'Eliminar', true)) return;
+  deptPeople(d.id).forEach(p => removeItem('deptPer', p.id));
+  S.areas = S.areas.filter(a => a.id !== d.id); S.deleted[d.id] = Date.now(); S.events.forEach(e => { if (e.area === d.id) e.area = 'circ-dept'; });
+  save(); UI.deptId = null; render();
+};
+ACT.deptMsg = () => sendListModal(`Mensaje a ${areaById(UI.deptId).name}`, deptPeople(UI.deptId), 'deptMsg', 'Hola {nombre} 👋 ');
+/* Envía un mensaje personalizado, uno a uno, a una lista de personas */
+function sendListModal(title, people, key, def) {
+  const tpl = () => S.settings[key] || def;
+  const m = openModal(title, `
+    <label class="f"><span>Mensaje ({nombre} se cambia por el nombre de cada uno)</span><textarea id="slT" rows="4">${esc(tpl())}</textarea></label>
+    <div class="list">${people.map(p => `<div class="item" style="cursor:default" data-id="${p.id}"><div class="body"><div class="t">${esc(p.name)}</div><div class="s">${esc(p.rol ? (p.rol === 'resp' ? 'Responsable' : 'Auxiliar') + ' · ' : '')}${esc(p.phone || 'Sin teléfono')}</div></div><button class="btn sm wa" data-x="send"${p.phone ? '' : ' disabled'}>${ic('msg', 's')}Enviar</button></div>`).join('')}</div>
+    <p class="tiny">WhatsApp abre un chat cada vez: pulsa «Enviar», mándalo y vuelve aquí para el siguiente.</p>`, `<button class="btn" data-x="close">Cerrar</button>`);
+  $('#slT', m).oninput = e => { S.settings[key] = e.target.value; save(); };
+  $('[data-x=close]', m).onclick = () => closeModal();
+  $$('[data-x=send]', m).forEach(b => b.onclick = () => { const p = people.find(x => x.id === b.closest('[data-id]').dataset.id); openWA(p.phone, tpl().replace(/\{\s*nombre\s*\}/gi, firstNameOf(p.name))); b.textContent = '✓ Enviado'; b.classList.remove('wa'); });
+}
+ACT.deptExport = () => exportDialog('Exportar departamentos', '', ['xlsx', 'pdf', 'docx'], async fmt => {
+  const rows = []; deptList().forEach(d => { const L = [...deptPeople(d.id, 'resp'), ...deptPeople(d.id, 'aux')]; if (!L.length) rows.push([d.name, '', '', '']); L.forEach(p => rows.push([d.name, p.rol === 'resp' ? 'Responsable' : 'Auxiliar', p.name, p.phone || ''])); });
+  return exportTable(fmt, 'Departamentos del circuito', ['Departamento', 'Cargo', 'Nombre', 'Teléfono'], rows, 'departamentos');
+});
+
+/* ---------- Leer responsables y auxiliares de un PDF, Excel o Word ---------- */
+async function fileRows(file) {
+  const ext = extOf(file.name), out = [];
+  const cell = c => c instanceof Date ? fmtShort(isoOf(c)) : String(c ?? '').trim();
+  if (['xlsx', 'xls', 'xlsm', 'ods', 'csv'].includes(ext)) {
+    const buf = await file.arrayBuffer();
+    const wb = ext === 'csv' ? XLSX.read(new TextDecoder().decode(buf), { type: 'string', raw: true }) : XLSX.read(buf, { type: 'array', cellNF: true });
+    wb.SheetNames.forEach(sn => { if (wb.SheetNames.length > 1) out.push(['§' + sn]); sheetRows(wb.Sheets[sn]).forEach(r => { const c = r.map(cell); if (c.some(Boolean)) out.push(c); }); });
+  } else if (ext === 'pdf') {
+    const pages = await pdfPagesRaw(await file.arrayBuffer());
+    pages.forEach(pg => {
+      const L = lines(pg.items).sort((a, b) => a.y - b.y || a.x - b.x), rows = [];
+      L.forEach(l => { const r = rows.find(r => Math.abs(r.y - l.y) < 5); if (r) r.cells.push(l); else rows.push({ y: l.y, cells: [l] }); });
+      rows.sort((a, b) => a.y - b.y).forEach(r => out.push(r.cells.sort((a, b) => a.x - b.x).map(c => c.s.trim()).filter(Boolean)));
+    });
+  } else if (['docx', 'docm'].includes(ext)) {
+    const r = await readDocx(await file.arrayBuffer());
+    r.blocks.forEach(b => out.push((b.cells && b.cells.length ? b.cells : String(b.text || '').split('\n')).map(x => String(x).trim()).filter(Boolean)));
+  } else throw new Error('Usa un PDF, Excel o Word.');
+  return out.filter(r => r.length);
+}
+const DEPT_SYN = { acomodadores: ['acomodador'], bautismo: ['bautism', 'bautizo'], 'audio/video': ['audio', 'video', 'sonido'], 'objetos perdidos': ['perdid'], 'acomodadores de aparcamiento': ['aparcamiento', 'parking', 'estacionamiento'], 'primeros auxilios': ['primeros auxilios', 'auxilios'], limpieza: ['limpieza'], transporte: ['transporte'], instalaciones: ['instalacion'], seguridad: ['seguridad'] };
+function deptFinder() {
+  const L = deptList().map(d => { const k = norm(d.name).trim(); return { d, keys: [k, ...(DEPT_SYN[k] || [])] }; }).sort((a, b) => b.keys[0].length - a.keys[0].length);
+  return t => { const s = norm(t); for (const x of L) if (x.keys.some(k => s.includes(k))) return x.d.id; return null; };
+}
+const RE_RESP = /respons|superintendente|encargad|coordinador|jefe|capitan/;
+const RE_AUX = /auxiliar(?!es? de primeros)|ayudante|asistente|\baux\b|colaborador/;
+const phonesIn = t => (String(t).match(/\+?\d[\d .-]{7,16}\d/g) || []).filter(x => x.replace(/\D/g, '').length >= 9);
+function parseDeptRows(rows, defDept) {
+  const find = deptFinder(), out = [];
+  let cur = defDept || null, role = null, map = null;
+  const firstOf = {};
+  const push = (dept, rol, name, phone) => {
+    name = name.replace(/\s+/g, ' ').replace(/^[\s\-–•·.:]+|[\s\-–•·.:]+$/g, '').replace(/^(de|del|la|el)\s+/i, '').trim();
+    if (!/[a-záéíóúñ]{2,}/i.test(name) || name.length < 4 || /^(nombre|telefono|cargo|departamento|responsables?|auxiliares?)$/i.test(norm(name))) return;
+    const r = rol || (dept && !firstOf[dept] ? 'resp' : 'aux');
+    if (dept) firstOf[dept] = true;
+    out.push({ dept: dept || '', rol: r, name, phone: phone || '' });
+  };
+  rows.forEach(cells => {
+    if (cells.length === 1 && cells[0][0] === '§') { cur = find(cells[0]) || cur; role = null; map = null; return; }
+    const H = cells.map(c => norm(c).trim());
+    const iN = H.findIndex(h => /^(nombre|hermano|apellidos? y nombre|nombre y apellidos?)/.test(h));
+    if (iN >= 0 && H.filter(h => /^(nombre|departamento|cargo|puesto|rol|funcion|telefono|movil|tlf)/.test(h)).length >= 2) {
+      map = { n: iN, d: H.findIndex(h => /^departamento|^dpto|^area/.test(h)), r: H.findIndex(h => /^(cargo|puesto|rol|funcion|responsab)/.test(h)), t: H.findIndex(h => /telef|movil|tlf|celular/.test(h)), e: H.findIndex(h => /correo|email|e-mail/.test(h)) };
+      return;
+    }
+    if (map) {
+      const name = cells[map.n] || ''; if (!name) return;
+      const d = (map.d >= 0 && find(cells[map.d] || '')) || cur;
+      const rt = map.r >= 0 ? norm(cells[map.r] || '') : '';
+      push(d, RE_RESP.test(rt) ? 'resp' : RE_AUX.test(rt) ? 'aux' : null, name, map.t >= 0 ? (phonesIn(cells[map.t])[0] || cells[map.t] || '') : '');
+      return;
+    }
+    let txt = cells.join(' | ');
+    const d = find(txt);
+    if (d) { cur = d; role = null; }
+    const nt = norm(txt);
+    let rowRole = null;
+    if (RE_RESP.test(nt)) rowRole = role = 'resp'; else if (RE_AUX.test(nt)) rowRole = role = 'aux';
+    // Quita del texto el nombre del departamento y las etiquetas de cargo
+    if (d) { const a = areaById(d); txt = txt.replace(new RegExp(a.name.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&'), 'ig'), ' '); }
+    txt = txt.replace(/(responsables?|superintendentes?|encargad[oa]s?|coordinador(es|a)?|jefes?|auxiliar(es)?|ayudantes?|asistentes?|colaboradores?)\s*(de(l)?\s+(departamento|dpto\.?))?\s*[:\-]?/ig, ' ').replace(/(departamento|dpto\.?)\s*(de|del)?\s*[:\-]?/ig, ' ');
+    const ph = phonesIn(txt); ph.forEach(p => { txt = txt.replace(p, ' '); });
+    const parts = txt.split(/[|,;\/•\n]| y (?=[A-ZÁÉÍÓÚÑ])/).map(s => s.trim()).filter(s => /[a-záéíóúñ]{2,}/i.test(s) && !/^(de|del|la|el|los|las)$/i.test(s));
+    parts.forEach((n, i) => push(cur, rowRole || role, n, ph.length === parts.length ? ph[i] : parts.length === 1 ? (ph[0] || '') : ''));
+  });
+  return out;
+}
+ACT.deptImport = async el => {
+  const def = el.dataset.dept || null;
+  const [f] = await pickFiles('.pdf,.xlsx,.xls,.xlsm,.ods,.csv,.docx'); if (!f) return;
+  let items;
+  try { items = parseDeptRows(await fileRows(f), def); } catch (e) { toast('No se pudo leer: ' + e.message, { ms: 6000 }); return; }
+  if (!items.length) { toast('No he encontrado nombres en el documento', { ms: 6000 }); return; }
+  const dOpts = sel => `<option value="">— Elige —</option>` + deptList().map(d => `<option value="${d.id}"${d.id === sel ? ' selected' : ''}>${esc(d.name)}</option>`).join('');
+  const exists = i => S.deptPer.some(p => p.dept === i.dept && norm(p.name) === norm(i.name));
+  const m = openModal(`Importar ${items.length} personas`, `
+    <p class="small muted" style="margin-top:0">Revisa el departamento y el cargo de cada uno antes de importar. Lo que no esté claro sale en amarillo.</p>
+    <div class="rep-tw" style="max-height:430px;overflow:auto"><table class="rep-t"><thead><tr><th></th><th>Nombre</th><th>Teléfono</th><th>Departamento</th><th>Cargo</th></tr></thead><tbody>
+    ${items.map((i, k) => `<tr data-k="${k}"><td><input type="checkbox" class="diC"${exists(i) ? '' : ' checked'}></td><td><input type="text" class="diN" value="${esc(i.name)}" style="min-width:160px;padding:3px 6px">${exists(i) ? '<span class="tiny"> ya está</span>' : ''}</td><td><input type="tel" class="diT" value="${esc(i.phone)}" style="width:130px;padding:3px 6px"></td>
+      <td><select class="diD" style="padding:3px 5px${i.dept ? '' : ';border-color:var(--warn)'}">${dOpts(i.dept)}</select></td><td><select class="diR" style="padding:3px 5px"><option value="resp"${i.rol === 'resp' ? ' selected' : ''}>Responsable</option><option value="aux"${i.rol === 'aux' ? ' selected' : ''}>Auxiliar</option></select></td></tr>`).join('')}
+    </tbody></table></div>`, `<button class="btn" data-x="no">Cancelar</button><button class="btn pri" data-x="ok">Importar</button>`, { wide: true });
+  $('[data-x=no]', m).onclick = () => closeModal();
+  $('[data-x=ok]', m).onclick = () => {
+    let n = 0, sin = 0;
+    $$('tr[data-k]', m).forEach(tr => {
+      if (!$('.diC', tr).checked) return;
+      const v = { name: $('.diN', tr).value.trim(), phone: $('.diT', tr).value.trim(), dept: $('.diD', tr).value, rol: $('.diR', tr).value };
+      if (!v.name) return; if (!v.dept) { sin++; return; }
+      const ex = S.deptPer.find(p => p.dept === v.dept && norm(p.name) === norm(v.name));
+      upsert('deptPer', ex ? { ...ex, rol: v.rol, phone: v.phone || ex.phone } : { id: uid(), ...v, email: '', notas: '', src: f.name }); n++;
+    });
+    closeModal(); render(); toast(`${n} personas importadas${sin ? ` · ${sin} sin departamento (no se han importado)` : ''}`, { ms: 5000 });
+  };
+};
+
+/* ---------- Organigrama ---------- */
+const orgTop = () => S.settings.orgTop || [{ id: 'o1', cargo: 'Superintendente de la asamblea', name: '' }, { id: 'o2', cargo: 'Ayudante del superintendente', name: '' }];
+function orgView() {
+  const T = orgTop(), D = deptList();
+  return `<div class="toolbar"><span class="small muted asi-intro">Se construye solo con los responsables y auxiliares de cada departamento. Arriba puedes poner los cargos principales.</span>
+    <button class="btn" data-act="orgEdit">${ic('edit', 's')}Cargos principales</button><button class="btn pri" data-act="orgExport">${ic('down', 's')}Exportar</button></div>
+  <div class="card org"><div class="org-top">${T.map((t, i) => `${i ? '<div class="org-v"></div>' : ''}<div class="org-box top" data-act="orgEdit"><div class="tiny">${esc(t.cargo)}</div><b>${esc(t.name || '— sin asignar —')}</b></div>`).join('')}</div>
+    ${D.length ? `<div class="org-v"></div><div class="org-wrap"><div class="org-wl">Departamentos</div><div class="org-depts">${D.map(d => { const R = deptPeople(d.id, 'resp'), A = deptPeople(d.id, 'aux');
+      return `<div class="org-dept"><div class="org-box" data-act="orgDept" data-id="${d.id}"><div class="org-dn">${esc(d.name)}</div>${R.length ? R.map(p => `<b>${esc(p.name)}</b>`).join('') : '<span class="muted small">Sin responsable</span>'}
+        ${A.length ? `<div class="org-aux">${A.map(p => esc(p.name)).join('<br>')}</div>` : ''}</div></div>`; }).join('')}</div></div>` : ''}</div>`;
+}
+ACT.orgDept = el => { UI.circTab = 'dept'; UI.deptId = el.dataset.id; render(); };
+ACT.orgEdit = () => {
+  let T = orgTop().map(t => ({ ...t }));
+  const m = openModal('Cargos principales del organigrama', `<div id="otL"></div><button class="btn sm mt" data-x="add">${ic('plus', 's')}Añadir cargo</button>`, `<button class="btn pri" data-x="ok">Guardar</button>`, { wide: true });
+  const draw = () => {
+    $('#otL', m).innerHTML = T.map((t, i) => `<div class="row nw" style="margin-bottom:8px" data-i="${i}"><input type="text" class="otC" value="${esc(t.cargo)}" placeholder="Cargo" style="flex:1"><input type="text" class="otN" value="${esc(t.name)}" placeholder="Nombre" style="flex:1"><button class="btn sm icon ghost" data-x="del" title="Quitar">${ic('trash', 's')}</button></div>`).join('');
+    $$('[data-x=del]', m).forEach(b => b.onclick = () => { read(); T.splice(+b.closest('[data-i]').dataset.i, 1); draw(); });
+  };
+  const read = () => { $$('[data-i]', m).forEach(r => { const t = T[+r.dataset.i]; t.cargo = $('.otC', r).value.trim(); t.name = $('.otN', r).value.trim(); }); };
+  $('[data-x=add]', m).onclick = () => { read(); T.push({ id: uid(), cargo: '', name: '' }); draw(); };
+  $('[data-x=ok]', m).onclick = () => { read(); S.settings.orgTop = T.filter(t => t.cargo || t.name); save(); closeModal(); render(); };
+  draw();
+};
+ACT.orgExport = () => exportDialog('Exportar organigrama', '', ['pdf', 'xlsx', 'docx'], async fmt => {
+  const rows = orgTop().map(t => [t.cargo, t.name || '', '']);
+  deptList().forEach(d => rows.push([d.name, deptPeople(d.id, 'resp').map(p => p.name + (p.phone ? ' (' + p.phone + ')' : '')).join('\n'), deptPeople(d.id, 'aux').map(p => p.name).join('\n')]));
+  return exportTable(fmt, 'Organigrama del circuito', ['Cargo / Departamento', 'Responsable', 'Auxiliares'], rows, 'organigrama');
+});
+
+/* ---------- Facturas y pagos ---------- */
+const movPeriodOk = m => UI.factPer === 'todo' || (m.fecha || '').startsWith(UI.factPer);
+const movDeptOk = m => UI.factDept === '*' || (m.dept || '') === UI.factDept;
+function factView() {
+  const all = [...S.movs].sort((a, b) => (a.fecha || '').localeCompare(b.fecha || '') || (a.createdAt || 0) - (b.createdAt || 0));
+  const ini = +S.settings.factIni || 0;
+  const q = norm(UI.factQ);
+  const L = all.filter(m => movPeriodOk(m) && movDeptOk(m) && (!q || norm(`${m.concepto} ${m.quien} ${m.ref} ${m.notas} ${m.importe}`).includes(q)));
+  const sum = (l, t) => l.filter(m => m.tipo === t).reduce((s, m) => s + (+m.importe || 0), 0);
+  const inP = sum(L, 'in'), outP = sum(L, 'out'), dif = inP - outP;
+  const allD = all.filter(movDeptOk), saldoTot = ini * (UI.factDept === '*' ? 1 : 0) + sum(allD, 'in') - sum(allD, 'out');
+  const before = UI.factPer === 'todo' ? null : allD.filter(m => (m.fecha || '') < UI.factPer);
+  const saldoIni = (UI.factDept === '*' ? ini : 0) + (before ? sum(before, 'in') - sum(before, 'out') : 0);
+  const years = [...new Set(all.map(m => (m.fecha || '').slice(0, 4)).filter(Boolean))].sort().reverse();
+  const months = [...new Set(all.map(m => (m.fecha || '').slice(0, 7)).filter(Boolean))].sort().reverse();
+  let run = saldoIni;
+  const rows = L.map(m => { run += m.tipo === 'in' ? +m.importe : -m.importe; return `<tr data-id="${m.id}" data-act="movEdit"><td class="nowrap">${m.fecha ? fmtShort(m.fecha) : ''}</td><td><b>${esc(m.concepto || '')}</b>${m.quien ? `<div class="tiny">${esc(m.quien)}</div>` : ''}</td>
+    <td class="small">${m.ref ? esc(m.ref) : ''}${m.file ? ` <button class="btn sm icon ghost" data-act="movFile" data-id="${m.id}" title="Ver la factura">${ic('file', 's')}</button>` : ''}</td><td class="small">${m.dept ? esc((areaById(m.dept) || {}).name || '') : ''}</td>
+    <td class="num in">${m.tipo === 'in' ? eur(m.importe) : ''}</td><td class="num out">${m.tipo === 'out' ? eur(m.importe) : ''}</td><td class="num">${eur(run)}</td></tr>`; }).join('');
+  const dOpts = `<option value="*"${UI.factDept === '*' ? ' selected' : ''}>Todos los departamentos</option><option value=""${UI.factDept === '' ? ' selected' : ''}>General (sin departamento)</option>` + deptList().map(d => `<option value="${d.id}"${UI.factDept === d.id ? ' selected' : ''}>${esc(d.name)}</option>`).join('');
+  return `<div class="toolbar"><select data-ch="factPer" style="max-width:190px"><option value="todo">Todo</option>${years.map(y => `<option value="${y}"${UI.factPer === y ? ' selected' : ''}>Año ${y}</option>`).join('')}${months.map(mm => `<option value="${mm}"${UI.factPer === mm ? ' selected' : ''}>${ymLong(mm)}</option>`).join('')}</select>
+    <select data-ch="factDept" style="max-width:230px">${dOpts}</select><div class="search">${ic('search', 's')}<input type="search" id="factQ" placeholder="Buscar concepto, nº factura…" value="${esc(UI.factQ)}" data-in="factQ"></div>
+    <button class="btn" data-act="factIniEdit">Saldo inicial</button><button class="btn" data-act="factExport">${ic('down', 's')}Exportar</button></div>
+  <div class="kpi mb fact-kpi"><div class="k in"><span class="small muted">Entradas</span><b>${eur(inP)}</b><span class="tiny">${L.filter(m => m.tipo === 'in').length} movimientos</span></div>
+    <div class="k out"><span class="small muted">Pagos / salidas</span><b>${eur(outP)}</b><span class="tiny">${L.filter(m => m.tipo === 'out').length} movimientos</span></div>
+    <div class="k ${dif < 0 ? 'out' : 'in'}"><span class="small muted">Diferencia</span><b>${eur(dif)}</b><span class="tiny">entradas − salidas${UI.factPer !== 'todo' ? ' del periodo' : ''}</span></div>
+    <div class="k"><span class="small muted">Saldo ${UI.factPer === 'todo' ? 'actual' : 'al final'}</span><b>${eur(saldoIni + dif)}</b><span class="tiny">${saldoIni ? 'partiendo de ' + eur(saldoIni) : 'saldo acumulado'}</span></div></div>
+  <div class="row mb"><button class="btn pri" data-act="movAdd" data-t="in">${ic('plus', 's')}Entrada</button><button class="btn pri out" data-act="movAdd" data-t="out">${ic('plus', 's')}Pago / factura</button><span class="sp"></span>${UI.factPer !== 'todo' || UI.factDept !== '*' ? `<span class="tiny">Saldo total (todo): <b>${eur(saldoTot)}</b></span>` : ''}</div>
+  <div class="card">${L.length ? `<div class="rep-tw"><table class="rep-t fact-t"><thead><tr><th>Fecha</th><th>Concepto</th><th>Nº factura</th><th>Departamento</th><th class="num">Entrada</th><th class="num">Salida</th><th class="num">Saldo</th></tr></thead><tbody>
+    ${saldoIni ? `<tr class="ini"><td></td><td colspan="5"><i>Saldo anterior</i></td><td class="num">${eur(saldoIni)}</td></tr>` : ''}${rows}
+    <tr class="tot"><td></td><td colspan="3"><b>Totales</b></td><td class="num in">${eur(inP)}</td><td class="num out">${eur(outP)}</td><td class="num"><b>${eur(saldoIni + dif)}</b></td></tr></tbody></table></div>`
+    : `<div class="empty">${all.length ? 'Nada en este filtro.' : 'Apunta aquí cada entrada de dinero y cada pago o factura. La app suma las entradas, las salidas y calcula la diferencia y el saldo.'}</div>`}</div>`;
+}
+CH.factPer = el => { UI.factPer = el.value; render(); };
+CH.factDept = el => { UI.factDept = el.value; render(); };
+IN.factQ = el => { UI.factQ = el.value; const p = el.selectionStart; render(); const n = $('#factQ'); n.focus(); n.setSelectionRange(p, p); };
+ACT.factIniEdit = () => {
+  const m = openModal('Saldo inicial', `<p class="small muted" style="margin-top:0">El dinero que había en caja o en la cuenta antes del primer movimiento que apuntas.</p><label class="f"><span>Saldo inicial (€)</span><input type="text" inputmode="decimal" id="fiV" value="${S.settings.factIni ? String(S.settings.factIni).replace('.', ',') : ''}" placeholder="0,00"></label>`, `<button class="btn pri" data-x="ok">Guardar</button>`);
+  $('[data-x=ok]', m).onclick = () => { S.settings.factIni = parseImp($('#fiV', m).value); save(); closeModal(); render(); };
+  setTimeout(() => $('#fiV', m).focus(), 50);
+};
+ACT.movAdd = el => movEdit(null, el.dataset.t);
+ACT.movEdit = (el, e) => { if (e && e.target.closest('[data-act=movFile]')) return; movEdit(el.dataset.id); };
+ACT.movFile = (el, e) => { if (e) e.stopPropagation(); viewOriginal('m:' + el.dataset.id); };
+function movEdit(id, tipo) {
+  const v = id ? { ...byId('movs', id) } : { id: uid(), tipo: tipo || 'out', fecha: todayISO(), concepto: '', importe: '', quien: '', ref: '', dept: UI.factDept !== '*' ? UI.factDept : '', pago: '', notas: '', createdAt: Date.now() };
+  let file = v.file || null;
+  const quienes = [...new Set(S.movs.map(m => m.quien).filter(Boolean))], conceptos = [...new Set(S.movs.map(m => m.concepto).filter(Boolean))];
+  const m = openModal(id ? 'Movimiento' : (v.tipo === 'in' ? 'Nueva entrada' : 'Nuevo pago o factura'), `
+    <div class="seg mb" id="mvT"><button data-t="in" class="${v.tipo === 'in' ? 'on' : ''}">Entrada</button><button data-t="out" class="${v.tipo === 'out' ? 'on' : ''}">Pago / salida</button></div>
+    <div class="row nw"><label class="f" style="flex:1"><span>Fecha</span><input type="date" id="mvF" value="${esc(v.fecha || '')}"></label><label class="f" style="flex:1"><span>Importe (€)</span><input type="text" inputmode="decimal" id="mvI" value="${v.importe !== '' ? String(v.importe).replace('.', ',') : ''}" placeholder="0,00"></label></div>
+    <label class="f"><span>Concepto</span><input type="text" id="mvC" value="${esc(v.concepto || '')}" list="mvCL" placeholder="Ej.: Alquiler del pabellón"><datalist id="mvCL">${conceptos.map(x => `<option value="${esc(x)}">`).join('')}</datalist></label>
+    <div class="row nw"><label class="f" style="flex:1"><span id="mvQl">${v.tipo === 'in' ? 'De quién' : 'Proveedor / a quién'}</span><input type="text" id="mvQ" value="${esc(v.quien || '')}" list="mvQL"><datalist id="mvQL">${quienes.map(x => `<option value="${esc(x)}">`).join('')}</datalist></label><label class="f" style="flex:1"><span>Nº de factura o recibo</span><input type="text" id="mvR" value="${esc(v.ref || '')}"></label></div>
+    <div class="row nw"><label class="f" style="flex:1"><span>Departamento</span><select id="mvD"><option value="">General</option>${deptList().map(d => `<option value="${d.id}"${v.dept === d.id ? ' selected' : ''}>${esc(d.name)}</option>`).join('')}</select></label>
+      <label class="f" style="flex:1"><span>Forma de pago</span><select id="mvP">${['', 'Efectivo', 'Transferencia', 'Tarjeta', 'Bizum', 'Cheque', 'Otra'].map(x => `<option${v.pago === x ? ' selected' : ''}>${x}</option>`).join('')}</select></label></div>
+    <label class="f"><span>Notas</span><input type="text" id="mvN" value="${esc(v.notas || '')}"></label>
+    <div class="row" id="mvFile"></div>`,
+    `${id ? `<button class="btn danger" data-x="del">${ic('trash', 's')}Eliminar</button>` : ''}<span class="sp"></span><button class="btn pri" data-x="ok">Guardar</button>`);
+  let t = v.tipo;
+  $$('#mvT [data-t]', m).forEach(b => b.onclick = () => { t = b.dataset.t; $$('#mvT [data-t]', m).forEach(x => x.classList.toggle('on', x === b)); $('#mvQl', m).textContent = t === 'in' ? 'De quién' : 'Proveedor / a quién'; });
+  const drawFile = () => {
+    $('#mvFile', m).innerHTML = file ? `<span class="pill">${ic('file', 's')}${esc(file.name)}</span><button class="btn sm" data-x="fv">Ver</button><button class="btn sm ghost" data-x="fx">Quitar</button>` : `<button class="btn sm" data-x="fa">${ic('up', 's')}Adjuntar la factura (PDF, foto, Word o Excel)</button>`;
+    const fa = $('[data-x=fa]', m); if (fa) fa.onclick = async () => { const [f] = await pickFiles('.pdf,.jpg,.jpeg,.png,.heic,.webp,.docx,.xlsx,.xls'); if (!f) return; file = await fileToOriginal(f); drawFile(); };
+    const fv = $('[data-x=fv]', m); if (fv) fv.onclick = () => viewFileModal(file.name, file);
+    const fx = $('[data-x=fx]', m); if (fx) fx.onclick = () => { file = null; drawFile(); };
+  };
+  drawFile();
+  $('[data-x=ok]', m).onclick = () => {
+    const n = { ...v, tipo: t, fecha: $('#mvF', m).value, importe: parseImp($('#mvI', m).value), concepto: $('#mvC', m).value.trim(), quien: $('#mvQ', m).value.trim(), ref: $('#mvR', m).value.trim(), dept: $('#mvD', m).value, pago: $('#mvP', m).value, notas: $('#mvN', m).value.trim(), file };
+    if (!n.importe) { toast('Escribe el importe'); return; }
+    if (!n.concepto) { toast('Escribe el concepto'); return; }
+    upsert('movs', n); closeModal(); render();
+  };
+  if (id) $('[data-x=del]', m).onclick = async () => { if (await confirmDlg('¿Eliminar este movimiento?', 'Eliminar', true)) { removeItem('movs', id); closeModal(); render(); } };
+  setTimeout(() => $(id ? '#mvC' : '#mvI', m).focus(), 50);
+}
+function viewFileModal(title, file) {
+  const m = openModal(esc(title), `<div id="vfBox" class="orig-box"></div>`, `<span class="sp"></span><button class="btn" data-x="save">${ic('down', 's')}Guardar</button>`, { wide: true });
+  renderOriginal({ file, title }, $('#vfBox', m));
+  $('[data-x=save]', m).onclick = () => download(origBlob(file), file.name);
+}
+ACT.factExport = () => exportDialog('Exportar facturas y pagos', '', ['xlsx', 'pdf', 'docx'], factMake);
+async function factMake(fmt) {
+  const all = [...S.movs].sort((a, b) => (a.fecha || '').localeCompare(b.fecha || '') || (a.createdAt || 0) - (b.createdAt || 0));
+  const L = all.filter(m => movPeriodOk(m) && movDeptOk(m));
+  if (!L.length) { toast('No hay movimientos en este filtro'); return null; }
+  const ini = UI.factDept === '*' ? +S.settings.factIni || 0 : 0;
+  const before = UI.factPer === 'todo' ? [] : all.filter(m => movDeptOk(m) && (m.fecha || '') < UI.factPer);
+  const saldoIni = ini + before.reduce((s, m) => s + (m.tipo === 'in' ? +m.importe : -m.importe), 0);
+  const per = UI.factPer === 'todo' ? '' : UI.factPer.length === 4 ? ' · año ' + UI.factPer : ' · ' + ymLong(UI.factPer);
+  const dep = UI.factDept === '*' ? '' : ' · ' + (UI.factDept ? areaById(UI.factDept).name : 'General');
+  const title = 'Facturas y pagos' + per + dep, name = safeName('facturas-y-pagos' + per + dep) + '_' + todayISO();
+  const dn = m => m.dept ? ((areaById(m.dept) || {}).name || '') : 'General';
+  if (fmt === 'xlsx') {
+    // Excel con fórmulas: el saldo y los totales se recalculan si cambias un importe
+    const head = ['Fecha', 'Concepto', 'De / a quién', 'Nº factura', 'Departamento', 'Forma de pago', 'Entrada', 'Salida', 'Saldo'];
+    const ws = XLSX.utils.aoa_to_sheet([[title], [], head]);
+    let r = 4; const first = saldoIni ? 5 : 4;
+    if (saldoIni) { XLSX.utils.sheet_add_aoa(ws, [['', 'Saldo anterior', '', '', '', '', '', '', saldoIni]], { origin: 'A4' }); r = 5; }
+    const serial = iso => { const [y, mo, d] = iso.split('-').map(Number); return (Date.UTC(y, mo - 1, d) - Date.UTC(1899, 11, 30)) / 864e5; };
+    let run = saldoIni, tIn = 0, tOut = 0;
+    L.forEach((m, i) => {
+      const row = r + i, prev = row - 1, hasPrev = row > 4;
+      run += m.tipo === 'in' ? +m.importe : -m.importe; if (m.tipo === 'in') tIn += +m.importe; else tOut += +m.importe;
+      XLSX.utils.sheet_add_aoa(ws, [[m.fecha ? serial(m.fecha) : '', m.concepto, m.quien || '', m.ref || '', dn(m), m.pago || '', m.tipo === 'in' ? +m.importe : null, m.tipo === 'out' ? +m.importe : null]], { origin: 'A' + row });
+      ws['I' + row] = { t: 'n', v: Math.round(run * 100) / 100, f: `${hasPrev ? `I${prev}+` : ''}N(G${row})-N(H${row})` };
+    });
+    const last = r + L.length - 1, tot = last + 2;
+    XLSX.utils.sheet_add_aoa(ws, [['', 'Totales']], { origin: 'A' + tot });
+    ws['G' + tot] = { t: 'n', v: tIn, f: `SUM(G${first}:G${last})` }; ws['H' + tot] = { t: 'n', v: tOut, f: `SUM(H${first}:H${last})` }; ws['I' + tot] = { t: 'n', v: Math.round(run * 100) / 100, f: `I${last}` };
+    XLSX.utils.sheet_add_aoa(ws, [['', 'Diferencia (entradas − salidas)']], { origin: 'A' + (tot + 1) }); ws['G' + (tot + 1)] = { t: 'n', v: Math.round((tIn - tOut) * 100) / 100, f: `G${tot}-H${tot}` };
+    const fmtE = '#,##0.00 "€"';
+    for (let k = 4; k <= tot + 1; k++) ['G', 'H', 'I'].forEach(c => { if (ws[c + k]) ws[c + k].z = fmtE; });
+    for (let k = 4; k <= last; k++) if (ws['A' + k] && typeof ws['A' + k].v === 'number') ws['A' + k].z = 'dd/mm/yyyy';
+    ws['!ref'] = `A1:I${tot + 1}`; ws['!cols'] = [12, 34, 22, 14, 18, 14, 13, 13, 14].map(w => ({ wch: w }));
+    const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, 'Movimientos');
+    return { blob: new Blob([XLSX.write(wb, { bookType: 'xlsx', type: 'array' })], { type: MIME.xlsx }), name: name + '.xlsx' };
+  }
+  let run = saldoIni, tIn = 0, tOut = 0;
+  const rows = L.map(m => { run += m.tipo === 'in' ? +m.importe : -m.importe; if (m.tipo === 'in') tIn += +m.importe; else tOut += +m.importe; return [m.fecha ? fmtShort(m.fecha) : '', m.concepto + (m.quien ? ' (' + m.quien + ')' : ''), m.ref || '', dn(m), m.tipo === 'in' ? eur(m.importe) : '', m.tipo === 'out' ? eur(m.importe) : '', eur(run)]; });
+  if (saldoIni) rows.unshift(['', 'Saldo anterior', '', '', '', '', eur(saldoIni)]);
+  rows.push(['', 'TOTALES', '', '', eur(tIn), eur(tOut), eur(run)], ['', 'DIFERENCIA (entradas − salidas)', '', '', eur(tIn - tOut), '', '']);
+  return exportTable(fmt, title, ['Fecha', 'Concepto', 'Nº factura', 'Departamento', 'Entrada', 'Salida', 'Saldo'], rows, 'facturas-y-pagos' + per + dep);
+}
+
+/* ---------- Asignaciones y discursos ---------- */
+const ASIG_T = [['disc', 'Discurso'], ['asig', 'Asignación'], ['otro', 'Otro']];
+function asigView() {
+  const q = norm(UI.asigQ), today = todayISO();
+  const L = [...S.circAsig].filter(a => (UI.asigF === 'todos' || a.tipo === UI.asigF) && (!q || norm(`${a.titulo} ${a.lugar} ${a.notas} ${a.num || ''}`).includes(q)))
+    .sort((a, b) => { const fa = a.fecha || '', fb = b.fecha || ''; const ua = fa >= today, ub = fb >= today; if (ua !== ub) return ua ? -1 : 1; return ua ? fa.localeCompare(fb) : fb.localeCompare(fa); });
+  const cnt = k => S.circAsig.filter(a => k === 'todos' || a.tipo === k).length;
+  return `<div class="toolbar"><div class="seg">${[['todos', 'Todos'], ['disc', 'Discursos'], ['asig', 'Asignaciones'], ['otro', 'Otros']].map(([k, l]) => `<button class="${UI.asigF === k ? 'on' : ''}" data-act="asigF" data-f="${k}">${l} <span class="muted">${cnt(k)}</span></button>`).join('')}</div>
+    <div class="search">${ic('search', 's')}<input type="search" id="asigQ" placeholder="Buscar…" value="${esc(UI.asigQ)}" data-in="asigQ"></div>
+    <button class="btn" data-act="asigAdd">${ic('plus', 's')}Añadir</button><button class="btn pri" data-act="asigImport">${ic('up', 's')}Añadir desde documento</button></div>
+  <div class="card">${L.length ? `<div class="list">${L.map(a => `<div class="item" data-act="asigEdit" data-id="${a.id}">${a.fecha ? dateBox(a.fecha) : `<span class="disc-n">${a.tipo === 'disc' ? ic('mic', 's') : ic('file', 's')}</span>`}
+      <div class="body"><div class="t">${a.num ? `<b>Nº ${esc(a.num)}</b> · ` : ''}${esc(a.titulo || 'Sin título')}</div><div class="s">${ASIG_T.find(t => t[0] === a.tipo)?.[1] || ''}${a.fecha ? ' · ' + fmtShort(a.fecha) + (a.hora ? ' ' + a.hora : '') : ''}${a.lugar ? ' · ' + esc(a.lugar) : ''}${a.fecha && a.fecha >= today ? ' · <b>próximo</b>' : ''}</div>${a.notas ? `<div class="tiny">${esc(a.notas)}</div>` : ''}</div>
+      ${a.docId && byId('docs', a.docId) ? `<button class="btn sm" data-act="asigOrig" data-id="${a.id}" title="Ver el original">${ic('file', 's')}Original</button>` : ''}</div>`).join('')}</div>`
+    : `<div class="empty">${S.circAsig.length ? 'Nada coincide.' : 'Guarda aquí tus discursos y asignaciones del circuito. Si añades el documento (PDF o Word), podrás verlo siempre en su formato original.'}</div>`}</div>`;
+}
+ACT.asigF = el => { UI.asigF = el.dataset.f; render(); };
+IN.asigQ = el => { UI.asigQ = el.value; const p = el.selectionStart; render(); const n = $('#asigQ'); n.focus(); n.setSelectionRange(p, p); };
+ACT.asigOrig = (el, e) => { if (e) e.stopPropagation(); viewOriginal('d:' + byId('circAsig', el.dataset.id).docId); };
+ACT.asigAdd = () => asigEdit(null);
+ACT.asigEdit = (el, e) => { if (e && e.target.closest('[data-act=asigOrig]')) return; asigEdit(el.dataset.id); };
+/* Importa el archivo como documento (con su original y sus fechas) y lo asocia */
+async function importAsigDoc(f) {
+  const wait = openModal('Leyendo documento', `<div class="row"><span class="spinner"></span><span>${esc(f.name)}</span></div>`);
+  try {
+    const r = await readAnyFile(f), my = await findMyAssignments(f, r);
+    const doc = { id: uid(), name: f.name, kind: r.kind, blocks: r.blocks, area: 'circ-asig', importedAt: Date.now(), datesAdded: 0, mine: my.mine, isProg: my.isProg, file: await fileToOriginal(f) };
+    upsert('docs', doc); closeModal(); return doc;
+  } catch (e) { closeModal(); toast('No se pudo leer: ' + (e.message || e), { ms: 6000 }); return null; }
+}
+ACT.asigImport = async () => {
+  const [f] = await pickFiles(DOC_ACCEPT); if (!f) return;
+  const doc = await importAsigDoc(f); if (!doc) return;
+  const cands = docCands(doc), mine = cands.find(c => c.mine) || null;
+  const base = f.name.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ').trim();
+  const tipo = /discurso|bosquejo|conferencia/i.test(base + ' ' + (doc.blocks || []).slice(0, 5).map(b => b.text).join(' ')) ? 'disc' : 'asig';
+  asigEdit(null, { titulo: base, tipo, docId: doc.id, fecha: mine ? mine.date : '', hora: mine ? mine.time || '' : '' }, cands.length ? doc : null);
+};
+function asigEdit(id, pre = {}, docForDates = null) {
+  const a = id ? { ...byId('circAsig', id) } : { id: uid(), tipo: UI.asigF !== 'todos' ? UI.asigF : 'disc', num: '', titulo: '', fecha: '', hora: '', lugar: '', notas: '', docId: '', ...pre };
+  const lugares = [...new Set([...S.circAsig.map(x => x.lugar), ...S.congs.map(c => c.name)].filter(Boolean))];
+  let docId = a.docId;
+  const m = openModal(id ? 'Asignación o discurso' : 'Añadir', `
+    <div class="seg mb" id="agT">${ASIG_T.map(([k, l]) => `<button data-t="${k}" class="${a.tipo === k ? 'on' : ''}">${l}</button>`).join('')}</div>
+    <div class="row nw"><label class="f" style="width:100px;flex:none"><span>Nº (si tiene)</span><input type="text" id="agNu" value="${esc(a.num || '')}"></label><label class="f" style="flex:1"><span>Título</span><input type="text" id="agTi" value="${esc(a.titulo || '')}"></label></div>
+    <div class="row nw"><label class="f" style="flex:1"><span>Fecha</span><input type="date" id="agF" value="${esc(a.fecha || '')}"></label><label class="f" style="flex:1"><span>Hora</span><input type="time" id="agH" value="${esc(a.hora || '')}"></label></div>
+    <label class="f"><span>Lugar o congregación</span><input type="text" id="agL" value="${esc(a.lugar || '')}" list="agLL"><datalist id="agLL">${lugares.map(x => `<option value="${esc(x)}">`).join('')}</datalist></label>
+    <label class="f"><span>Notas</span><textarea id="agN" rows="2">${esc(a.notas || '')}</textarea></label>
+    <div class="row" id="agD"></div>
+    ${!a.evId ? `<label class="chk mt"><input type="checkbox" id="agC"> Añadirlo al calendario</label>` : '<p class="tiny mt">Está en el calendario.</p>'}`,
+    `${id ? `<button class="btn danger" data-x="del">${ic('trash', 's')}Eliminar</button>` : ''}<span class="sp"></span><button class="btn pri" data-x="ok">Guardar</button>`);
+  let t = a.tipo;
+  $$('#agT [data-t]', m).forEach(b => b.onclick = () => { t = b.dataset.t; $$('#agT [data-t]', m).forEach(x => x.classList.toggle('on', x === b)); });
+  const drawDoc = () => {
+    const d = docId && byId('docs', docId);
+    $('#agD', m).innerHTML = d ? `<span class="pill">${ic('file', 's')}${esc(d.name)}</span><button class="btn sm" data-x="dv">${ic('file', 's')}Ver original</button><button class="btn sm ghost" data-x="dx">Quitar</button>` : `<button class="btn sm" data-x="da">${ic('up', 's')}Adjuntar documento (PDF o Word)</button>`;
+    const da = $('[data-x=da]', m); if (da) da.onclick = async () => { const [f] = await pickFiles(DOC_ACCEPT); if (!f) return; const doc = await importAsigDoc(f); if (doc) { docId = doc.id; if (!$('#agTi', m).value) $('#agTi', m).value = f.name.replace(/\.[^.]+$/, ''); drawDoc(); } };
+    const dv = $('[data-x=dv]', m); if (dv) dv.onclick = () => viewOriginal('d:' + docId);
+    const dx = $('[data-x=dx]', m); if (dx) dx.onclick = () => { docId = ''; drawDoc(); };
+  };
+  drawDoc();
+  const cb = $('#agC', m); if (cb) { const upd = () => { if (!cb.dataset.t) cb.checked = ($('#agF', m).value || '') >= todayISO(); }; $('#agF', m).addEventListener('change', upd); cb.onchange = () => { cb.dataset.t = 1; }; upd(); }
+  $('[data-x=ok]', m).onclick = async () => {
+    const n = { ...a, tipo: t, num: $('#agNu', m).value.trim(), titulo: $('#agTi', m).value.trim(), fecha: $('#agF', m).value, hora: $('#agH', m).value, lugar: $('#agL', m).value.trim(), notas: $('#agN', m).value.trim(), docId };
+    if (!n.titulo && !n.num) { toast('Escribe el título'); return; }
+    if (cb && cb.checked && n.fecha) {
+      const ev = { id: uid(), title: `${t === 'disc' ? 'Discurso' : t === 'asig' ? 'Asignación' : ''}${n.num ? ' nº ' + n.num : ''}: ${n.titulo}`.replace(/^: /, ''), date: n.fecha, time: n.hora, end: '', area: 'circ-asig', remind: S.settings.defRemind, note: [n.lugar, n.notas].filter(Boolean).join('\n'), docId: docId || undefined };
+      upsert('events', ev); n.evId = ev.id;
+    }
+    upsert('circAsig', n); closeModal(); render();
+    if (docForDates) { const cands = docCands(docForDates).filter(c => c.date !== n.fecha); if (cands.length) await reviewDates(cands, docForDates, true); }
+  };
+  if (id) $('[data-x=del]', m).onclick = async () => { if (await confirmDlg('¿Eliminar de la lista? El documento seguirá en «Documentos».', 'Eliminar', true)) { removeItem('circAsig', id); closeModal(); render(); } };
+  setTimeout(() => $('#agTi', m).focus(), 50);
+}
+
 /* ================= VER EL DOCUMENTO ORIGINAL ================= */
 const EXT_MIME = { pdf: 'application/pdf', docx: MIME.docx, docm: MIME.docx, xlsx: MIME.xlsx, xls: 'application/vnd.ms-excel', xlsm: MIME.xlsx, csv: 'text/csv', txt: 'text/plain', md: 'text/plain', ods: 'application/vnd.oasis.opendocument.spreadsheet' };
 async function fileToOriginal(f) {
@@ -90171,6 +90639,7 @@ function origOf(ref) {
     const L = byId('letters', ref.slice(2)); if (!L) return null;
     return { title: L.name, letter: L, file: L.original ? { b64: L.original, mime: MIME.docx, ext: 'docx', name: safeName(L.name) + '.docx' } : null };
   }
+  if (ref.startsWith('m:')) { const mv = byId('movs', ref.slice(2)); if (!mv || !mv.file) return null; return { title: mv.concepto || mv.file.name, mov: mv, file: mv.file }; }
   const d = byId('docs', ref.replace(/^d:/, '')); if (!d) return null;
   return { title: d.name, doc: d, file: d.file || null };
 }
@@ -90184,7 +90653,9 @@ async function renderOriginal(o, box) {
   }
   box.innerHTML = '<div class="row"><span class="spinner"></span><span class="small muted">Cargando…</span></div>';
   try {
-    if (f.ext === 'pdf') {
+    if (/^image\//.test(f.mime) || ['jpg', 'jpeg', 'png', 'webp', 'gif'].includes(f.ext)) {
+      box.innerHTML = `<img src="data:${f.mime};base64,${f.b64}" style="max-width:100%;border-radius:8px" alt="">`;
+    } else if (f.ext === 'pdf') {
       await initPdf();
       const pdf = await pdfjsLib.getDocument({ data: new Uint8Array(b642ab(f.b64)), isEvalSupported: false }).promise;
       box.innerHTML = '';
@@ -90212,9 +90683,9 @@ function viewOriginal(ref) {
   if (!o) { toast('El documento asociado ya no existe'); return; }
   const f = o.file;
   const m = openModal(esc(o.title), `<div id="origBox" class="orig-box"></div>`,
-    `${o.doc ? `<button class="btn" data-x="txt">${ic('cut', 's')}Texto y recortes</button>` : `<button class="btn" data-x="edit">${ic('edit', 's')}Abrir la carta</button>`}<span class="sp"></span>
+    `${o.doc ? `<button class="btn" data-x="txt">${ic('cut', 's')}Texto y recortes</button>` : o.letter ? `<button class="btn" data-x="edit">${ic('edit', 's')}Abrir la carta</button>` : ''}<span class="sp"></span>
      ${f ? `<button class="btn" data-x="open" title="Abrir con la aplicación del dispositivo">${ic('file', 's')}Abrir con…</button><button class="btn" data-x="save">${ic('down', 's')}Guardar</button><button class="btn" data-x="share">${ic('share', 's')}Compartir</button>` : ''}
-     <button class="btn pri" data-x="exp">${ic('down', 's')}Exportar</button>`, { wide: true });
+     ${o.doc || o.letter ? `<button class="btn pri" data-x="exp">${ic('down', 's')}Exportar</button>` : ''}`, { wide: true });
   renderOriginal(o, $('#origBox', m));
   const fname = f ? (f.name || safeName(o.title) + '.' + f.ext) : '';
   if (f) {
@@ -90227,8 +90698,8 @@ function viewOriginal(ref) {
     };
   }
   if (o.doc) $('[data-x=txt]', m).onclick = () => { modalStack.slice().forEach(() => closeModal()); go('docs', { docId: o.doc.id }); };
-  else $('[data-x=edit]', m).onclick = () => { modalStack.slice().forEach(() => closeModal()); go('letters', { letterId: o.letter.id }); };
-  $('[data-x=exp]', m).onclick = () => {
+  else if (o.letter) $('[data-x=edit]', m).onclick = () => { modalStack.slice().forEach(() => closeModal()); go('letters', { letterId: o.letter.id }); };
+  if (o.doc || o.letter) $('[data-x=exp]', m).onclick = () => {
     if (o.doc) { UI.docId = o.doc.id; UI.docSel.clear(); ACT.docExport(); }
     else { UI.letterId = o.letter.id; ACT.letterDl(); }
   };
